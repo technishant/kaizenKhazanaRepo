@@ -75,8 +75,4 @@ class Category extends \yii\db\ActiveRecord {
         ];
     }
 
-    public static function find() {
-        return new MenuQuery(get_called_class());
-    }
-    
 }
