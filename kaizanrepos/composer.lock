@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c9799a709c8a372c163427f748b40427",
-    "content-hash": "950f6f2239a9e22e313efaa7e84201b9",
+    "hash": "29914a8ee24c1ecd776a610b4fdbf06d",
+    "content-hash": "ea679b364a9d5132ba42283dccd9b22f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -312,49 +312,6 @@
                 "yii2"
             ],
             "time": "2015-01-27 10:53:51"
-        },
-        {
-            "name": "djvibegga/yii2-nested-set-behavior",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/djvibegga/yii2-nested-set-behavior.git",
-                "reference": "4479442fcd3c6c6d7b6eab3063b2e996f57b860e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/djvibegga/yii2-nested-set-behavior/zipball/4479442fcd3c6c6d7b6eab3063b2e996f57b860e",
-                "reference": "4479442fcd3c6c6d7b6eab3063b2e996f57b860e",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "creocoder\\behaviors\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander Kochetov",
-                    "email": "creocoder@gmail.com"
-                }
-            ],
-            "description": "This extension allows you to get functional for nested set trees.",
-            "homepage": "https://github.com/djvibegga/yii2-nested-set-behavior",
-            "keywords": [
-                "Behavior",
-                "extension",
-                "nested set",
-                "yii"
-            ],
-            "time": "2015-02-06 14:14:56"
         },
         {
             "name": "ezyang/htmlpurifier",
