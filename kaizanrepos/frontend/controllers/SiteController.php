@@ -15,6 +15,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Session;
 use frontend\models\Menu;
+use frontend\models\Category;
+use slatiusa\nestable\Nestable;
 
 /**
  * Site controller
@@ -66,7 +68,11 @@ class SiteController extends Controller {
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
                 'successCallback' => [$this, 'successFacebookLogin']
-            ]
+            ],
+            'nodeMove' => [
+                'class' => 'slatiusa\nestable\NodeMoveAction',
+                'modelName' => Category::className(),
+            ],
         ];
     }
 
@@ -77,7 +83,8 @@ class SiteController extends Controller {
      */
     public function actionIndex() {
         $model = new SignupForm();
-        return $this->render('index', ['model' => $model]);
+        $categories = Category::find()->roots()->all();
+        return $this->render('index', ['model' => $model, 'categories' => $categories]);
     }
 
     /**
@@ -226,5 +233,10 @@ class SiteController extends Controller {
         print_r($attributes);
         die;
     }
-    
+
+    public function actionCategoryclick($name) {
+
+        return $this->render('categoryClick');
+    }
+
 }

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
+use yii\helpers\Url;
 $this->title = 'Home :: Kaizen Khazana';
 ?>
 <!--  / searchBox \ -->
@@ -80,66 +80,16 @@ $this->title = 'Home :: Kaizen Khazana';
             </h3>
 
             <div class = "icon-section clearfix">
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
+                <?php foreach ($categories as $category): ?>
+                    <div class = "col-sm-3 col-5">
+                        <a href="<?= Url::to(['categoryclick', 'name' => $category->name]); ?>">
+                            <div class = "item-border">
+                                <span><i class = "fa fa-apple"></i></span>
+                                <span class = "text-overflow"><?php echo $category->name; ?></span>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
-                <div class = "col-sm-3 col-5">
-                    <div class = "item-border">
-                        <span><i class = "fa fa-apple"></i></span>
-                        <span class = "text-overflow">Idea Bazaar</span>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
             <a href = "#" class = "btn btn-success btn-lg text-uppercase mar-top-30">Explore more features</a>
         </div>
@@ -201,50 +151,50 @@ $this->title = 'Home :: Kaizen Khazana';
 </div>
 <!--  \ featureBox / -->
 
-<?php if(Yii::$app->user->isGuest):?>
-<!--  / registerBox \ -->
-<div class="registerBox clearfix">
-    <div class="container">
-        <div class="row">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix']]); ?>
-            <div class="col-sm-12 clearfix">
-                <span class="text-center"><i class="fa fa-lock"></i><?= yii\bootstrap\Html::encode('Post a Kaizan and avail unlimited benefits. No credit card required') ?></span>
-                <hr>
-            </div>
-            <div class="col-sm-12 clearfix">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <?= $form->field($model, 'first_name', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'First Name']); ?>
+<?php if (Yii::$app->user->isGuest): ?>
+    <!--  / registerBox \ -->
+    <div class="registerBox clearfix">
+        <div class="container">
+            <div class="row">
+                <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix']]); ?>
+                <div class="col-sm-12 clearfix">
+                    <span class="text-center"><i class="fa fa-lock"></i><?= yii\bootstrap\Html::encode('Post a Kaizan and avail unlimited benefits. No credit card required') ?></span>
+                    <hr>
+                </div>
+                <div class="col-sm-12 clearfix">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <?= $form->field($model, 'first_name', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'First Name']); ?>
+                        </div>
+                        <div class="col-sm-6">
+                            <?= $form->field($model, 'last_name', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Last Name']); ?> 
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <?= $form->field($model, 'last_name', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Last Name']); ?> 
+                    <div class="form-group">
+                        <?= $form->field($model, 'email', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Email']); ?>
+                    </div>
+                    <div class="form-group">
+                        <?= $form->field($model, 'phone', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Phone Number']); ?>
+                    </div>
+                    <div class="form-group">
+                        <?= $form->field($model, 'password', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->passwordInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Password']); ?>
+                    </div>
+                    <div class="form-group">
+                        <?= $form->field($model, 'address', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textarea(['rows' => 4, 'cols' => 4, 'class' => 'form-control', 'placeholder' => 'Address']); ?>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> I have read and I agree to the Terms of Use and Privacy Policy
+                        </label>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-success btn-lg">Get Started</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'email', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Email']); ?>
-                </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'phone', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Phone Number']); ?>
-                </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'password', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->passwordInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Password']); ?>
-                </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'address', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textarea(['rows' => 4, 'cols' => 4, 'class' => 'form-control', 'placeholder' => 'Address']); ?>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> I have read and I agree to the Terms of Use and Privacy Policy
-                    </label>
-                </div>
-                <div class="form-group text-center">
-                    <button class="btn btn-success btn-lg">Get Started</button>
-                </div>
+                <?php ActiveForm::end(); ?>
             </div>
-            <?php ActiveForm::end(); ?>
         </div>
     </div>
-</div>
-<!--  \ registerBox / -->
+    <!--  \ registerBox / -->
 <?php endif; ?>
 <?= $this->render('_footer.php'); ?>

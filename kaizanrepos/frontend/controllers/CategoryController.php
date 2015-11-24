@@ -1,15 +1,16 @@
 <?php
 
 namespace frontend\controllers;
+
 use frontend\models\Category;
 
-class CategoryController extends \yii\web\Controller
-{
-    public function actionIndex()
-    {
-        $category1 = Category::findOne(['name' => 'Category1']);
-        $subCategory1 = new Category(['name' => 'Category1.1']);
-        $subCategory1->prependTo($category1);
+class CategoryController extends \yii\web\Controller {
+
+    public function actionIndex() {
+        $category = new Category(['name' => 'Category9']);
+        $category->makeRoot();
+        $category = new Category(['name' => 'Category10']);
+        $category->makeRoot();
     }
 
 }

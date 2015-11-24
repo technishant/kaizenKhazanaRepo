@@ -1,5 +1,4 @@
 <?php
-
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \common\models\LoginForm */
@@ -8,32 +7,75 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
-
-                <?= $form->field($model, 'username') ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+<!--  / loginBox \ -->
+<div class="loginBox clearfix">
+    <div class="container">
+        <div class="row">
+            <form action="" class="login clearfix">
+                <a href="#" class="btn btn-default top-button">Register now</a>
+                <div class="col-sm-6">
+                    <h4>Enjoy the benefits of Registration:</h4>
+                    <ul>
+                        <li>Aenean tempus ligula et dui aliquet, ut commodo.</li>
+                        <li>Duis ornare velit et erat laoreet, libero lobortis.</li>
+                        <li>Nam dictum ligula et risus aliquet pharetra.</li>
+                        <li>Aenean imperdiet magna in dolor mollis, ut fringilla ante vehicula.</li>
+                        <li>Mauris sit amet felis sed metus fermentum iaculis.</li>
+                    </ul>
                 </div>
+                <div class="col-sm-6">
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <span class="text-center"><i class="fa fa-lock"></i> Log In</span>
+                    <hr>
+
+                    <div class="form-group">
+                        <?= $form->field($model, 'username', ['template' => "<div class='form-group'>\n{input}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'someone@example.com']); ?>
+                    </div>
+                    <div class="form-group">
+                        <?= $form->field($model, 'password', ['template' => "<div class='form-group'>\n{input}</div>"])->label('')->passwordInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => '******************']); ?>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="checkbox">
+                                    <label><input class="checkbox-inline" type="checkbox"> Keep me loged in</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <div class="checkbox">
+                                    <a href="#">Forget password?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-lg']) ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
-
-            <?php ActiveForm::end(); ?>
+            </form>
         </div>
     </div>
 </div>
+<!--  \ loginBox / -->
+
+<!--  / footerBox \ -->
+<footer class="footerBox">
+    <div class="ul-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul>
+                        <li><a href="#" class="color-white">Existing user ? Login to Kaizan Khanano</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--  \ footerBox / -->
