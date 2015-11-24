@@ -227,14 +227,14 @@ class SiteController extends Controller {
         die;
     }
 
-    public function actionTest() {
-        $countries = new Menu(['name' => 'Countries']);
-        $countries->makeRoot();
-        $australia = new Menu(['name' => 'Australia']);
-        $australia->appendTo($countries);
-        $oo = new Menu(['name' => 'jkjdfkj']);
-        $oo->appendTo($australia);
-    }
+//    public function actionTest() {
+//        $countries = new Menu(['name' => 'Countries']);
+//        $countries->makeRoot();
+//        $australia = new Menu(['name' => 'Australia']);
+//        $australia->appendTo($countries);
+//        $oo = new Menu(['name' => 'jkjdfkj']);
+//        $oo->appendTo($australia);
+//    }
     public function actionMenuview() {
         $roots = Menu::find()->roots()->all();
         echo "<pre>";
