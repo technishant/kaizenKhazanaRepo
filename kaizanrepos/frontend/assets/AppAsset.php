@@ -21,14 +21,17 @@ class AppAsset extends AssetBundle
         'css/master.css',
         'css/font-awesome.min.css',
         'css/fonts.css',
-        'global.css',
-        'owl.carousel.css',
+        'css/global.css',
+        'css/owl.carousel.css',
+        'css/jquery.navgoco.css'
     ];
     public $js = [
         'js/custom.js',
         'js/owl.carousel.js',
         'js/respond.min.js',
-        'html5shiv.min.js'
+        'js/html5shiv.min.js',
+        'js/bootstrap.min.js',
+        'js/jquery.navgoco.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

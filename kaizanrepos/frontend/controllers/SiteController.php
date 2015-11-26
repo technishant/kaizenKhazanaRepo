@@ -235,8 +235,45 @@ class SiteController extends Controller {
     }
 
     public function actionCategoryclick($name) {
-
-        return $this->render('categoryClick');
+        $menu = array();
+        $rootModal = Category::find()->roots()->all();
+        foreach($rootModal as $root) {
+            $tempRoot = array();
+            $tempRoot['content'] = $root->name;
+            $tempRoot['id'] = $root->id;
+            $level1Modal = Category::findOne(['id' => $root->id])->children(1)->all();
+            if(!empty($level1Modal)){
+                $menuLevel1 = array();
+                foreach($level1Modal as $level1) {
+                    $tempLevel1 = array();
+                    $tempLevel1['content'] = $level1->name;
+                    $tempLevel1['id'] = $level1->id;
+                    $level2Modal = Category::findOne(['id' => $level1->id])->children(1)->all();
+                    if(!empty($level2Modal)) {
+                        $menuLevel2 = array();
+                        foreach ($level2Modal as $level2) {
+                            $tempLevel2 = array();
+                            $tempLevel2['content'] = $level2->name;
+                            $tempLevel1['id'] = $level2->id;
+                            array_push($menuLevel2, $tempLevel2);
+                        }
+                        $tempLevel1['children'] = $menuLevel2;
+                    }
+                    array_push($menuLevel1, $tempLevel1);
+                }
+                $tempRoot['children'] = $menuLevel1;
+            }
+            array_push($menu, $tempRoot);
+        }
+        return $this->render('categoryClick', ['menu' => $menu]);
+    }
+    
+    public function actionTest() {
+//        $countries = new Category(['name' => 'Category2']);
+//        $countries->makeRoot();
+        $countries =  Category::findOne(['id' => 30]);
+        $russia = new Category(['name' => 'Category2.1.1']);
+        $russia->prependTo($countries);
     }
 
 }
