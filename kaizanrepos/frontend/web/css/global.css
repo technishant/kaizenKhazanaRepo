@@ -34,7 +34,7 @@ html, body { font-family: 'robotoregular', sans-serif; }
 .icon-section span:first-child { margin-bottom: 10px; }
 .icon-section span i { font-size: 40px; }
 
-.searchBox, .registerBox, .loginBox { background: url("../images/login-bg.jpg") no-repeat center center; -webkit-background-size: cover; background-size: cover; }
+.searchBox, .registerBox, .loginBox, .formViewBox, .formBox { background: url("../images/login-bg.jpg") no-repeat center center; -webkit-background-size: cover; background-size: cover; background-attachment: fixed; }
 .registerBox .register, .loginBox .login { padding: 30px; margin: 60px auto; background-color: rgba(0,0,0,0.3); }
 
 .bg-grey { background-color: #666; color: #fff; }
@@ -99,9 +99,12 @@ html, body { font-family: 'robotoregular', sans-serif; }
 .searchBox { height: 560px; }
 .search-section { padding: 25px 15px; max-width: 800px; margin: auto; background-color: rgba(0,0,0,0.3); }
 .searchBox .icon-section { position: absolute; bottom: 20px; left: 0px; }
-.searchBox .icon-section span { margin-bottom: 8px; color: #14b5ea; }
+.searchBox .icon-section span:first-child { display: block; width: 80px; height: 80px; line-height: 80px; text-align: center; border-radius: 50%; -webkit-border-radius: 50%; margin:0 auto 8px; color: #fff; background: rgba(0,0,0,0.2); }
+.searchBox .icon-section span:first-child i { vertical-align: middle; font-size: 35px; }
 .searchBox .icon-section > div { cursor: pointer; padding-top: 20px; padding-bottom: 10px; }
-.searchBox .circle-box { padding: 25px 15px;  border-radius: 50%; -webkit-border-radius: 50%; background: rgba(255,255,255,0.8); }
+.searchBox .icon-section span + span { display: block; color: #fff; text-align: center; }
+.searchBox .circle-box:hover span:first-child { background: rgba(0,0,0,0.5); }
+
 
 /* ### registerBox ### */
 .registerBox .register { max-width: 550px; }
@@ -123,7 +126,7 @@ html, body { font-family: 'robotoregular', sans-serif; }
 
 /* ### featureBox ### */
 .featureBox { padding-top: 40px; padding-bottom: 60px; }
-.featureBox .icon-section > div { margin-bottom: 20px; }
+.featureBox .icon-section > li { margin-bottom: 20px; display: none; }
 .featureBox .icon-section { margin-top: 30px; }
 .featureBox small { color: #fff; }
 
@@ -198,7 +201,30 @@ html, body { font-family: 'robotoregular', sans-serif; }
 
 
 
+.search .radio { margin-top: 0px; }
+.search .radio label { color: #000; }
+.admin-panel li.seprator { margin: 0 5px; width: 1px; height: 30px; text-align: center; line-height: 30px; }
+.admin-panel li.seprator span { display: inline-block; width: 1px; vertical-align: middle; height: 20px; background-color: #708d08; }
 
+
+.siderBox h3 { margin-bottom: 0px; }
+.siderBox .frames { margin-top: 15px; width: 100%; }
+.siderBox .frames img { width: 100%; }
+.siderBox { }
+.siderBox { }
+
+.registerBox label { color: #fff; text-shadow: none; font-weight: normal }
+.formBox { }
+.formBox { }
+
+
+.formViewBox { padding: 30px 0 40px; color: #fff; }
+.formViewBox .first { padding: 10px 0; border-top: 1px solid #fff; }
+.formViewBox .second { padding-bottom: 10px; }
+.formViewBox .second + .second { padding-top: 10px; border-top: 1px solid #fff; }
+.formViewBox .second.last { padding-bottom: 0px; }
+.formViewBox img { width: 100%; display: block; }
+.formViewBox h3 { margin: 15px 0; }
 
 @media only screen and (max-width: 1200px) {
 
@@ -227,5 +253,7 @@ html, body { font-family: 'robotoregular', sans-serif; }
 }
 
 @media only screen and (max-width: 480px) {
+    .width-full-480 { width: 100%; }
+
 
 }
