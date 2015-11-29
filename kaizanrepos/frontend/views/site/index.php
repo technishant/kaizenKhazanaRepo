@@ -82,7 +82,7 @@ $this->title = 'Home :: Kaizen Khazana';
             <div class = "icon-section clearfix">
                 <?php foreach ($categories as $category): ?>
                     <div class = "col-sm-3 col-5">
-                        <a href="<?= Url::to(['categoryclick', 'name' => $category->name]); ?>">
+                        <a href="<?= Url::to(['category-click', 'id' => $category->id]); ?>">
                             <div class = "item-border">
                                 <span><i class = "fa fa-apple"></i></span>
                                 <span class = "text-overflow"><?php echo $category->name; ?></span>

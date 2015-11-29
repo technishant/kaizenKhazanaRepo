@@ -17,6 +17,7 @@ use yii\web\Session;
 use frontend\models\Menu;
 use frontend\models\Category;
 use slatiusa\nestable\Nestable;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -234,34 +235,37 @@ class SiteController extends Controller {
         die;
     }
 
-    public function actionCategoryclick($name) {
+    public function actionCategoryClick($id) {
         $menu = array();
         $rootModal = Category::find()->roots()->all();
         foreach($rootModal as $root) {
             $tempRoot = array();
-            $tempRoot['content'] = $root->name;
+            $tempRoot['label'] = $root->name;
             $tempRoot['id'] = $root->id;
+            $tempRoot['icon'] = "tags";
+            $tempRoot['active'] = ($id == $root->id);
+            $tempRoot['url'] = Url::to(['site/category-click', 'id' => $root->id]);
             $level1Modal = Category::findOne(['id' => $root->id])->children(1)->all();
             if(!empty($level1Modal)){
                 $menuLevel1 = array();
                 foreach($level1Modal as $level1) {
                     $tempLevel1 = array();
-                    $tempLevel1['content'] = $level1->name;
+                    $tempLevel1['label'] = $level1->name;
                     $tempLevel1['id'] = $level1->id;
                     $level2Modal = Category::findOne(['id' => $level1->id])->children(1)->all();
                     if(!empty($level2Modal)) {
                         $menuLevel2 = array();
                         foreach ($level2Modal as $level2) {
                             $tempLevel2 = array();
-                            $tempLevel2['content'] = $level2->name;
+                            $tempLevel2['label'] = $level2->name;
                             $tempLevel1['id'] = $level2->id;
                             array_push($menuLevel2, $tempLevel2);
                         }
-                        $tempLevel1['children'] = $menuLevel2;
+                        $tempLevel1['items'] = $menuLevel2;
                     }
                     array_push($menuLevel1, $tempLevel1);
                 }
-                $tempRoot['children'] = $menuLevel1;
+                $tempRoot['items'] = $menuLevel1;
             }
             array_push($menu, $tempRoot);
         }
@@ -274,6 +278,12 @@ class SiteController extends Controller {
         $countries =  Category::findOne(['id' => 30]);
         $russia = new Category(['name' => 'Category2.1.1']);
         $russia->prependTo($countries);
+    }
+    
+    public function actionCreateRoll() {
+        $auth = \Yii::$app->authManager;
+        $adminRole = $auth->getRole('admin');
+        $auth->assign($adminRole, 2);
     }
 
 }

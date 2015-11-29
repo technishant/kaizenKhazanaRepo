@@ -3,37 +3,22 @@
 use yii\widgets\Menu;
 use frontend\models\Category;
 use slatiusa\nestable\Nestable;
-
-//echo "<pre>";
-//print_r(Category::find(1));die;
+use kartik\sidenav\SideNav;
 ?>
 <!--  / filterBox \ -->
 <div class="filterBox clearfix">
     <div class="container">
-
-        <div class="left-side">
-            <ul class="nav">
-                <?php foreach ($menu as $root): ?>
-                    <?php echo "<li><a href='#'>" . $root['content'] . "</a>"; ?>
-                    <ul>
-                        <?php if(!empty($root['children'])): ?>
-                        <?php foreach ($root['children'] as $level1): ?>
-                            <?php echo "<li><a href='#'>" . $level1['content'] . "</a>"; ?>
-                            <ul>
-                                <?php if(!empty($level1['children'])): ?>
-                                <?php foreach ($level1['children'] as $level2): ?>
-                                    <?php echo "<li><a href='#'>" . $level2['content'] . "</a>"; ?>
-                                <?php endforeach; ?>
-                                <?php endif; ?>
-                            </ul>
-                            <?php echo "</li>"; ?>
-                        <?php endforeach; ?>
-                        <?php endif; ?>
-                    </ul>
-                    <?php echo "</li>"; ?>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+        <?=
+        SideNav::widget([
+            'type' => SideNav::TYPE_PRIMARY,
+            'heading' => 'Category',
+            'items' => $menu,
+            'encodeLabels' => FALSE,
+            'containerOptions' => ['class' => 'left-side'],
+            'indMenuOpen' => '<i class="fa fa-minus"></i>',
+            'indMenuClose' => '<i class="fa fa-plus"></i>'
+        ]);
+        ?>
 
         <div class = "right-side">
             <div class = "tab-content">

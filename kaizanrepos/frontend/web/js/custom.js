@@ -32,43 +32,7 @@ $('#loadMore2').click(function (e) {
     }
 });
 
-
-
-
 $(window).bind("load resize", function () {
     var lessheight = $('#headerCntr').height() + 40;
     $('.loginBox').css('min-height', $(window).height() - lessheight);
-});
-
-$(document).ready(function () {
-    $('.nav').navgoco({
-        //caretHtml: '<i class="fa fa-plus"></i>',
-        accordion: false,
-        openClass: 'open',
-        save: true,
-        cookie: {
-            name: 'navgoco',
-            expires: false,
-            path: '/'
-        },
-        slide: {
-            duration: 400,
-            easing: 'swing'
-        }
-    });
-    $('#modal-show').modal('show');
-
-    $(".slider-product").owlCarousel({
-        navigation: false,
-        pagination: false,
-        slideSpeed: 300,
-        paginationSpeed: 400,
-        singleItem: true,
-        items: 1,
-        itemsDesktop: false,
-        itemsDesktopSmall: false,
-        itemsTablet: false,
-        itemsMobile: false
-    });
-
 });

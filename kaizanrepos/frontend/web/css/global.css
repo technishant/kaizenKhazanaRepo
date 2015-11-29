@@ -136,13 +136,13 @@ html, body { font-family: 'robotoregular', sans-serif; }
 .left-side { float: left; width: 250px; }
 .right-side { padding-left: 40px; float: left; width: calc(100% - 250px); }
 
-.left-side .nav-tabs { border-bottom: 0px; }
+/*.left-side .nav-tabs { border-bottom: 0px; }
 .left-side .nav-tabs > li { float: none; margin: 0px; }
 .left-side .nav-tabs > li > a { border: 0px; margin: 0px; border-radius: 0px; }
 .left-side .nav-tabs > li.active > a, .left-side  .nav-tabs > li.active > a:hover, .left-side .nav-tabs > li.active > a:focus { border: 0px; }
 .left-side .panel-default { border-color: #14b5ea; border-radius: 0px; }
 .left-side .panel-default > .panel-heading { border-radius: 0px; }
-.left-side .panel-default > .panel-heading, .left-side .nav-tabs > li.active > a, .left-side  .nav-tabs > li.active > a:hover, .left-side .nav-tabs > li.active > a:focus { background: #14b5ea; border-color: #14b5ea; color: #fff; }
+.left-side .panel-default > .panel-heading, .left-side .nav-tabs > li.active > a, .left-side  .nav-tabs > li.active > a:hover, .left-side .nav-tabs > li.active > a:focus { background: #14b5ea; border-color: #14b5ea; color: #fff; }*/
 
 .list-section li .inner { padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #ccc; }
 .list-section li .inner.border-none { border-top: 0px; }

@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
+use yii\helpers\Url;
 $this->title = 'Login';
 ?>
 
@@ -14,7 +14,7 @@ $this->title = 'Login';
     <div class="container">
         <div class="row">
             <form action="" class="login clearfix">
-                <a href="#" class="btn btn-default top-button">Register now</a>
+                <a href="<?= Url::to('signup'); ?>" class="btn btn-default top-button">Register now</a>
                 <div class="col-sm-6">
                     <h4>Enjoy the benefits of Registration:</h4>
                     <ul>
