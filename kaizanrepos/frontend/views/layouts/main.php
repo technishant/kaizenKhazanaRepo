@@ -40,7 +40,7 @@ AppAsset::register($this);
                         echo Menu::widget([
                             'items' => [
                                 ['label' => 'Enquiry', 'url' => ['#'], 'visible' => 'true'],
-                                ['label' => 'Post a Kaizen', 'url' => ['#'], 'visible' => 'true'],
+                                ['label' => 'Post a Kaizen', 'url' => ['kaizen/create'], 'visible' => 'true'],
                                 ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest],
                                 ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                                 ['label' => 'Logout('.$_SESSION['name'].")", 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'template' => '<a href="{url}" data-method="post">{label}</a>',],
