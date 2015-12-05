@@ -15,6 +15,8 @@ class LoginForm extends Model {
     public $rememberMe = true;
     private $_user;
     public $allowedRoleBackendLogin = array('admin');
+    public $allowedRoleFrontendLogin = array('admin', 'user');
+    public $loginFrom;
 
     /**
      * @inheritdoc
@@ -47,14 +49,26 @@ class LoginForm extends Model {
                     array_push($userRole, $key);
                 }
             }
-            if (empty($user)) {
-                $this->addError($attribute, 'User does not exists');
-            } else if (empty(array_intersect($userRole, $this->allowedRoleBackendLogin)) && !empty($user)) {
-                $this->addError($attribute, 'Your are not allowed to login.');
-            } else if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
-            } else {
-                return TRUE;
+            if ($this->loginFrom == 0) {//Login from backend
+                if (empty($user)) {
+                    $this->addError($attribute, 'User does not exists');
+                } else if (empty(array_intersect($userRole, $this->allowedRoleBackendLogin)) && !empty($user)) {
+                    $this->addError($attribute, 'Your are not allowed to login.');
+                } else if (!$user || !$user->validatePassword($this->password)) {
+                    $this->addError($attribute, 'Incorrect username or password.');
+                } else {
+                    return TRUE;
+                }
+            } else { // Login from frontend
+                if (empty($user)) {
+                    $this->addError($attribute, 'User does not exists');
+                } else if (empty(array_intersect($userRole, $this->allowedRoleFrontendLogin)) && !empty($user)) {
+                    $this->addError($attribute, 'Your are not allowed to login.');
+                } else if (!$user || !$user->validatePassword($this->password)) {
+                    $this->addError($attribute, 'Incorrect username or password.');
+                } else {
+                    return TRUE;
+                }
             }
         }
     }
@@ -66,6 +80,17 @@ class LoginForm extends Model {
      */
     public function login() {
         if ($this->validate()) {
+            $session = \Yii::$app->session;
+            if ($session->isActive) {
+                $session->destroy();
+                $session->open();
+                $session->set('email', $this->email);
+                $session->set('name', User::findByEmail($this->email)->first_name . "" . User::findByEmail($this->email)->last_name);
+            } else {
+                $session->open();
+                $session->set('email', $this->email);
+                $session->set('name', User::findByEmail($this->email)->first_name . "" . User::findByEmail($this->email)->last_name);
+            }
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         } else {
             return false;

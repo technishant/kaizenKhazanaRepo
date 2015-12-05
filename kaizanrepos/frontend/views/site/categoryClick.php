@@ -4,6 +4,7 @@ use yii\widgets\Menu;
 use frontend\models\Category;
 use slatiusa\nestable\Nestable;
 use kartik\sidenav\SideNav;
+use yii\widgets\ListView;
 ?>
 <!--  / filterBox \ -->
 <div class="filterBox clearfix">
@@ -53,155 +54,32 @@ use kartik\sidenav\SideNav;
                             <button type = "submit" class = "width-full btn btn-primary btn-lg">Search</button>
                         </div>
                     </div>
-
                     <div class = "list-section clearfix">
-                        <ul>
-                            <li>
-                                <div class = "inner border-none clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class = "inner clearfix">
-                                    <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
-                                    <div class = "text">
-                                        <h4>A paragraph of title.</h4>
-                                        <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-                                        <a href = "#">A second row of text with a web link</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <?=
+                        ListView::widget([
+                            'dataProvider' => $dataProvider,
+                            'options' => [
+                                'tag' => 'ul',
+                                'class' => '',
+                            ],
+                            'layout' => '{items}{pager}',
+                            'itemOptions' => [
+                                'tag' => false,
+                            ],
+                            'pager' => [
+                                'firstPageLabel' => 'First',
+                                'lastPageLabel' => 'Last',
+                                'nextPageLabel' => 'Previous',
+                                'prevPageLabel' => 'Next',
+                                'maxButtonCount' => 3,
+                            ],
+                            'itemView' => '_kaizenList',
+                        ]);
+                        ?>
                     </div>
-
                 </div>
-                <div role = "tabpanel" class = "tab-pane" id = "commercial-vehicle">commercial-vehicle</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tyres">tyres</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tractors">tractors</div>
-                <div role = "tabpanel" class = "tab-pane" id = "two-wheelers">two-wheelers</div>
-                <div role = "tabpanel" class = "tab-pane" id = "automotive">automotive</div>
-                <div role = "tabpanel" class = "tab-pane" id = "automotive-ancillaries">automotive-ancillaries</div>
-
-                <div role = "tabpanel" class = "tab-pane" id = "tab-2-1">tab-2-1</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tab-2-2">tab-2-2</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tab-2-3">tab-2-3</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tab-2-4">tab-2-4</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tab-2-5">tab-2-5</div>
-
-                <div role = "tabpanel" class = "tab-pane" id = "tab-3-1">tab-3-1</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tab-3-2">tab-3-2</div>
-
-                <div role = "tabpanel" class = "tab-pane" id = "tab-4-1">tab-4-1</div>
-                <div role = "tabpanel" class = "tab-pane" id = "tab-4-2">tab-4-2</div>
-
             </div>
         </div>
-
     </div>
 </div>
 <!--\ filterBox / -->

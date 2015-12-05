@@ -18,6 +18,8 @@ use frontend\models\Menu;
 use frontend\models\Category;
 use slatiusa\nestable\Nestable;
 use yii\helpers\Url;
+use yii\data\ActiveDataProvider;
+use frontend\models\Kaizen;
 
 /**
  * Site controller
@@ -99,12 +101,11 @@ class SiteController extends Controller {
         }
 
         $model = new LoginForm();
+        $model->loginFrom = 1;
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
-            return $this->render('login', [
-                        'model' => $model,
-            ]);
+            return $this->render('login', ['model' => $model]);
         }
     }
 
@@ -164,13 +165,13 @@ class SiteController extends Controller {
                     if (!$session->isActive) {
                         $session->open();
                         $session->set('email', $user->email);
-                        $session->set('username', $user->first_name . " " . $user->last_name);
+                        $session->set('name', $user->first_name . " " . $user->last_name);
                     } else {
                         $session->close();
                         $session->destroy();
                         $session->open();
                         $session->set('email', $user->email);
-                        $session->set('username', $user->first_name . " " . $user->last_name);
+                        $session->set('name', $user->first_name . " " . $user->last_name);
                     }
                     return $this->goHome();
                 }
@@ -236,9 +237,16 @@ class SiteController extends Controller {
     }
 
     public function actionCategoryClick($id) {
+        $this->view->title = "Kaizen Khazana | Category";
         $menu = array();
         $rootModal = Category::find()->roots()->all();
-        foreach($rootModal as $root) {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Kaizen::find()->where(['category' => $id])->orderBy('id DESC'),
+            'pagination' => [
+                'pageSize' => 5
+            ]
+        ]);
+        foreach ($rootModal as $root) {
             $tempRoot = array();
             $tempRoot['label'] = $root->name;
             $tempRoot['id'] = $root->id;
@@ -246,14 +254,14 @@ class SiteController extends Controller {
             $tempRoot['active'] = ($id == $root->id);
             $tempRoot['url'] = Url::to(['site/category-click', 'id' => $root->id]);
             $level1Modal = Category::findOne(['id' => $root->id])->children(1)->all();
-            if(!empty($level1Modal)){
+            if (!empty($level1Modal)) {
                 $menuLevel1 = array();
-                foreach($level1Modal as $level1) {
+                foreach ($level1Modal as $level1) {
                     $tempLevel1 = array();
                     $tempLevel1['label'] = $level1->name;
                     $tempLevel1['id'] = $level1->id;
                     $level2Modal = Category::findOne(['id' => $level1->id])->children(1)->all();
-                    if(!empty($level2Modal)) {
+                    if (!empty($level2Modal)) {
                         $menuLevel2 = array();
                         foreach ($level2Modal as $level2) {
                             $tempLevel2 = array();
@@ -269,17 +277,17 @@ class SiteController extends Controller {
             }
             array_push($menu, $tempRoot);
         }
-        return $this->render('categoryClick', ['menu' => $menu]);
+        return $this->render('categoryClick', ['menu' => $menu, 'dataProvider' => $dataProvider]);
     }
-    
+
     public function actionTest() {
 //        $countries = new Category(['name' => 'Category2']);
 //        $countries->makeRoot();
-        $countries =  Category::findOne(['id' => 30]);
+        $countries = Category::findOne(['id' => 30]);
         $russia = new Category(['name' => 'Category2.1.1']);
         $russia->prependTo($countries);
     }
-    
+
     public function actionCreateRoll() {
         $auth = \Yii::$app->authManager;
         $adminRole = $auth->getRole('admin');

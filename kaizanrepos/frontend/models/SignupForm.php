@@ -40,6 +40,7 @@ class SignupForm extends Model {
     public function signup() {
         if ($this->validate()) {
             $user = new User();
+            $authManager = \Yii::$app->authManager;
             $user->first_name = $this->first_name;
             $user->last_name = $this->last_name;
             $user->phone = $this->phone;
@@ -48,6 +49,8 @@ class SignupForm extends Model {
             $user->generateAuthKey();
             $user->setPassword($this->password);
             if ($user->save()) {
+                $adminRole = $authManager->getRole('admin');
+                $authManager->assign($adminRole, $user->id);
                 return $user;
             }
         }
