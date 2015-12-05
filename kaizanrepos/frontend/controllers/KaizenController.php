@@ -98,12 +98,12 @@ class KaizenController extends Controller {
             if ($upload_file1 !== false) {
                 $path2 = Yii::$app->fileupload->getUploadedFile();
             }
-            $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
-            $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
         }
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
+                $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
+                $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
                 if ($model->save()) {
                     $upload_file->saveAs($path1);
                     $upload_file1->saveAs($path2);
