@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\models;
+
 use yii\web\UploadedFile;
 use Yii;
 
@@ -8,7 +9,9 @@ use Yii;
  * This is the model class for table "kaizen".
  *
  * @property integer $id
+ * @property string $name
  * @property string $subject
+ * @property string $description
  * @property string $processarea
  * @property integer $category
  * @property string $company
@@ -32,6 +35,7 @@ class Kaizen extends \yii\db\ActiveRecord {
 
     public $categoryLevel3;
     public $categoryLevel2;
+
     /**
      * @inheritdoc
      */
@@ -44,13 +48,13 @@ class Kaizen extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['subject','processarea','attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required'],
-            [['subject', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits','attachmenttype'], 'string'],
+            [['name', 'subject', 'description', 'processarea', 'attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required'],
+            [['name', 'subject', 'description', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype'], 'string'],
             [['category', 'postedby', 'recordstatus'], 'integer'],
-            [['costsaving','attachmentprocessed'], 'number'],
-           // [['imageFile'], 'file', 'skipOnEmpty' => false],,'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf'
-            [['attachmentbefore','attachmentafter'], 'file', 'skipOnEmpty' => true],
-            [['implementationdate','mode','approvedby','attachmentprocessed'], 'safe'],
+            [['costsaving', 'attachmentprocessed'], 'number'],
+            // [['imageFile'], 'file', 'skipOnEmpty' => false],,'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf'
+            [['attachmentbefore', 'attachmentafter'], 'file', 'skipOnEmpty' => true],
+            [['implementationdate', 'mode', 'approvedby', 'attachmentprocessed', 'attachmentbefore', 'attachmentafter'], 'safe'],
             [['company', 'currrentstage', 'suggestedby', 'approvedby'], 'string', 'max' => 255]
         ];
     }
@@ -107,8 +111,7 @@ class Kaizen extends \yii\db\ActiveRecord {
     public static function find() {
         return new KaizenQuery(get_called_class());
     }
-    
-   
+
     public function afterValidate() {
         parent::afterValidate();
         $categoryLevel2 = isset(Yii::$app->request->post('Kaizen')['categoryLevel2']) ? Yii::$app->request->post('Kaizen')['categoryLevel2']:'';

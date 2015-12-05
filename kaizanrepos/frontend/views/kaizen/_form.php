@@ -62,13 +62,18 @@ use yii\web\View;
     <div class="form-group">        
       <?= $form->field($model, 'attachmentafter')->fileInput() ?>
     </div>
-        
     <div class="form-group">
-    <?= $form->field($model, 'subject')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'name')->textInput(); ?>
+    </div>    
+    <div class="form-group">
+    <?= $form->field($model, 'subject')->textInput() ?>
+    </div>
+    <div class="form-group">
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
     </div>
     <div class="form-group">
         
-    <?= $form->field($model, 'processarea')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'processarea')->textInput(['rows' => 6]) ?>
 </div>
     <div class="form-group">
     <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
