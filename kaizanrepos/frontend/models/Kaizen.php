@@ -32,11 +32,6 @@ class Kaizen extends \yii\db\ActiveRecord {
 
     public $categoryLevel3;
     public $categoryLevel2;
-    public $image;
-    public $upload_file;
-    public $upload_file1;
-    public $pic;
-
     /**
      * @inheritdoc
      */
@@ -49,21 +44,13 @@ class Kaizen extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['subject', 'processarea', 'attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required'],
-//            [['upload_file','upload_file1'],'file','skipOnEmpty' => true, 'whenClient' => "function (attribute, value) {
-//                return ($('input[type=\"radio\"][name=\"Kaizen[attachmenttype]\"]:checked').val());
-//            }"],
-//            [['upload_file','upload_file1'], 'required', 'when' => function ($model) {
-//                 return ($model->attachmenttype == 'image' ? true : false);
-//            }, 'whenClient' => "function (attribute, value) {
-//                return ($('input[type=\"radio\"][name=\"Kaizen[attachmenttype]\"]:checked').val());
-//            }"],
-            [['subject', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype'], 'string'],
+            [['subject','processarea','attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required'],
+            [['subject', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits','attachmenttype'], 'string'],
             [['category', 'postedby', 'recordstatus'], 'integer'],
-            [['costsaving', 'attachmentprocessed'], 'number'],
-            // [['imageFile'], 'file', 'skipOnEmpty' => false],
-            [['upload_file', 'upload_file1'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf'],
-            [['implementationdate', 'mode', 'approvedby', 'attachmentbefore', 'attachmentafter', 'attachmentprocessed'], 'safe'],
+            [['costsaving','attachmentprocessed'], 'number'],
+           // [['imageFile'], 'file', 'skipOnEmpty' => false],,'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf'
+            [['attachmentbefore','attachmentafter'], 'file', 'skipOnEmpty' => true],
+            [['implementationdate','mode','approvedby','attachmentprocessed'], 'safe'],
             [['company', 'currrentstage', 'suggestedby', 'approvedby'], 'string', 'max' => 255]
         ];
     }
@@ -120,41 +107,16 @@ class Kaizen extends \yii\db\ActiveRecord {
     public static function find() {
         return new KaizenQuery(get_called_class());
     }
-
-    public function uploadFile($uploadFileFieldNmae) {
-        // get the uploaded file instance
-        $image = UploadedFile::getInstance($this, $uploadFileFieldNmae);
-
-        // if no image was uploaded abort the upload
-        if (empty($image)) {
-            return false;
-        }
-
-        // generate random name for the file
-        $this->pic = time() . uniqid() . '.' . $image->extension;
-
-        // the uploaded image instance
-        return $image;
-    }
-
-    public function getUploadedFile() {
-        // return a default image placeholder if your source avatar is not found
-        $pic = isset($this->pic) ? $this->pic : 'default.png';
-        if (!file_exists(Yii::$app->params['kzAttachmentsUrl'])) {
-            mkdir(Yii::$app->params['kzAttachmentsUrl'], 0755);
-        }
-        return Yii::$app->params['kzAttachmentsUrl'] . '/' . $pic;
-    }
-
+    
+   
     public function afterValidate() {
         parent::afterValidate();
-        $categoryLevel2 = isset($_POST['Kaizen']['categoryLevel2']) ? $_POST['Kaizen']['categoryLevel2'] : '';
-        $categoryLevel3 = isset($_POST['Kaizen']['categoryLevel3']) ? $_POST['Kaizen']['categoryLevel3'] : '';
-        if (!empty($categoryLevel3)) {
-            $this->category = $categoryLevel3;
-        } elseif (!empty($categoryLevel2)) {
-            $this->category = $categoryLevel2;
+        $categoryLevel2 = isset(Yii::$app->request->post('Kaizen')['categoryLevel2']) ? Yii::$app->request->post('Kaizen')['categoryLevel2']:'';
+        $categoryLevel3 = isset(Yii::$app->request->post('Kaizen')['categoryLevel3']) ? Yii::$app->request->post('Kaizen')['categoryLevel3']:'';
+        if(!empty($categoryLevel3)){
+            $this->category=$categoryLevel3;
+        }elseif(!empty($categoryLevel2)){
+            $this->category=$categoryLevel2;
         }
     }
-
 }

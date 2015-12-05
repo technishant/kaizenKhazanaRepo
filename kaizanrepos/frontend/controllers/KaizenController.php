@@ -89,17 +89,15 @@ class KaizenController extends Controller {
             $model->postedby = \Yii::$app->user->id;
             $model->posteddate = date('Y-m-d');
             $model->mode = 'draft';
-            $model->approvedby = 'dfssdf';
-            $upload_file = $model->uploadFile('upload_file');
+            $model->approvedby = '0';
+            $upload_file = Yii::$app->fileupload->uploadFile($model, 'attachmentbefore');
             if ($upload_file !== false) {
-                $path1 = $model->getUploadedFile();
+                $path1 = Yii::$app->fileupload->getUploadedFile();
             }
-            $upload_file1 = $model->uploadFile('upload_file1');
+            $upload_file1 = Yii::$app->fileupload->uploadFile($model, 'attachmentafter');
             if ($upload_file1 !== false) {
-                $path2 = $model->getUploadedFile();
+                $path2 = Yii::$app->fileupload->getUploadedFile();
             }
-            $model->upload_file = pathinfo($path1, PATHINFO_BASENAME);
-            $model->upload_file1 = pathinfo($path2, PATHINFO_BASENAME);
             $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
             $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
         }
