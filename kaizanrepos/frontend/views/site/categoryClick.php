@@ -5,6 +5,7 @@ use frontend\models\Category;
 use slatiusa\nestable\Nestable;
 use kartik\sidenav\SideNav;
 use yii\widgets\ListView;
+use yii\widgets\Pjax;
 ?>
 <!--  / filterBox \ -->
 <div class="filterBox clearfix">
@@ -27,22 +28,27 @@ use yii\widgets\ListView;
                 <div role = "tabpanel" class = "tab-pane active" id = "cars-vehecle">
 
                     <div class = "search clearfix row mar-btm-20">
-                        <div class = "radio col-sm-3">
+                        <div class = "radio col-sm-2">
                             <label>
                                 <input type = "radio" name = "optionsRadios" id = "optionsRadios1" value = "option1" checked> ALL
                             </label>
                         </div>
-                        <div class = "radio col-sm-3">
+                        <div class = "radio col-sm-2">
                             <label>
-                                <input type = "radio" name = "optionsRadios" id = "optionsRadios2" value = "option2"> Kaizan
+                                <input type = "radio" name = "optionsRadios" id = "optionsRadios2" value = "option2"> Kaizen
                             </label>
                         </div>
-                        <div class = "radio col-sm-3">
+                        <div class = "radio col-sm-2">
+                            <label>
+                                <input type = "radio" name = "optionsRadios" id = "optionsRadios5" value = "option4"> Photos
+                            </label>
+                        </div>
+                        <div class = "radio col-sm-2">
                             <label>
                                 <input type = "radio" name = "optionsRadios" id = "optionsRadios3" value = "option3"> Videos
                             </label>
                         </div>
-                        <div class = "radio col-sm-3">
+                        <div class = "radio col-sm-2">
                             <label>
                                 <input type = "radio" name = "optionsRadios" id = "optionsRadios4" value = "option4"> Books
                             </label>
@@ -55,6 +61,7 @@ use yii\widgets\ListView;
                         </div>
                     </div>
                     <div class = "list-section clearfix">
+                        <?php Pjax::begin(['enablePushState' => true]); ?> 
                         <?=
                         ListView::widget([
                             'dataProvider' => $dataProvider,
@@ -76,6 +83,7 @@ use yii\widgets\ListView;
                             'itemView' => '_kaizenList',
                         ]);
                         ?>
+                        <?php Pjax::end(); ?>
                     </div>
                 </div>
             </div>
