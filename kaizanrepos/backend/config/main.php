@@ -16,6 +16,18 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => FALSE,
+            'identityCookie' => [
+                'name' => '_backendUser', // unique for backend
+            ]
+        ],
+        'session' => [
+            'name' => 'PHPBACKSESSID',
+            'savePath' => sys_get_temp_dir(),
+        ],
+        'request' => [
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => '[DIFFERENT UNIQUE KEY]',
+            'csrfParam' => '_backendCSRF',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

@@ -13,6 +13,17 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+            'identityCookie' => [
+                'name' => '__frontendUser'
+            ]
+        ],
+        'session' => [
+            'name' => 'PHPFRONTSESSID',
+            'savePath' => sys_get_temp_dir(),
+        ],
+        'request' => [
+            'cookieValidationKey' => '[RANDOM KEY HERE]',
+            'csrfParam' => '_frontendCSRF',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
