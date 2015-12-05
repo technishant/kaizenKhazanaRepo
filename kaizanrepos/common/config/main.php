@@ -6,6 +6,9 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'fileupload'=>[
+            'class' => 'common\components\KzFileUpload',
+        ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'showScriptName' => false,
