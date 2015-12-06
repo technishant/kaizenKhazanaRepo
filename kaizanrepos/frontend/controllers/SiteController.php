@@ -86,6 +86,25 @@ class SiteController extends Controller {
      */
     public function actionIndex() {
         $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    $session = Yii::$app->session;
+                    if (!$session->isActive) {
+                        $session->open();
+                        $session->set('email', $user->email);
+                        $session->set('name', $user->first_name . " " . $user->last_name);
+                    } else {
+                        $session->close();
+                        $session->destroy();
+                        $session->open();
+                        $session->set('email', $user->email);
+                        $session->set('name', $user->first_name . " " . $user->last_name);
+                    }
+                    return $this->goHome();
+                }
+            }
+        }
         $categories = Category::find()->roots()->all();
         return $this->render('index', ['model' => $model, 'categories' => $categories]);
     }
@@ -281,11 +300,15 @@ class SiteController extends Controller {
     }
 
     public function actionTest() {
-//        $countries = new Category(['name' => 'Category2']);
-//        $countries->makeRoot();
-        $countries = Category::findOne(['id' => 30]);
-        $russia = new Category(['name' => 'Category2.1.1']);
-        $russia->prependTo($countries);
+        $countries = new Category(['name' => 'Mechanical Industry']);
+        $countries->makeRoot();
+        $countries = new Category(['name' => 'Daily life']);
+        $countries->makeRoot();
+        $countries = new Category(['name' => 'Agro Industry']);
+        $countries->makeRoot();
+//        $countries = Category::findOne(['id' => 30]);
+//        $russia = new Category(['name' => 'Category2.1.1']);
+//        $russia->prependTo($countries);
     }
 
     public function actionCreateRoll() {
