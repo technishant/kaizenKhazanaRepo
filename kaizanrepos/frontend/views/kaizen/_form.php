@@ -11,103 +11,92 @@ use yii\web\View;
 <div class="registerBox clearfix">
     <div class="container">
         <div class="row">
-    <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix','enctype' => 'multipart/form-data']]); ?>
+            <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix', 'enctype' => 'multipart/form-data']]); ?>
 
-    <div class="col-sm-12 clearfix">
-        <span class="text-center"><i class="fa fa-lock"></i><?= $this->title = 'Kaizen Form'; ?></span>     
-    <hr>
-    </div>
-    <div class="col-sm-12 clearfix">
-        <div class="form-group">
-        <?php if(Yii::$app->session->hasFlash('successKz')) { ?>
-        <div class="alert alert-success">
-        <?php echo Yii::$app->session->getFlash('successKz'); ?>
+            <div class="col-sm-12 clearfix">
+                <span class="text-center"><i class="fa fa-lock"></i><?= $this->title = 'Kaizen Form'; ?></span>     
+                <hr>
+            </div>
+            <div class="col-sm-12 clearfix">
+                <div class="form-group">
+                    <?php if (Yii::$app->session->hasFlash('successKz')) { ?>
+                        <div class="alert alert-success">
+                            <?php echo Yii::$app->session->getFlash('successKz'); ?>
+                        </div>
+                        <?php
+                    }
+                    if (Yii::$app->session->hasFlash('errorKz')) {
+                        ?>
+                        <div class="alert alert-danger">
+                            <?php echo Yii::$app->session->getFlash('errorKz'); ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>        
+            <div class="col-sm-12 clearfix">
+                <div class="form-group">
+                    <?php
+                    $rootCategory = \frontend\models\Category::find()->roots()->all();
+                    $listData = ArrayHelper::map($rootCategory, 'id', 'name');
+                    echo $form->field($model, 'category')->dropDownList(
+                            $listData, ['onchange' => 'getSubCat(this.value,"' . Yii::$app->homeUrl . '")', 'prompt' => 'Select']
+                    );
+                    ?>
+                </div>
+
+                <div class="form-group" id="subcat">
+                </div>
+                <div class="form-group" id="subcatlevel2">
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'attachmenttype')->radioList(array('video' => 'Video', 'image' => 'Image', 'pdf' => 'Pdf'), ['itemOptions' => ['id' => 'attachmenttype']]); ?>
+                </div>
+                <div class="form-group">    
+                    <?= $form->field($model, 'attachmentbefore')->fileInput() ?>
+                </div>
+                <div class="form-group">        
+                    <?= $form->field($model, 'attachmentafter')->fileInput() ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'name')->textInput(); ?>
+                </div>    
+                <div class="form-group">
+                    <?= $form->field($model, 'subject')->textInput() ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+                </div>
+                <div class="form-group">
+
+                    <?= $form->field($model, 'processarea')->textInput(['rows' => 6]) ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'currrentstage')->textInput(['maxlength' => true]) ?>
+                </div>
+
+                <div class="form-group">
+                    <?= $form->field($model, 'tangiblebenifits')->textarea(['rows' => 6]) ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'intengiblebenifits')->textarea(['rows' => 6]) ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'costsaving')->textInput() ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'implementationdate')->widget(\yii\jui\DatePicker::classname(), ['dateFormat' => 'yyyy-MM-dd', 'options' => [ 'class' => 'form-control']]); ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'suggestedby')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="form-group">
+                    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-primary btn-lg submitBtn' : 'btn btn-primary btn-lg submitBtn']) ?>
+                </div>
+            </div>
         </div>
-        <?php } 
-        if(Yii::$app->session->hasFlash('errorKz')) {
-        ?>
-        <div class="alert alert-danger">
-        <?php echo Yii::$app->session->getFlash('errorKz'); ?>
-        </div>
-        <?php } ?>
-        </div>
-    </div>        
-    <div class="col-sm-12 clearfix">
-    <div class="form-group">
-    <?php 
-    $rootCategory= \frontend\models\Category::find()->roots()->all();
-    $listData=ArrayHelper::map($rootCategory,'id','name');
-    echo $form->field($model, 'category')->dropDownList(
-            $listData,             
-            ['onchange'=>'getSubCat(this.value,"'.Yii::$app->homeUrl.'")','prompt'=>'Select']
-            );
-    ?>
-    </div>
-    
-    <div class="form-group" id="subcat">
-    </div>
-    <div class="form-group" id="subcatlevel2">
-    </div>
-    <div class="form-group">
-         <?= $form->field($model, 'attachmenttype')->radioList(array('video'=>'Video','image'=>'Image','pdf'=>'Pdf'),['itemOptions' => ['id' =>'attachmenttype']]); ?>
-    
-    </div>
-    <div class="form-group">    
-      <?php // if(Yii::$app->controller->action->id=='update' && $model->attachmenttype=='image'){
-//          $imgBeforName=$model->attachmentbefore;
-//     echo Html::img(Yii::$app->params['kzAttachmentsShowUrl'].$imgBeforName);
-//      } ?>
-      <?= $form->field($model, 'attachmentbefore')->fileInput() ?>
-    </div>
-    <div class="form-group">        
-      <?= $form->field($model, 'attachmentafter')->fileInput() ?>
-    </div>
-    <div class="form-group">
-    <?= $form->field($model, 'name')->textInput(); ?>
-    </div>    
-    <div class="form-group">
-    <?= $form->field($model, 'subject')->textInput() ?>
-    </div>
-    <div class="form-group">
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-    </div>
-    <div class="form-group">
-        
-    <?= $form->field($model, 'processarea')->textInput(['rows' => 6]) ?>
-</div>
-    <div class="form-group">
-    <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
-</div>
-    <div class="form-group">
-    <?= $form->field($model, 'currrentstage')->textInput(['maxlength' => true]) ?>
-</div>
-    
-    <div class="form-group">
-    <?= $form->field($model, 'tangiblebenifits')->textarea(['rows' => 6]) ?>
-</div>
-    <div class="form-group">
-    <?= $form->field($model, 'intengiblebenifits')->textarea(['rows' => 6]) ?>
-</div>
-    <div class="form-group">
-    <?= $form->field($model, 'costsaving')->textInput() ?>
-</div>
-    <div class="form-group">
-    <?= $form->field($model, 'implementationdate')->widget(\yii\jui\DatePicker::classname(),['dateFormat' => 'yyyy-MM-dd' ,'options'=>[ 'class'=>'form-control']]); ?>
-</div>
-<!--    <div class="form-group">
-    <?php // $form->field($model, 'postedby')->textInput() ?>
-</div>
-    <div class="form-group">
-    <?php  // $form->field($model, 'posteddate')->textInput() ?>
-</div>-->
-    <div class="form-group">
-    <?= $form->field($model, 'suggestedby')->textInput(['maxlength' => true]) ?>
-</div>
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-primary btn-lg submitBtn' : 'btn btn-primary btn-lg submitBtn']) ?>
-    </div>
-    </div>
-    </div>
     </div>
     <?php ActiveForm::end(); ?>
 
@@ -176,7 +165,7 @@ $this->registerJs("
             jQuery('#kaizen-attachmentbefore').parents('div').addClass('has-kzsuccess');
             jQuery('#kaizen-attachmentbefore').parents('div').removeClass('has-kzerror');
         }        
-    });",View::POS_LOAD);
+    });", View::POS_LOAD);
 
 $this->registerJs("
  jQuery(document ).on('change','#kaizen-attachmentafter' ,function (e) {   
@@ -210,7 +199,7 @@ $this->registerJs("
             jQuery('#kaizen-attachmentafter').parents('div').addClass('has-kzsuccess');
             jQuery('#kaizen-attachmentafter').parents('div').removeClass('has-kzerror');
         }        
-    });",View::POS_LOAD);
+    });", View::POS_LOAD);
 
 $this->registerJs("
  jQuery(document ).on('click','.submitBtn' ,function (e) {   
@@ -261,4 +250,4 @@ $this->registerJs("
             jQuery('#kaizen-attachmentafter').parents('div').addClass('has-kzsuccess');
             jQuery('#kaizen-attachmentafter').parents('div').removeClass('has-kzerror');
         }        
-    });",View::POS_LOAD);
+    });", View::POS_LOAD);
