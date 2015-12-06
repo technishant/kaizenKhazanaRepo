@@ -7,11 +7,11 @@
 ?>
 <li>
     <div class = "inner border-none clearfix">
-        <div class = "photo"><img src = "assets/images/item-1.jpg"></div>
+        <div class = "photo"><img src = "<?= Yii::$app->request->baseUrl . '/images/item-1.jpg' ?>"></div>
         <div class = "text">
-            <h4><?= $model->subject; ?></h4>
-            <p>A paragraph of text with on <a href = "#">unassigned link</a>.</p>
-            <a href = "#">A second row of text with a web link</a>
+            <h4><?= $model->name; ?></h4>
+            <p><?= $model->subject; ?></p>
+            <a href = "#"><?= $model->description; ?></a>
         </div>
     </div>
 </li>

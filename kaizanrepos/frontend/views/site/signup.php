@@ -14,10 +14,12 @@ $this->title = 'Signup :: Kaizen Kahazana';
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix']]); ?>
+            
             <div class="col-sm-12 clearfix">
                 <span class="text-center"><i class="fa fa-lock"></i><?= yii\bootstrap\Html::encode('Post a Kaizan and avail unlimited benefits. No credit card required') ?></span>
                 <hr>
             </div>
+            
             <div class="col-sm-12 clearfix">
                 <div class="row">
                     <div class="col-sm-6">
@@ -47,10 +49,11 @@ $this->title = 'Signup :: Kaizen Kahazana';
                 <div class="form-group text-center">
                     <button class="btn btn-success btn-lg">Get Started</button>
                 </div>
-                <div class="form-group text-center">
-                    <?= yii\authclient\widgets\AuthChoice::widget(['baseAuthUrl' => ['site/auth']]); ?>
-                </div>
+                
+                <?= yii\authclient\widgets\AuthChoice::widget(['baseAuthUrl' => ['site/auth']]); ?>
+
             </div>
+            
             <?php ActiveForm::end(); ?>
         </div>
     </div>

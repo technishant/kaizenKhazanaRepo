@@ -47,6 +47,26 @@ return [
                     'clientSecret' => '5ee6cd51b043c7ac0693eb32ff3f2ed1',
                     'scope' => 'user_friends'
                 ],
+                'twitter' => [
+                    'class' => 'yii\authclient\clients\Twitter',
+                    'consumerKey' => 'twitter_consumer_key',
+                    'consumerSecret' => 'twitter_consumer_secret',
+                ],
+                'google' => [
+                    'class' => 'yii\authclient\clients\GoogleOAuth',
+                    'clientId' => 'google_client_id',
+                    'clientSecret' => 'google_client_secret',
+                ],
+                'linkedin' => [
+                    'class' => 'yii\authclient\clients\LinkedIn',
+                    'clientId' => 'linkedin_client_id',
+                    'clientSecret' => 'linkedin_client_secret',
+                ],
+                'github' => [
+                    'class' => 'yii\authclient\clients\GitHub',
+                    'clientId' => 'github_client_id',
+                    'clientSecret' => 'github_client_secret',
+                ],
             ],
         ]
     ],
