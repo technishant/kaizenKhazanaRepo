@@ -80,6 +80,7 @@ class Kaizen extends \yii\db\ActiveRecord {
             'suggestedby' => Yii::t('app', 'Suggested By'),
             'approvedby' => Yii::t('app', 'Approved By'),
             'recordstatus' => Yii::t('app', 'Record Status'),
+            'attachmenttype' => \Yii::t('app', 'Attachment Type')
         ];
     }
 
@@ -114,12 +115,13 @@ class Kaizen extends \yii\db\ActiveRecord {
 
     public function afterValidate() {
         parent::afterValidate();
-        $categoryLevel2 = isset(Yii::$app->request->post('Kaizen')['categoryLevel2']) ? Yii::$app->request->post('Kaizen')['categoryLevel2']:'';
-        $categoryLevel3 = isset(Yii::$app->request->post('Kaizen')['categoryLevel3']) ? Yii::$app->request->post('Kaizen')['categoryLevel3']:'';
-        if(!empty($categoryLevel3)){
-            $this->category=$categoryLevel3;
-        }elseif(!empty($categoryLevel2)){
-            $this->category=$categoryLevel2;
+        $categoryLevel2 = isset(Yii::$app->request->post('Kaizen')['categoryLevel2']) ? Yii::$app->request->post('Kaizen')['categoryLevel2'] : '';
+        $categoryLevel3 = isset(Yii::$app->request->post('Kaizen')['categoryLevel3']) ? Yii::$app->request->post('Kaizen')['categoryLevel3'] : '';
+        if (!empty($categoryLevel3)) {
+            $this->category = $categoryLevel3;
+        } elseif (!empty($categoryLevel2)) {
+            $this->category = $categoryLevel2;
         }
     }
+
 }
