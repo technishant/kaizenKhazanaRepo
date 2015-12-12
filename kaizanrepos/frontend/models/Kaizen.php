@@ -35,7 +35,8 @@ class Kaizen extends \yii\db\ActiveRecord {
 
     public $categoryLevel3;
     public $categoryLevel2;
-
+    public $kzfilebefore;
+    public $kzfileafter;
     /**
      * @inheritdoc
      */
@@ -49,11 +50,10 @@ class Kaizen extends \yii\db\ActiveRecord {
     public function rules() {
         return [
             [['name', 'subject', 'description', 'processarea', 'attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required'],
-            [['name', 'subject', 'description', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype'], 'string'],
+            [['name', 'subject', 'description', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype','attachmentbefore', 'attachmentafter'], 'string'],
             [['category', 'postedby', 'recordstatus'], 'integer'],
             [['costsaving', 'attachmentprocessed'], 'number'],
-            // [['imageFile'], 'file', 'skipOnEmpty' => false],,'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf'
-            [['attachmentbefore', 'attachmentafter'], 'file', 'skipOnEmpty' => true],
+            [['kzfilebefore', 'kzfileafter'], 'file', 'skipOnEmpty' => false,'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf'],      
             [['implementationdate', 'mode', 'approvedby', 'attachmentprocessed', 'attachmentbefore', 'attachmentafter'], 'safe'],
             [['company', 'currrentstage', 'suggestedby', 'approvedby'], 'string', 'max' => 255]
         ];
@@ -80,7 +80,9 @@ class Kaizen extends \yii\db\ActiveRecord {
             'suggestedby' => Yii::t('app', 'Suggested By'),
             'approvedby' => Yii::t('app', 'Approved By'),
             'recordstatus' => Yii::t('app', 'Record Status'),
-            'attachmenttype' => \Yii::t('app', 'Attachment Type')
+            'attachmenttype' => \Yii::t('app', 'Attachment Type'),
+            'kzfilebefore' => \Yii::t('app', 'Kaizen Before Attachment'),
+            'kzfileafter' => \Yii::t('app', 'Kaizen After Attachment')
         ];
     }
 

@@ -49,13 +49,13 @@ use yii\web\View;
                 <div class="form-group" id="subcatlevel2">
                 </div>
                 <div class="form-group">
-                    <?= $form->field($model, 'attachmenttype')->radioList(array('video' => 'Video', 'image' => 'Image', 'pdf' => 'Pdf'), ['itemOptions' => ['id' => 'attachmenttype']]); ?>
+                    <?= $form->field($model, 'attachmenttype')->radioList(array('video' => 'Video', 'image' => 'Image', 'pdf' => 'Pdf')); ?>
                 </div>
                 <div class="form-group">    
-                    <?= $form->field($model, 'attachmentbefore')->fileInput() ?>
+                    <?= $form->field($model, 'kzfilebefore')->fileInput() ?>
                 </div>
                 <div class="form-group">        
-                    <?= $form->field($model, 'attachmentafter')->fileInput() ?>
+                    <?= $form->field($model, 'kzfileafter')->fileInput() ?>
                 </div>
                 <div class="form-group">
                     <?= $form->field($model, 'name')->textInput(); ?>
@@ -134,20 +134,12 @@ $this->registerJs('
   }', View::POS_END);
 
 $this->registerJs("
- jQuery(document ).on('change','#kaizen-attachmentbefore' ,function (e) {   
-        var attachmenttype=jQuery('input[type=radio]:checked').val();
-        if(!attachmenttype || attachmenttype=='')
-        {
-            bootbox.alert('Please select attachment type first.');
-            jQuery('#kaizen-attachmentbefore').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentbefore').parent('div').addClass('has-kzerror');
-            jQuery('#kaizen-attachmentbefore').replaceWith(jQuery('#kaizen-attachmentbefore').clone());            
-            return false;
-        }
+ jQuery(document ).on('change','#kaizen-kzfilebefore' ,function (e) {   
+        var attachmenttype=jQuery('#kaizen-attachmenttype input[type=radio]:checked').val();
         var imageextension = new Array('jpg','jpeg','png');
         var videoextension = ['mp4','3gp','mov','m4v'];
         var pdfextension = ['pdf'];
-        var avatar = jQuery('#kaizen-attachmentbefore').val();        
+        var avatar = jQuery('#kaizen-kzfilebefore').val();        
         var extension = avatar.split('.').pop().toLowerCase();
         if(avatar.length < 1) {
             avatarok = 0;
@@ -155,57 +147,57 @@ $this->registerJs("
         else if ((attachmenttype=='image' && jQuery.inArray(extension,imageextension)=='-1') || (attachmenttype=='video' && jQuery.inArray(extension,videoextension)=='-1') || (attachmenttype=='pdf' && jQuery.inArray(extension,pdfextension)=='-1')){
             avatarok = 0;
             bootbox.alert('Invalid file type for attachment type '+attachmenttype+'.');
-            jQuery('#kaizen-attachmentbefore').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentbefore').parent('div').addClass('has-kzerror');
-            jQuery('#kaizen-attachmentbefore').replaceWith(jQuery('#kaizen-attachmentbefore').clone());            
+            jQuery('#kaizen-kzfilebefore').parent('div').removeClass('has-kzsuccess');
+            jQuery('#kaizen-kzfilebefore').parent('div').addClass('has-kzerror');
+            jQuery('#kaizen-kzfilebefore').replaceWith(jQuery('#kaizen-kzfilebefore').clone());            
             return false;
         }
         else {
             avatarok = 1;
-            jQuery('#kaizen-attachmentbefore').parents('div').addClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentbefore').parents('div').removeClass('has-kzerror');
+            jQuery('#kaizen-kzfilebefore').parents('div').addClass('has-kzsuccess');
+            jQuery('#kaizen-kzfilebefore').parents('div').removeClass('has-kzerror');
         }        
     });", View::POS_LOAD);
 
 $this->registerJs("
- jQuery(document ).on('change','#kaizen-attachmentafter' ,function (e) {   
-        var attachmenttype=jQuery('input[type=radio]:checked').val();
+ jQuery(document ).on('change','#kaizen-kzfileafter' ,function (e) {   
+        var attachmenttype=jQuery('#kaizen-attachmenttype input[type=radio]:checked').val();
         if(!attachmenttype || attachmenttype=='')
         {
             bootbox.alert('Please select attachment type first.');    
-            jQuery('#kaizen-attachmentafter').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentafter').parent('div').addClass('has-kzerror');
-            jQuery('#kaizen-attachmentafter').replaceWith(jQuery('#kaizen-attachmentafter').clone());
+            jQuery('#kaizen-kzfileafter').parent('div').removeClass('has-kzsuccess');
+            jQuery('#kaizen-kzfileafter').parent('div').addClass('has-kzerror');
+            jQuery('#kaizen-kzfileafter').replaceWith(jQuery('#kaizen-kzfileafter').clone());
             return false;
         }
         var imageextension = new Array('jpg','jpeg','png');
         var videoextension = ['mp4','3gp','mov','m4v'];
         var pdfextension = ['pdf'];
-        var avatar = jQuery('#kaizen-attachmentafter').val();        
+        var avatar = jQuery('#kaizen-kzfileafter').val();        
         var extension = avatar.split('.').pop().toLowerCase();
         if(avatar.length < 1) {
             avatarok = 0;
         }
         else if ((attachmenttype=='image' && jQuery.inArray(extension,imageextension)=='-1') || (attachmenttype=='video' && jQuery.inArray(extension,videoextension)=='-1') || (attachmenttype=='pdf' && jQuery.inArray(extension,pdfextension)=='-1')){
             avatarok = 0;
-            jQuery('#kaizen-attachmentafter').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentafter').parent('div').addClass('has-kzerror');
+            jQuery('#kaizen-kzfileafter').parent('div').removeClass('has-kzsuccess');
+            jQuery('#kaizen-kzfileafter').parent('div').addClass('has-kzerror');
             bootbox.alert('Invalid file type for attachment type '+attachmenttype+'.');
-            jQuery('#kaizen-attachmentafter').replaceWith(jQuery('#kaizen-attachmentafter').clone());            
+            jQuery('#kaizen-kzfileafter').replaceWith(jQuery('#kaizen-kzfileafter').clone());            
             return false;
         }
         else {
             avatarok = 1;
-            jQuery('#kaizen-attachmentafter').parents('div').addClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentafter').parents('div').removeClass('has-kzerror');
+            jQuery('#kaizen-kzfileafter').parents('div').addClass('has-kzsuccess');
+            jQuery('#kaizen-kzfileafter').parents('div').removeClass('has-kzerror');
         }        
     });", View::POS_LOAD);
 
 $this->registerJs("
  jQuery(document ).on('click','.submitBtn' ,function (e) {   
-        var attachmenttype=jQuery('input[type=radio]:checked').val();
-        var avatar0 = jQuery('#kaizen-attachmentbefore').val();  
-        var avatar1 = jQuery('#kaizen-attachmentafter').val();           
+        var attachmenttype=jQuery('#kaizen-attachmenttype input[type=radio]:checked').val();
+        var avatar0 = jQuery('#kaizen-kzfilebefore').val();  
+        var avatar1 = jQuery('#kaizen-kzfileafter').val();           
         var imageextension = new Array('jpg','jpeg','png');
         var videoextension = ['mp4','3gp','mov','m4v'];
         var pdfextension = ['pdf'];
@@ -215,39 +207,39 @@ $this->registerJs("
         if(avatar0.length < 1) {
             avatarok = 0;
             bootbox.alert('Please upload kaizen first attachment file.');    
-            jQuery('#kaizen-attachmentbefore').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentbefore').parent('div').addClass('has-kzerror');
-            jQuery('#kaizen-attachmentbefore').replaceWith(jQuery('#kaizen-attachmentbefore').clone());
+            jQuery('#kaizen-kzfilebefore').parent('div').removeClass('has-kzsuccess');
+            jQuery('#kaizen-kzfilebefore').parent('div').addClass('has-kzerror');
+            jQuery('#kaizen-kzfilebefore').replaceWith(jQuery('#kaizen-kzfilebefore').clone());
             return false;
         }
         else if(avatar1.length < 1){
             bootbox.alert('Please upload kaizen second attachment file.');    
-            jQuery('#kaizen-attachmentafter').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentafter').parent('div').addClass('has-kzerror');
-            jQuery('#kaizen-attachmentafter').replaceWith(jQuery('#kaizen-attachmentafter').clone());
+            jQuery('#kaizen-kzfileafter').parent('div').removeClass('has-kzsuccess');
+            jQuery('#kaizen-kzfileafter').parent('div').addClass('has-kzerror');
+            jQuery('#kaizen-kzfileafter').replaceWith(jQuery('#kaizen-kzfileafter').clone());
             return false;        
         }
         else if ((attachmenttype=='image' && jQuery.inArray(extensionFile1,imageextension)=='-1') || (attachmenttype=='video' && jQuery.inArray(extensionFile1,videoextension)=='-1') || (attachmenttype=='pdf' && jQuery.inArray(extensionFile1,pdfextension)=='-1')){
             avatarok = 0;
-            jQuery('#kaizen-attachmentbefore').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentbefore').parent('div').addClass('has-kzerror');
+            jQuery('#kaizen-kzfilebefore').parent('div').removeClass('has-kzsuccess');
+            jQuery('#kaizen-kzfilebefore').parent('div').addClass('has-kzerror');
             bootbox.alert('Invalid file type for attachment type '+attachmenttype+'.');
-            jQuery('#kaizen-attachmentafter').replaceWith(jQuery('#kaizen-attachmentafter').clone());            
+            jQuery('#kaizen-kzfileafter').replaceWith(jQuery('#kaizen-kzfileafter').clone());            
             return false;
         }
         else if ((attachmenttype=='image' && jQuery.inArray(extensionFile2,imageextension)=='-1') || (attachmenttype=='video' && jQuery.inArray(extensionFile2,videoextension)=='-1') || (attachmenttype=='pdf' && jQuery.inArray(extensionFile2,pdfextension)=='-1')){
             avatarok = 0;
-            jQuery('#kaizen-attachmentbefore').parent('div').removeClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentbefore').parent('div').addClass('has-kzerror');
+            jQuery('#kaizen-kzfilebefore').parent('div').removeClass('has-kzsuccess');
+            jQuery('#kaizen-kzfilebefore').parent('div').addClass('has-kzerror');
             bootbox.alert('Invalid file type for attachment type '+attachmenttype+'.');
-            jQuery('#kaizen-attachmentafter').replaceWith(jQuery('#kaizen-attachmentafter').clone());            
+            jQuery('#kaizen-kzfileafter').replaceWith(jQuery('#kaizen-kzfileafter').clone());            
             return false;
         }
         else {
             avatarok = 1;
-            jQuery('#kaizen-attachmentbefore').parents('div').addClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentbefore').parents('div').removeClass('has-kzerror');
-            jQuery('#kaizen-attachmentafter').parents('div').addClass('has-kzsuccess');
-            jQuery('#kaizen-attachmentafter').parents('div').removeClass('has-kzerror');
+            jQuery('#kaizen-kzfilebefore').parents('div').addClass('has-kzsuccess');
+            jQuery('#kaizen-kzfilebefore').parents('div').removeClass('has-kzerror');
+            jQuery('#kaizen-kzfileafter').parents('div').addClass('has-kzsuccess');
+            jQuery('#kaizen-kzfileafter').parents('div').removeClass('has-kzerror');
         }        
     });", View::POS_LOAD);
