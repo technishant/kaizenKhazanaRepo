@@ -20,6 +20,7 @@ use slatiusa\nestable\Nestable;
 use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use frontend\models\Kaizen;
+use frontend\models\KaizenSearch;
 
 /**
  * Site controller
@@ -255,16 +256,25 @@ class SiteController extends Controller {
         die;
     }
 
-    public function actionCategoryClick($id) {
+    public function actionCategoryClick($id='') {
         $this->view->title = "Kaizen Khazana | Category";
         $menu = array();
         $rootModal = Category::find()->roots()->all();
         $dataProvider = new ActiveDataProvider([
             'query' => Kaizen::find()->where(['category' => $id])->orderBy('id DESC'),
             'pagination' => [
-                'pageSize' => 5
+                'pageSize' => 1
             ]
-        ]);
+        ]);        
+        
+        /*** when form submitted from search box ***/
+        $searchModel = new KaizenSearch();
+        if((\Yii::$app->request->get('pg')=='kzsearch')){  
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);         
+            $dataProvider->pagination->pageSize=1;
+        }
+        /*** when form submitted from search box ends here ***/
+        
         foreach ($rootModal as $root) {
             $tempRoot = array();
             $tempRoot['label'] = $root->name;
@@ -296,7 +306,7 @@ class SiteController extends Controller {
             }
             array_push($menu, $tempRoot);
         }
-        return $this->render('categoryClick', ['menu' => $menu, 'dataProvider' => $dataProvider]);
+        return $this->render('categoryClick', ['id'=>$id,'searchmodel'=>$searchModel,'menu' => $menu, 'dataProvider' => $dataProvider]);
     }
 
     public function actionTest() {
