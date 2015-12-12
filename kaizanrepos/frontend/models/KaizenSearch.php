@@ -12,6 +12,7 @@ use frontend\models\Kaizen;
  */
 class KaizenSearch extends Kaizen
 {
+    public $searchstring;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,7 @@ class KaizenSearch extends Kaizen
     {
         return [
             [['id', 'category', 'postedby', 'recordstatus'], 'integer'],
-            [['subject', 'processarea', 'company', 'currrentstage', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'implementationdate', 'posteddate', 'suggestedby', 'approvedby'], 'safe'],
+            [['searchstring','name','subject','description', 'processarea', 'company', 'currrentstage', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'implementationdate', 'posteddate', 'suggestedby', 'approvedby'], 'safe'],
             [['costsaving'], 'number'],
         ];
     }
@@ -56,25 +57,27 @@ class KaizenSearch extends Kaizen
             return $dataProvider;
         }
 
-        $query->andFilterWhere([
+        $query->orFilterWhere([
             'id' => $this->id,
-            'category' => $this->category,
-            'costsaving' => $this->costsaving,
-            'implementationdate' => $this->implementationdate,
-            'postedby' => $this->postedby,
-            'posteddate' => $this->posteddate,
-            'recordstatus' => $this->recordstatus,
+            'category' => $this->searchstring,
+            'costsaving' => $this->searchstring,
+            'implementationdate' => $this->searchstring,
+            'postedby' => $this->searchstring,
+            'posteddate' => $this->searchstring,
+            'recordstatus' => $this->searchstring,
         ]);
 
-        $query->andFilterWhere(['like', 'subject', $this->subject])
-            ->andFilterWhere(['like', 'processarea', $this->processarea])
-            ->andFilterWhere(['like', 'company', $this->company])
-            ->andFilterWhere(['like', 'currrentstage', $this->currrentstage])
-            ->andFilterWhere(['like', 'mode', $this->mode])
-            ->andFilterWhere(['like', 'tangiblebenifits', $this->tangiblebenifits])
-            ->andFilterWhere(['like', 'intengiblebenifits', $this->intengiblebenifits])
-            ->andFilterWhere(['like', 'suggestedby', $this->suggestedby])
-            ->andFilterWhere(['like', 'approvedby', $this->approvedby]);
+        $query->orFilterWhere(['like', 'name', $this->searchstring])
+            ->orFilterWhere(['like', 'subject', $this->searchstring])
+            ->orFilterWhere(['like', 'description', $this->searchstring])
+            ->orFilterWhere(['like', 'processarea', $this->searchstring])
+            ->orFilterWhere(['like', 'company', $this->searchstring])           
+            ->orFilterWhere(['like', 'currrentstage', $this->searchstring])
+            ->orFilterWhere(['like', 'mode', $this->searchstring])
+            ->orFilterWhere(['like', 'tangiblebenifits', $this->searchstring])
+            ->orFilterWhere(['like', 'intengiblebenifits', $this->searchstring])
+            ->orFilterWhere(['like', 'suggestedby', $this->searchstring])
+            ->orFilterWhere(['like', 'approvedby', $this->searchstring]);
 
         return $dataProvider;
     }

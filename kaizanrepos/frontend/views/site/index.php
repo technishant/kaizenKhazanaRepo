@@ -14,14 +14,21 @@ $this->title = 'Home :: Kaizen Khazana';
                 <div class="display-table-cell">
 
                     <div class="search-section clearfix mar-btm-100">
-                        <form>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control input-lg" placeholder="Search Kaizen">
+                    <?php
+                    $form = ActiveForm::begin([
+                                'action' => ['category-click'],
+                                'method' => 'get',
+                    ]);
+                    ?>
+                            <div class="col-sm-10">   
+                               <?php  echo Html::textInput('KaizenSearch[searchstring]','',['class' => 'form-control input-lg',
+                                    'placeholder' => 'Search Kaizen']); ?>
+                               <?= Html::hiddenInput('pg','kzsearch');  ?>   
                             </div>
-                            <div class="col-sm-2">
-                                <button type="submit" class="width-full btn btn-primary btn-lg">Search</button>
+                            <div class="col-sm-2">                                
+                                <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
                             </div>
-                        </form>
+                    <?php ActiveForm::end(); ?>
                     </div>
 
                     <div class="icon-section">

@@ -6,6 +6,8 @@ use slatiusa\nestable\Nestable;
 use kartik\sidenav\SideNav;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 ?>
 <!--  / filterBox \ -->
 <div class="filterBox clearfix">
@@ -26,7 +28,12 @@ use yii\widgets\Pjax;
             <div class = "tab-content">
 
                 <div role = "tabpanel" class = "tab-pane active" id = "cars-vehecle">
-
+                    <?php
+                    $form = ActiveForm::begin([
+                                'action' => ['category-click'],
+                                'method' => 'get',
+                    ]);
+                    ?>
                     <div class = "search clearfix row mar-btm-20">
                         <div class = "radio col-sm-2">
                             <label>
@@ -54,11 +61,25 @@ use yii\widgets\Pjax;
                             </label>
                         </div>
                         <div class = "col-sm-10">
-                            <input type = "text" class = "form-control input-lg" placeholder = "Search Kaizen">
+                        <?php // echo $form->field($searchmodel, 'searchstring')->textInput(['class' => 'form-control input-lg', 'placeholder' => 'Search Kaizen'])->label(false); ?>
+                        <?= $form->field($searchmodel, 'searchstring')->widget(\yii\jui\AutoComplete::classname(), [
+                            'clientOptions' => [
+                                'source' => ['USA', 'RUS'],
+                            ],
+                            'options'=>[
+                                'class' => 'form-control input-lg',
+                                'placeholder' => 'Search Kaizen'
+                            ]
+                        ])->label(false); ?>
                         </div>
+                        <input type="hidden" name="pg" value="<?php echo 'kzsearch'; ?>">        
                         <div class = "col-sm-2">
-                            <button type = "submit" class = "width-full btn btn-primary btn-lg">Search</button>
+                        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
+                        <?php // echo Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'width-full btn btn-primary btn-lg'])  ?>
+
                         </div>
+                        <?php ActiveForm::end(); 
+                        ?>
                     </div>
                     <div class = "list-section clearfix">
                         <?php Pjax::begin(['enablePushState' => true]); ?> 
