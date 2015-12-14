@@ -267,35 +267,67 @@ class SiteController extends Controller {
             ]
         ]);        
         
-        /*** when form submitted from search box ***/
-        $searchModel = new KaizenSearch();
-        if((\Yii::$app->request->get('pg')=='kzsearch')){  
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);         
-            $dataProvider->pagination->pageSize=1;
-        }
-        /*** when form submitted from search box ends here ***/
         
+        $parentActiveId=array();
+        /*** when form submitted from search box ***/
+        $searchModel = new KaizenSearch();        
+        if((\Yii::$app->request->get('pg')=='kzsearch')){ 
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);  
+               $allSearchedData=$dataProvider->getModels();
+               foreach ($allSearchedData as $key => $resultData) {
+                    $categoryIdOfResult=($resultData->category);
+                    $parentActiveId[]=$categoryIdOfResult;
+                    $menuRootNode = Category::findOne(['id' => $categoryIdOfResult]); //get all parent node of this
+                    $allParents = $menuRootNode->parents()->all();
+                    foreach ($allParents as $key => $parentArray) {
+                        $parentActiveId[]=$parentArray->id;
+                    } 
+               }
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams); //reset data provider
+            $dataProvider->pagination->pageSize=1;
+            
+        }
+        //print_r($parentActiveId);   
+        /*** when form submitted from search box ends here ***/        
+        /*** select parent categories in navigation based on ids ***/
+        if(!empty($id)){
+            $parentActiveId=array();
+            $menuRootNode = Category::findOne(['id' => $id]);
+            $allParents = $menuRootNode->parents()->all();
+            foreach ($allParents as $key => $parentArray) {
+                $parentActiveId[]=$parentArray->id;
+            }        
+        }
+        /*** select parent categories in navigation based on ids ***/
         foreach ($rootModal as $root) {
+            
             $tempRoot = array();
             $tempRoot['label'] = $root->name;
             $tempRoot['id'] = $root->id;
-            $tempRoot['icon'] = "tags";
-            $tempRoot['active'] = ($id == $root->id);
+            $tempRoot['icon'] = "home";
+            $tempRoot['active'] = ($id == $root->id || in_array($root->id, $parentActiveId));
             $tempRoot['url'] = Url::to(['site/category-click', 'id' => $root->id]);
             $level1Modal = Category::findOne(['id' => $root->id])->children(1)->all();
+           
             if (!empty($level1Modal)) {
                 $menuLevel1 = array();
                 foreach ($level1Modal as $level1) {
                     $tempLevel1 = array();
                     $tempLevel1['label'] = $level1->name;
                     $tempLevel1['id'] = $level1->id;
+                    $tempLevel1['icon'] = "";
+                    $tempLevel1['active'] = ($id == $level1->id || in_array($level1->id, $parentActiveId));
+                    $tempLevel1['url'] = Url::to(['site/category-click', 'id' => $level1->id]);
                     $level2Modal = Category::findOne(['id' => $level1->id])->children(1)->all();
                     if (!empty($level2Modal)) {
                         $menuLevel2 = array();
                         foreach ($level2Modal as $level2) {
                             $tempLevel2 = array();
                             $tempLevel2['label'] = $level2->name;
-                            $tempLevel1['id'] = $level2->id;
+                            $tempLevel2['id'] = $level2->id;
+                            $tempLevel2['icon'] = "";
+                            $tempLevel2['active'] = ($id == $level2->id || in_array($level2->id, $parentActiveId));
+                            $tempLevel2['url'] = Url::to(['site/category-click', 'id' => $level2->id]);
                             array_push($menuLevel2, $tempLevel2);
                         }
                         $tempLevel1['items'] = $menuLevel2;
@@ -304,8 +336,10 @@ class SiteController extends Controller {
                 }
                 $tempRoot['items'] = $menuLevel1;
             }
-            array_push($menu, $tempRoot);
+               array_push($menu, $tempRoot);
         }
+        //  echo "<pre>";
+        //print_r($menu);
         return $this->render('categoryClick', ['id'=>$id,'searchmodel'=>$searchModel,'menu' => $menu, 'dataProvider' => $dataProvider]);
     }
 

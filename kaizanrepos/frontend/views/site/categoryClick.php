@@ -71,8 +71,9 @@ use yii\helpers\Html;
                                 'placeholder' => 'Search Kaizen'
                             ]
                         ])->label(false); ?>
-                        </div>
-                        <input type="hidden" name="pg" value="<?php echo 'kzsearch'; ?>">        
+                        </div>                        
+                        <?= Html::hiddenInput('pg', 'kzsearch'); ?>
+                        <?= Html::hiddenInput('id', $id); ?>
                         <div class = "col-sm-2">
                         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
                         <?php // echo Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'width-full btn btn-primary btn-lg'])  ?>

@@ -105,8 +105,8 @@ class KaizenController extends Controller {
                 $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
                 $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
                 if ($model->save()) {
-                    $upload_file->saveAs($path1);
-                    $upload_file1->saveAs($path2);
+                    $model->kzfilebefore->saveAs($path1);
+                    $model->kzfileafter->saveAs($path2);
                     Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
                     return $this->refresh();
                 } else {

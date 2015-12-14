@@ -50,23 +50,23 @@ class KaizenSearch extends Kaizen
         ]);
 
         $this->load($params);
-
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
 
-        $query->orFilterWhere([
-            'id' => $this->id,
-            'category' => $this->searchstring,
-            'costsaving' => $this->searchstring,
-            'implementationdate' => $this->searchstring,
-            'postedby' => $this->searchstring,
-            'posteddate' => $this->searchstring,
-            'recordstatus' => $this->searchstring,
-        ]);
-
+       // $query->orFilterWhere([
+           // 'id' => $this->id,
+          //  'category' => $this->searchstring,
+          //  'costsaving' => $this->searchstring,
+          //  'implementationdate' => $this->searchstring,
+           // 'postedby' => $this->searchstring,
+            //'posteddate' => $this->searchstring,
+           // 'recordstatus' => $this->searchstring,
+      //  ]);
+        
+        
         $query->orFilterWhere(['like', 'name', $this->searchstring])
             ->orFilterWhere(['like', 'subject', $this->searchstring])
             ->orFilterWhere(['like', 'description', $this->searchstring])
@@ -77,8 +77,11 @@ class KaizenSearch extends Kaizen
             ->orFilterWhere(['like', 'tangiblebenifits', $this->searchstring])
             ->orFilterWhere(['like', 'intengiblebenifits', $this->searchstring])
             ->orFilterWhere(['like', 'suggestedby', $this->searchstring])
+            ->orFilterWhere(['like', 'postedby', $this->postedby])
             ->orFilterWhere(['like', 'approvedby', $this->searchstring]);
-
+        if(!empty($params['id'])){
+        $query->andFilterWhere(['in','category', $params['id']]);
+        }              
         return $dataProvider;
     }
 }
