@@ -263,7 +263,7 @@ class SiteController extends Controller {
         $dataProvider = new ActiveDataProvider([
             'query' => Kaizen::find()->where(['category' => $id])->orderBy('id DESC'),
             'pagination' => [
-                'pageSize' => 1
+                'pageSize' => 5
             ]
         ]);        
         
@@ -284,7 +284,7 @@ class SiteController extends Controller {
                     } 
                }
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams); //reset data provider
-            $dataProvider->pagination->pageSize=1;
+            $dataProvider->pagination->pageSize=5;
             
         }
         //print_r($parentActiveId);   
