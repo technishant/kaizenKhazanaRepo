@@ -80,7 +80,7 @@ class KaizenController extends Controller {
 
     public function actionCreate() {
         if (\Yii::$app->user->isGuest) {
-            return $this->redirect(['/site/signup']);
+            return $this->redirect(['/site/login']);
         }
         $model = new Kaizen();
         if (Yii::$app->request->post()) {
