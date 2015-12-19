@@ -131,3 +131,9 @@ use yii\helpers\Html;
     </div>
 </footer>
 <!--\ footerBox / -->
+<!--  activate the anchor link on parent category -->
+<?php $this->registerJS("jQuery(function($) {
+        $('.kv-toggle').click(function(){
+            location.href = this.href;
+        });
+});", $this::POS_END); ?>
