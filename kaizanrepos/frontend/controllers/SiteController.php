@@ -259,35 +259,46 @@ class SiteController extends Controller {
     public function actionCategoryClick($id='') {
         $this->view->title = "Kaizen Khazana | Category";
         $menu = array();
-        $rootModal = Category::find()->roots()->all();
-        $dataProvider = new ActiveDataProvider([
-            'query' => Kaizen::find()->where(['category' => $id])->orderBy('id DESC'),
-            'pagination' => [
-                'pageSize' => 5
-            ]
-        ]);        
-        
-        
+        $rootModal = Category::find()->roots()->all();  
         $parentActiveId=array();
         /*** when form submitted from search box ***/
         $searchModel = new KaizenSearch();        
-        if((\Yii::$app->request->get('pg')=='kzsearch')){ 
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);  
-               $allSearchedData=$dataProvider->getModels();
-               foreach ($allSearchedData as $key => $resultData) {
-                    $categoryIdOfResult=($resultData->category);
-                    $parentActiveId[]=$categoryIdOfResult;
-                    $menuRootNode = Category::findOne(['id' => $categoryIdOfResult]); //get all parent node of this
-                    $allParents = $menuRootNode->parents()->all();
-                    foreach ($allParents as $key => $parentArray) {
-                        $parentActiveId[]=$parentArray->id;
-                    } 
-               }
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams); //reset data provider
+        if((\Yii::$app->request->get('pg')=='kzsearch')){  
+            $paramsArray=Yii::$app->request->queryParams;
+            /*** check if searched catgory id has children then search text in children as well ***/
+            if(!empty($paramsArray['id'])){
+                $categoryIdSearched='';
+                $categoryIdSearched=$paramsArray['id'];
+                $searchedCategoryChildrenArray=array();
+                array_push($searchedCategoryChildrenArray, $categoryIdSearched);
+                if($categoryIdSearched!='') //if category id is set then get children categories if exists
+                {
+                    $categoryRoot = Category::findOne(['id' => $id]);
+                    $searchedCategoryChildren=$categoryRoot->children()->asArray()->all();
+                    foreach ($searchedCategoryChildren as $key => $childrenArray) {
+                        $searchedCategoryChildrenArray[]=$childrenArray['id'];
+                    }                 
+                    $paramsArray['id']=$searchedCategoryChildrenArray;
+                }
+            }
+            /*** check if searched catgory id has children then search text in children as well ends here ***/
+            $dataProvider = $searchModel->search($paramsArray);  
+            /** get active menu list from searched data **/
+            $allSearchedData=$dataProvider->getModels();
+            foreach ($allSearchedData as $key => $resultData) {
+                 $categoryIdOfResult=($resultData->category);
+                 $parentActiveId[]=$categoryIdOfResult;
+                 $menuRootNode = Category::findOne(['id' => $categoryIdOfResult]); //get all parent node of this
+                 $allParents = $menuRootNode->parents()->all();
+                 foreach ($allParents as $key => $parentArray) {
+                     $parentActiveId[]=$parentArray->id;
+                 } 
+            }
+            /** get active menu list from searched data ends here **/
+            $dataProvider = $searchModel->search($paramsArray); //reset data provider
             $dataProvider->pagination->pageSize=5;
             
-        }
-        //print_r($parentActiveId);   
+        } 
         /*** when form submitted from search box ends here ***/        
         /*** select parent categories in navigation based on ids ***/
         if(!empty($id)){
@@ -296,7 +307,26 @@ class SiteController extends Controller {
             $allParents = $menuRootNode->parents()->all();
             foreach ($allParents as $key => $parentArray) {
                 $parentActiveId[]=$parentArray->id;
-            }        
+            }  
+            //create data provider with combination of parent and child when root node is clicked
+            if((\Yii::$app->request->get('pg')!='kzsearch')){ 
+                $childrenIds=$menuRootNode->children()->asArray()->all();
+                $childrenIdarray=array();            
+                array_push($childrenIdarray, $id); //pushing parent category id 
+                foreach ($childrenIds as $key => $childrenArray) {
+                    $childrenIdarray[]=$childrenArray['id'];
+                }  
+                if(!empty($childrenIdarray))
+                {                
+                    $childrenId=implode(",",$childrenIdarray);
+                }
+                $dataProvider = new ActiveDataProvider([
+                'query' => Kaizen::find()->where("category IN ($childrenId)")->orderBy('id DESC'),
+                'pagination' => [
+                    'pageSize' => 5
+                ]
+                ]); 
+            }
         }
         /*** select parent categories in navigation based on ids ***/
         foreach ($rootModal as $root) {
