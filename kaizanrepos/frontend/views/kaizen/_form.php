@@ -12,7 +12,6 @@ use yii\web\View;
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix', 'enctype' => 'multipart/form-data']]); ?>
-
             <div class="col-sm-12 clearfix">
                 <span class="text-center"><i class="fa fa-lock"></i><?= $this->title = 'Kaizen Form'; ?></span>     
                 <hr>

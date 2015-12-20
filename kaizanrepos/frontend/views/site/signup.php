@@ -5,6 +5,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use common\models\Country;
 
 $this->title = 'Signup :: Kaizen Kahazana';
 ?>
@@ -14,12 +15,12 @@ $this->title = 'Signup :: Kaizen Kahazana';
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix']]); ?>
-            
+
             <div class="col-sm-12 clearfix">
                 <span class="text-center"><i class="fa fa-lock"></i><?= yii\bootstrap\Html::encode('Post a Kaizan and avail unlimited benefits. No credit card required') ?></span>
                 <hr>
             </div>
-            
+
             <div class="col-sm-12 clearfix">
                 <div class="row">
                     <div class="col-sm-6">
@@ -39,7 +40,13 @@ $this->title = 'Signup :: Kaizen Kahazana';
                     <?= $form->field($model, 'password', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->passwordInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Password']); ?>
                 </div>
                 <div class="form-group">
-                    <?= $form->field($model, 'address', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textarea(['rows' => 4, 'cols' => 4, 'class' => 'form-control', 'placeholder' => 'Address']); ?>
+                    <?= $form->field($model, 'country', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->dropDownList(\yii\helpers\ArrayHelper::map(Country::find()->all(), 'id', 'name'), ['class' => 'form-control', 'prompt' => 'Select country']); ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'state', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'State']); ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'postcode', ['template' => "<div class='form-group'>\n{input}\n{error}</div>"])->label('')->textInput(['maxlength' => 255, 'class' => 'form-control', 'placeholder' => 'Postcode']); ?>
                 </div>
                 <div class="checkbox">
                     <label>
@@ -49,11 +56,11 @@ $this->title = 'Signup :: Kaizen Kahazana';
                 <div class="form-group text-center">
                     <button class="btn btn-success btn-lg">Get Started</button>
                 </div>
-                
+
                 <?= yii\authclient\widgets\AuthChoice::widget(['baseAuthUrl' => ['site/auth']]); ?>
 
             </div>
-            
+
             <?php ActiveForm::end(); ?>
         </div>
     </div>
