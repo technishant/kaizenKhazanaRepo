@@ -23,6 +23,9 @@ use yii\web\IdentityInterface;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $country
+ * @property string $state
+ * @property string $pincode
  */
 class User extends ActiveRecord implements IdentityInterface {
 
@@ -53,10 +56,10 @@ class User extends ActiveRecord implements IdentityInterface {
             [['first_name', 'email', 'phone'], 'required'],
             [['address'], 'string'],
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['first_name', 'last_name', 'email', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
-            [['phone'], 'string', 'max' => 45],
+            [['first_name', 'last_name', 'email', 'password_hash', 'password_reset_token', 'country', 'state'], 'string', 'max' => 255],
+            [['phone', 'pincode'], 'string', 'max' => 45],
             [['auth_key'], 'string', 'max' => 32],
-            [['first_name'], 'unique'],
+            //[['first_name'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique']
         ];
@@ -76,6 +79,9 @@ class User extends ActiveRecord implements IdentityInterface {
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'country' => 'Country',
+            'state' => 'State',
+            'pincode' => 'Pincode',
         ];
     }
 
