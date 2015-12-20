@@ -17,6 +17,9 @@ class SignupForm extends Model {
     public $phone;
     public $address;
     public $password;
+    public $country;
+    public $state;
+    public $postcode;
 
     /**
      * @inheritdoc
@@ -24,9 +27,10 @@ class SignupForm extends Model {
     public function rules() {
         return [
             [['first_name', 'last_name', 'email','password'], 'filter', 'filter' => 'trim'],
-            [['first_name', 'last_name', 'phone', 'email','password'], 'required'],
+            [['first_name', 'last_name', 'phone', 'email','password','country'], 'required'],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email has already been taken.'],
             ['first_name', 'string', 'min' => 2, 'max' => 255],
+            //['state', 'postcode', 'min' => 0, 'max' => 45],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
         ];
@@ -46,15 +50,20 @@ class SignupForm extends Model {
             $user->phone = $this->phone;
             $user->address = $this->address;
             $user->email = $this->email;
+            $user->country = $this->country;
+            $user->state = $this->state;
+            $user->pincode = $this->postcode;
             $user->generateAuthKey();
             $user->setPassword($this->password);
             if ($user->save()) {
                 $adminRole = $authManager->getRole('admin');
                 $authManager->assign($adminRole, $user->id);
                 return $user;
+            } else {
+                print_r($user->getErrors());
             }
         }
-
+        
         return null;
     }
 
