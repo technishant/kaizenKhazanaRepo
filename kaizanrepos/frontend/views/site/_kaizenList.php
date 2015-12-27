@@ -4,14 +4,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+use yii\helpers\Url;
 ?>
 <li>
     <div class = "inner border-none clearfix">
         <div class = "photo"><img src = "<?= Yii::$app->request->baseUrl . '/images/item-1.jpg' ?>"></div>
         <div class = "text">
-            <h4><?= $model->name; ?></h4>
-            <p><?= $model->subject; ?></p>
-            <a href = "#"><?= $model->description; ?></a>
+            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><h4><?= $model->name; ?></h4></a>
+            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><p><?= $model->subject; ?></p></a>
+            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><?= $model->description; ?></a>
         </div>
     </div>
 </li>
