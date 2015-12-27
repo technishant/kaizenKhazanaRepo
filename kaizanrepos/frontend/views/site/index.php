@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+
 $this->title = 'Home :: Kaizen Khazana';
 ?>
 <!--  / searchBox \ -->
@@ -14,21 +15,23 @@ $this->title = 'Home :: Kaizen Khazana';
                 <div class="display-table-cell">
 
                     <div class="search-section clearfix mar-btm-100">
-                    <?php
-                    $form = ActiveForm::begin([
-                                'action' => ['category-click'],
-                                'method' => 'get',
-                    ]);
-                    ?>
-                            <div class="col-sm-10">   
-                               <?php  echo Html::textInput('KaizenSearch[searchstring]','',['class' => 'form-control input-lg',
-                                    'placeholder' => 'Search Kaizen']); ?>
-                               <?= Html::hiddenInput('pg','kzsearch');  ?>   
-                            </div>
-                            <div class="col-sm-2">                                
-                                <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
-                            </div>
-                    <?php ActiveForm::end(); ?>
+                        <?php
+                        $form = ActiveForm::begin([
+                                    'action' => ['category-click'],
+                                    'method' => 'get',
+                        ]);
+                        ?>
+                        <div class="col-sm-10">   
+                            <?php
+                            echo Html::textInput('KaizenSearch[searchstring]', '', ['class' => 'form-control input-lg',
+                                'placeholder' => 'Search Kaizen']);
+                            ?>
+                            <?= Html::hiddenInput('pg', 'kzsearch'); ?>   
+                        </div>
+                        <div class="col-sm-2">                                
+                            <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
+                        </div>
+                        <?php ActiveForm::end(); ?>
                     </div>
 
                     <div class="icon-section">
@@ -80,7 +83,6 @@ $this->title = 'Home :: Kaizen Khazana';
 <div class = "featureBox text-center blue-bg clearfix">
     <div class = "container">
         <div class = "row">
-
             <h3 class = "font-strong">
                 Popular Features that will change your life
                 <small class = "font-regular">A single place where you can find new innovations, tools & information to grow your business</small>
@@ -102,7 +104,7 @@ $this->title = 'Home :: Kaizen Khazana';
         </div>
     </div>
 </div>
-<!--\ featureBox / 
+
 <!--  / featureBox \ -->
 <div class="featureBox text-center clearfix">
     <div class="container">
@@ -113,37 +115,37 @@ $this->title = 'Home :: Kaizen Khazana';
             </h3>
 
             <div class="icon-section clearfix">
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
                         <span><i class="fa fa-apple"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
                         <span><i class="fa fa-apple"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
                         <span><i class="fa fa-apple"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
                         <span><i class="fa fa-apple"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
                         <span><i class="fa fa-apple"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
                         <span><i class="fa fa-apple"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
@@ -158,6 +160,128 @@ $this->title = 'Home :: Kaizen Khazana';
 </div>
 <!--  \ featureBox / -->
 
+<!--  / siderBox \ -->
+<div class="siderBox clearfix">
+    <div class="overlay"></div>
+    <div class="owl-carousel slider-product">
+        <div class="item">
+            <div class="col-sm-12"><h3>Fair</h3></div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-sm-12"><h3>Capitslist</h3></div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-sm-12"><h3>Process videos</h3></div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-sm-12"><h3>Capitslist</h3></div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="col-sm-12"><h3>Training And achievements</h3></div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                </div>
+            </div>
+            <div class="width-full-480 col-xs-6 col-md-3">
+                <div class="frames">
+                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  \ siderBox / -->
 <?php if (Yii::$app->user->isGuest): ?>
     <!--  / registerBox \ -->
     <div class="registerBox clearfix">
@@ -204,4 +328,3 @@ $this->title = 'Home :: Kaizen Khazana';
     </div>
     <!--  \ registerBox / -->
 <?php endif; ?>
-<?= $this->render('_footer.php'); ?>

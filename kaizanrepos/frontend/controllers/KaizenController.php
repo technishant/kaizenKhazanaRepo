@@ -83,39 +83,66 @@ class KaizenController extends Controller {
             return $this->redirect(['/site/login']);
         }
         $model = new Kaizen();
+        $model->type = 0;
         if (Yii::$app->request->post()) {
             $session = \Yii::$app->session;
             $model->recordstatus = 1;
             $model->postedby = \Yii::$app->user->id;
             $model->posteddate = date('Y-m-d');
             $model->mode = 'draft';
-            $model->approvedby = '0';            
+            $model->approvedby = '0';
         }
-
         if ($model->load(Yii::$app->request->post())) {
-            $model->kzfilebefore = Yii::$app->fileupload->uploadFile($model, 'kzfilebefore');
-            if ($model->kzfilebefore !== false) {
-                $path1 = Yii::$app->fileupload->getUploadedFile();
-            }
-            $model->kzfileafter = Yii::$app->fileupload->uploadFile($model, 'kzfileafter');
-            if ($model->kzfileafter !== false) {
-                $path2 = Yii::$app->fileupload->getUploadedFile();
-            }
-            if ($model->validate()) {
-                $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
-                $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
-                if ($model->save()) {
-                    $model->kzfilebefore->saveAs($path1);
-                    $model->kzfileafter->saveAs($path2);
-                    Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
-                    return $this->refresh();
-                } else {
-                    Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving kaizen.Please try again.');
-                    return $this->render('create', [
-                                'model' => $model,
-                    ]);
+            if ($model->type = 0) {
+                $model->kzfilebefore = Yii::$app->fileupload->uploadFile($model, 'kzfilebefore');
+                if ($model->kzfilebefore !== false) {
+                    $path1 = Yii::$app->fileupload->getUploadedFile();
+                }
+                $model->kzfileafter = Yii::$app->fileupload->uploadFile($model, 'kzfileafter');
+                if ($model->kzfileafter !== false) {
+                    $path2 = Yii::$app->fileupload->getUploadedFile();
+                }
+                if ($model->validate()) {
+                    $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
+                    $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
+                    if ($model->save()) {
+                        if ($model->kzfilebefore !== FALSE) {
+                            $model->kzfilebefore->saveAs($path1);
+                        }
+                        if ($model->kzfileafter !== FALSE) {
+                            $model->kzfileafter->saveAs($path2);
+                        }
+                        Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
+                        return $this->refresh();
+                    } else {
+                        Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving kaizen.Please try again.');
+                        return $this->render('create', [
+                                    'model' => $model,
+                        ]);
+                    }
+                }
+            } else {
+                $model->otherAttachmentFile = Yii::$app->fileupload->uploadFile($model, 'otherAttachmentFile');
+                if ($model->otherAttachmentFile !== FALSE) {
+                    $otherAttachementPath = Yii::$app->fileupload->getUploadedFile();
+                }
+                if ($model->validate()) {
+                    $model->attachmentother = pathinfo($otherAttachementPath, PATHINFO_BASENAME);
+                    if ($model->save()) {
+                        if ($model->otherAttachmentFile !== FALSE) {
+                            $model->otherAttachmentFile->saveAs($otherAttachementPath);
+                        }
+                        Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
+                        return $this->refresh();
+                    } else {
+                        Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving kaizen.Please try again.');
+                        return $this->render('create', [
+                                    'model' => $model,
+                        ]);
+                    }
                 }
             }
+            $model->attachmentother = Yii::$app->fileupload->uploadFile($model, 'attachmentother');
         }
         return $this->render('create', [
                     'model' => $model,

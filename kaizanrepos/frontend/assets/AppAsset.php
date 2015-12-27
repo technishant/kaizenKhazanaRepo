@@ -23,6 +23,8 @@ class AppAsset extends AssetBundle
         'css/fonts.css',
         'css/global.css',
         'css/owl.carousel.css',
+        //'css/global-green.css',
+        //'css/global-saffron.css'
     ];
     public $js = [
         'js/bootstrap.min.js',
@@ -30,7 +32,8 @@ class AppAsset extends AssetBundle
         'js/owl.carousel.js',
         'js/respond.min.js',
         'js/html5shiv.min.js',
-        'js/bootbox.min.js'
+        'js/bootbox.min.js',
+        'js/kaizen.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

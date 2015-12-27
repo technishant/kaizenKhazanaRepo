@@ -61,26 +61,28 @@ use yii\helpers\Html;
                             </label>
                         </div>
                         <div class = "col-sm-10">
-                        <?php // echo $form->field($searchmodel, 'searchstring')->textInput(['class' => 'form-control input-lg', 'placeholder' => 'Search Kaizen'])->label(false); ?>
-                        <?= $form->field($searchmodel, 'searchstring')->widget(\yii\jui\AutoComplete::classname(), [
-                            'clientOptions' => [
-                                'source' => ['USA', 'RUS'],
-                            ],
-                            'options'=>[
-                                'class' => 'form-control input-lg',
-                                'placeholder' => 'Search Kaizen'
-                            ]
-                        ])->label(false); ?>
+                            <?php // echo $form->field($searchmodel, 'searchstring')->textInput(['class' => 'form-control input-lg', 'placeholder' => 'Search Kaizen'])->label(false); ?>
+                            <?=
+                            $form->field($searchmodel, 'searchstring')->widget(\yii\jui\AutoComplete::classname(), [
+                                'clientOptions' => [
+                                    'source' => ['USA', 'RUS'],
+                                ],
+                                'options' => [
+                                    'class' => 'form-control input-lg',
+                                    'placeholder' => 'Search Kaizen'
+                                ]
+                            ])->label(false);
+                            ?>
                         </div>                        
-                        <?= Html::hiddenInput('pg', 'kzsearch'); ?>
-                        <?= Html::hiddenInput('id', $id); ?>
+                            <?= Html::hiddenInput('pg', 'kzsearch'); ?>
+                            <?= Html::hiddenInput('id', $id); ?>
                         <div class = "col-sm-2">
-                        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
-                        <?php // echo Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'width-full btn btn-primary btn-lg'])  ?>
+<?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
+                        <?php // echo Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'width-full btn btn-primary btn-lg'])   ?>
 
                         </div>
-                        <?php ActiveForm::end(); 
-                        ?>
+<?php ActiveForm::end();
+?>
                     </div>
                     <div class = "list-section clearfix">
                         <?php Pjax::begin(['enablePushState' => true]); ?> 
@@ -105,7 +107,7 @@ use yii\helpers\Html;
                             'itemView' => '_kaizenList',
                         ]);
                         ?>
-                        <?php Pjax::end(); ?>
+<?php Pjax::end(); ?>
                     </div>
                 </div>
             </div>
