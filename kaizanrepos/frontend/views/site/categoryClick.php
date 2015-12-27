@@ -12,6 +12,7 @@ use yii\helpers\Html;
 <!--  / filterBox \ -->
 <div class="filterBox clearfix">
     <div class="container">
+        <?php Pjax::begin(['id' => 'search-form']); ?>
         <?=
         SideNav::widget([
             'type' => SideNav::TYPE_PRIMARY,
@@ -23,15 +24,17 @@ use yii\helpers\Html;
             'indMenuClose' => '<i class="fa fa-plus"></i>'
         ]);
         ?>
-
+        <?php Pjax::end(); ?>
         <div class = "right-side">
             <div class = "tab-content">
 
                 <div role = "tabpanel" class = "tab-pane active" id = "cars-vehecle">
                     <?php
+                    Pjax::begin(['id' => 'search-form']);
                     $form = ActiveForm::begin([
                                 'action' => ['category-click'],
                                 'method' => 'get',
+                                'options' => ['data-pjax' => true ]
                     ]);
                     ?>
                     <div class = "search clearfix row mar-btm-20">
@@ -77,15 +80,16 @@ use yii\helpers\Html;
                             <?= Html::hiddenInput('pg', 'kzsearch'); ?>
                             <?= Html::hiddenInput('id', $id); ?>
                         <div class = "col-sm-2">
-<?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
-                        <?php // echo Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'width-full btn btn-primary btn-lg'])   ?>
+                        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
+                        <?php // echo Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'width-full btn btn-primary btn-lg'])  ?>
 
                         </div>
-<?php ActiveForm::end();
-?>
+                        <?php ActiveForm::end(); 
+                        yii\widgets\Pjax::end();
+                        ?>
                     </div>
-                    <div class = "list-section clearfix">
-                        <?php Pjax::begin(['enablePushState' => true]); ?> 
+                    <div class = "list-section clearfix" id="pp">
+                        <?php Pjax::begin(['enablePushState' => true,'id'=>'gridData']); ?> 
                         <?=
                         ListView::widget([
                             'dataProvider' => $dataProvider,
@@ -107,7 +111,7 @@ use yii\helpers\Html;
                             'itemView' => '_kaizenList',
                         ]);
                         ?>
-<?php Pjax::end(); ?>
+                        <?php Pjax::end(); ?>
                     </div>
                 </div>
             </div>
@@ -139,3 +143,13 @@ use yii\helpers\Html;
             location.href = this.href;
         });
 });", $this::POS_END); ?>
+<?php
+ 
+$this->registerJs(
+   '$("document").ready(function(){ 
+        $("#search-form").on("pjax:end", function() {
+            $.pjax.reload({container:"#gridData"});  //Reload GridView
+        });
+    });'
+);
+?>
