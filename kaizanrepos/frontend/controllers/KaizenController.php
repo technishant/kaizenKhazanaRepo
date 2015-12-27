@@ -13,7 +13,7 @@ use frontend\models\Category;
 use yii\helpers\ArrayHelper;
 use \yii\helpers\Html;
 use yii\web\UploadedFile;
-
+use yii\imagine\Image;
 /**
  * KaizenController implements the CRUD actions for Kaizen model.
  */
@@ -105,12 +105,17 @@ class KaizenController extends Controller {
                 if ($model->validate()) {
                     $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
                     $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
+                    //thumbpath
+                    $thumb1path = pathinfo($path1, PATHINFO_DIRNAME).'/thumb__'.pathinfo($path1, PATHINFO_BASENAME);
+                    $thumb2path = pathinfo($path1, PATHINFO_DIRNAME).'/thumb__'.pathinfo($path2, PATHINFO_BASENAME);
                     if ($model->save()) {
                         if ($model->kzfilebefore !== FALSE) {
                             $model->kzfilebefore->saveAs($path1);
+                            Image::thumbnail($path1, 80, 80)->save(($thumb1path), ['quality' => 80]);
                         }
                         if ($model->kzfileafter !== FALSE) {
                             $model->kzfileafter->saveAs($path2);
+                            Image::thumbnail($path1, 80, 80)->save(($thumb2path), ['quality' => 80]);
                         }
                         Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
                         return $this->refresh();

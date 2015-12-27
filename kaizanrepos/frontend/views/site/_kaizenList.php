@@ -8,7 +8,14 @@ use yii\helpers\Url;
 ?>
 <li>
     <div class = "inner border-none clearfix">
-        <div class = "photo"><img src = "<?= Yii::$app->request->baseUrl . '/images/item-1.jpg' ?>"></div>
+         <?php 
+         if(file_exists(Yii::$app->params['kzAttachmentsUrl'].'/thumb__'.$model->attachmentbefore)){
+            $imgpath=Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__'.$model->attachmentbefore;
+        }
+        else{
+           $imgpath=Yii::$app->request->baseUrl . '/images/item-1.jpg'; 
+        } ?>
+        <div class = "photo"><img src = "<?= $imgpath ?>"></div>
         <div class = "text">
             <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><h4><?= $model->name; ?></h4></a>
             <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><p><?= $model->subject; ?></p></a>
