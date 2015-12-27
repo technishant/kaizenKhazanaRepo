@@ -93,7 +93,7 @@ class KaizenController extends Controller {
             $model->approvedby = '0';
         }
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->type = 0) {
+            if ($model->type == 0) {
                 $model->kzfilebefore = Yii::$app->fileupload->uploadFile($model, 'kzfilebefore');
                 if ($model->kzfilebefore !== false) {
                     $path1 = Yii::$app->fileupload->getUploadedFile();

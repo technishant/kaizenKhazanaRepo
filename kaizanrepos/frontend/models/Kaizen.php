@@ -5,7 +5,6 @@ namespace frontend\models;
 use yii\web\UploadedFile;
 use Yii;
 
-
 /**
  * This is the model class for table "kaizen".
  *
@@ -45,7 +44,7 @@ class Kaizen extends \yii\db\ActiveRecord {
     const TYPE_PHOTO = 1;
     const TYPE_KAIZEN = 0;
     const TYPE_BOOK = 3;
-    
+
     /**
      * @inheritdoc
      */
@@ -58,12 +57,13 @@ class Kaizen extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['name','type', 'subject', 'description', 'processarea', 'attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required', 'when' => function ($model) {return $model->type == Kaizen::TYPE_KAIZEN;}, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() == 0; }"],
-            [['name','type', 'subject', 'category'], 'required', 'when' => function ($model) {return $model->type != Kaizen::TYPE_KAIZEN;}, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() != 0; }"],
-            [['name', 'subject', 'description', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype','attachmentbefore', 'attachmentafter'], 'string'],
-            [['category','type', 'postedby', 'recordstatus'], 'integer'],
+            [['name', 'type', 'subject', 'description', 'processarea', 'attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required', 'when' => function ($model, $attribute) {$model->type == 0;}, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() == 0; }"],
+            [['name', 'type', 'subject', 'category'], 'required', 'when' => function ($model) { return $model->type > 0; }, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() != 0; }"],
+            [['name', 'subject', 'description', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype', 'attachmentbefore', 'attachmentafter'], 'string'],
+            [['category', 'type', 'postedby', 'recordstatus'], 'integer'],
             [['costsaving', 'attachmentprocessed'], 'number'],
-            //[['kzfilebefore', 'kzfileafter'], 'file', 'skipOnEmpty' => false,'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf'],      
+            [['kzfilebefore', 'kzfileafter'], 'file', 'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf', 'when' => function($model, $attribute) {$model->type == 0;}],      
+            //[['otherAttachmentFile'], 'file', 'extensions' => 'jpg,jpeg,png', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png', 'when' => function($model, $attribute) {$model->type == 1;}],
             [['implementationdate', 'mode', 'approvedby', 'attachmentprocessed', 'attachmentbefore', 'attachmentafter'], 'safe'],
             [['company', 'currrentstage', 'suggestedby', 'approvedby', 'attachmentother'], 'string', 'max' => 255]
         ];
@@ -93,8 +93,8 @@ class Kaizen extends \yii\db\ActiveRecord {
             'recordstatus' => Yii::t('app', 'Record Status'),
             'attachmenttype' => Yii::t('app', 'Attachment Type'),
             'kzfilebefore' => Yii::t('app', 'Kaizen Before Attachment'),
-            'kzfileafter' => Yii::t('app', 'Kaizen After Attachment'), 
-            'attachmentother' => Yii::t('app', 'Attachment'), 
+            'kzfileafter' => Yii::t('app', 'Kaizen After Attachment'),
+            'attachmentother' => Yii::t('app', 'Attachment'),
         ];
     }
 
