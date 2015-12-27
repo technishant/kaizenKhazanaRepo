@@ -61,9 +61,9 @@ class KaizenController extends Controller {
         $onChange = '';
         if ($subCat == '1') {
             $onChange = 'getSubCatlevel2(this.value,"' . Yii::$app->homeUrl . '")'; //ajax function in kaizen view for 3 level category
-            $fieldSubCat = 'categoryLevel3';
-        } else {
             $fieldSubCat = 'categoryLevel2';
+        } else {
+            $fieldSubCat = 'categoryLevel3';
         }
         $subCategory = \frontend\models\Category::findOne(['id' => $id]);
         $leaves = $subCategory->children(1)->asArray()->all();
