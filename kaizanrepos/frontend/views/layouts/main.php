@@ -37,7 +37,7 @@ AppAsset::register($this);
                 <div class="headerBox">
                     <div class="container">
 
-                        <a class="logo" href="<?= Yii::$app->urlManager->baseUrl; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/logo.png' ?>" alt="" /></a>
+                        <a class="logo" href="<?= yii\helpers\Url::toRoute(['site/index']); ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/logo.png' ?>" alt="" /></a>
                         <button type="button" class="navbar-toggle menubtn-top collapsed" data-toggle="collapse" data-target="#menubox" aria-expanded="false">
                             <i class="fa fa-reorder"></i>
                         </button>
