@@ -165,117 +165,266 @@ $this->title = 'Home :: Kaizen Khazana';
     <div class="overlay"></div>
     <div class="owl-carousel slider-product">
         <div class="item">
-            <div class="col-sm-12"><h3>Fair</h3></div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-sm-12"><h3>Capitslist</h3></div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="col-sm-12"><h3>Process videos</h3></div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Fair</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="item">
-            <div class="col-sm-12"><h3>Capitslist</h3></div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Capitslist</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="item">
-            <div class="col-sm-12"><h3>Training And achievements</h3></div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Process videos</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
-                </div>
-            </div>
-            <div class="width-full-480 col-xs-6 col-md-3">
-                <div class="frames">
-                    <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Whats new in market</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-6 col-md-6">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

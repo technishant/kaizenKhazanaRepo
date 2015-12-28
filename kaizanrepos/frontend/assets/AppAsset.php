@@ -21,9 +21,9 @@ class AppAsset extends AssetBundle
         'css/master.css',
         'css/font-awesome.min.css',
         'css/fonts.css',
-        'css/global.css',
+        //'css/global.css',
         'css/owl.carousel.css',
-        //'css/global-green.css',
+        'css/global-flag.css',
         //'css/global-saffron.css'
     ];
     public $js = [
