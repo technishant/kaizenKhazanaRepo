@@ -8,7 +8,7 @@
 namespace backend\assets;
 use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
-{
+{ 
     public $sourcePath = '@webroot/admin-lte/';
     public $css = [
         'bootstrap/css/bootstrap.min.css',
