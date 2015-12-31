@@ -109,11 +109,15 @@ class KaizenController extends Controller {
                     if ($model->save()) {
                         if ($model->kzfilebefore !== FALSE) {
                             $model->kzfilebefore->saveAs($path1);
+                            if($model->attachmenttype=='image'){
                             Image::thumbnail($path1, 80, 80)->save(($thumb1path), ['quality' => 80]);
+                            }
                         }
                         if ($model->kzfileafter !== FALSE) {
                             $model->kzfileafter->saveAs($path2);
+                            if($model->attachmenttype=='image'){
                             Image::thumbnail($path1, 80, 80)->save(($thumb2path), ['quality' => 80]);
+                            }
                         }
                         Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
                         return $this->refresh();
