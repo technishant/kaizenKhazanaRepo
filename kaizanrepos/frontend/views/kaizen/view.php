@@ -10,18 +10,18 @@ use yii\widgets\DetailView;
     <div class="formViewBox clearfix">
         <div class="container">
 
-            <h3>Kaizan 4</h3>
+            <h3><?= Html::encode($model->name); ?></h3>
 
             <div class="row first">
-                <div class="col-sm-4">Company: Sunbeam Auto Pvt. Ltd.</div>
-                <div class="col-sm-2">Deptt.: R&D</div>
+                <div class="col-sm-4"><?= Html::encode($model->company); ?></div>
+                <div class="col-sm-2"><?= Html::encode($model->processarea); ?></div>
                 <div class="col-sm-2">Result: Implemented</div>
                 <div class="col-sm-2">Month of Report</div>
                 <div class="col-sm-2">Aug'2013</div>
             </div>
             <div class="row first">
-                <div class="col-sm-6">Subject</div>
-                <div class="col-sm-6">Process</div>
+                <div class="col-sm-6"><?= Html::encode($model->subject); ?></div>
+                <div class="col-sm-6"><?= Html::encode($model->processarea); ?></div>
             </div>
             <div class="row first">
                 <div class="col-sm-4">Before</div>
@@ -73,23 +73,23 @@ use yii\widgets\DetailView;
                 <div class="col-sm-4">Why-Why Analisis</div>
                 <div class="col-sm-4">Horizontal Deployment</div>
                 <div class="col-sm-2">Cost Saving/Year</div>
-                <div class="col-sm-2">Rs. 60000</div>
+                <div class="col-sm-2"><?= Html::encode($model->costsaving); ?></div>
             </div>
             <div class="row first">
                 <div class="col-sm-4">Reduce Energy</div>
                 <div class="col-sm-4">Purchase, Training rooms</div>
                 <div class="col-sm-2">Date of Implementation</div>
-                <div class="col-sm-2">Aug' 2013</div>
+                <div class="col-sm-2"><?= Html::encode(date('d-M-Y', strtotime($model->posteddate))); ?></div>
             </div>
             <div class="row first">
                 <div class="col-sm-8">Benefits</div>
                 <div class="col-sm-2">Suggested By</div>
-                <div class="col-sm-2">Mr. SP Sign</div>
+                <div class="col-sm-2"><?= Html::encode($model->suggestedby); ?></div>
             </div>
             <div class="row first">
                 <div class="col-sm-8">Saving</div>
                 <div class="col-sm-2">Approved By</div>
-                <div class="col-sm-2">Mr. Shalabh</div>
+                <div class="col-sm-2"><?= Html::encode($model->approvedby); ?></div>
             </div>
         </div>
     </div>
