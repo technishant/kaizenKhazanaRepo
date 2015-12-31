@@ -65,8 +65,9 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
+        $model->loginFrom = 0;
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect(['/category/index']);
         } else {
             return $this->render('login', [
                 'model' => $model,
