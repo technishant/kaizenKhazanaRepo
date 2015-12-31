@@ -50,9 +50,7 @@ class KaizenController extends Controller {
      * @return mixed
      */
     public function actionView($id) {
-        return $this->render('view', [
-                    'model' => $this->findModel($id),
-        ]);
+        return $this->render('view', ['model' => $this->findModel($id)]);
     }
 
     public function actionCategorychild() {
@@ -106,8 +104,8 @@ class KaizenController extends Controller {
                     $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
                     $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
                     //thumbpath
-                    $thumb1path = pathinfo($path1, PATHINFO_DIRNAME).'/thumb__'.pathinfo($path1, PATHINFO_BASENAME);
-                    $thumb2path = pathinfo($path1, PATHINFO_DIRNAME).'/thumb__'.pathinfo($path2, PATHINFO_BASENAME);
+                    $thumb1path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path1, PATHINFO_BASENAME);
+                    $thumb2path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path2, PATHINFO_BASENAME);
                     if ($model->save()) {
                         if ($model->kzfilebefore !== FALSE) {
                             $model->kzfilebefore->saveAs($path1);

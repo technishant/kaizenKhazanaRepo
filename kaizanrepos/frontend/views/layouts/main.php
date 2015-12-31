@@ -44,7 +44,7 @@ AppAsset::register($this);
                         <?php
                         echo Menu::widget([
                             'items' => [
-                                ['label' => 'Enquiry', 'url' => ['#'], 'visible' => 'true'],
+                                ['label' => 'Enquiry', 'url' => ['enquiry/create'], 'visible' => 'true'],
                                 ['label' => 'Post a Kaizen', 'url' => ['kaizen/create'], 'visible' => 'true'],
                                 ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest],
                                 ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
