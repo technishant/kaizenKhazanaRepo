@@ -6,21 +6,22 @@
  */
 
 namespace backend\assets;
-
 use yii\web\AssetBundle;
-
-/**
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $sourcePath = '@webroot/admin-lte/';
     public $css = [
-        'css/site.css',
+        'bootstrap/css/bootstrap.min.css',
+       // 'plugins/font-awesome/css/font-awesome.min.css',
+        'dist/css/skins/skin-blue.css',
+        'dist/css/AdminLTE.css',
+        'plugins/iCheck/square/blue.css',
     ];
     public $js = [
+            'plugins/jQuery/jQuery-2.1.4.min.js',
+            'bootstrap/js/bootstrap.min.js',
+            'plugins/iCheck/icheck.min.js',
+          //  'dist/js/satusoftware_icheck.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
