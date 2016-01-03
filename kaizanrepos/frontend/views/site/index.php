@@ -242,13 +242,13 @@ $this->title = 'Home :: Kaizen Khazana';
                             <div class="overlay">
                                 <div class="display-table">
                                     <div class="display-table-cell">
-                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <h3>Sunil Bharti Mittal</h3>
                                         <hr>
                                         <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap1.jpg' ?>">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -256,13 +256,13 @@ $this->title = 'Home :: Kaizen Khazana';
                             <div class="overlay">
                                 <div class="display-table">
                                     <div class="display-table-cell">
-                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <h3>Mukesh Ambani</h3>
                                         <hr>
                                         <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap2.jpg' ?>">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -270,13 +270,13 @@ $this->title = 'Home :: Kaizen Khazana';
                             <div class="overlay">
                                 <div class="display-table">
                                     <div class="display-table-cell">
-                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <h3>Lakshmi Mittal</h3>
                                         <hr>
                                         <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap3.jpg' ?>">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -284,13 +284,13 @@ $this->title = 'Home :: Kaizen Khazana';
                             <div class="overlay">
                                 <div class="display-table">
                                     <div class="display-table-cell">
-                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <h3>Indra Nooyi</h3>
                                         <hr>
                                         <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap4.jpg' ?>">
                         </div>
                     </div>
                 </div>
