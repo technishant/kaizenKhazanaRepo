@@ -10,25 +10,26 @@ use yii\helpers\ArrayHelper;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<!--  / lookingBox \ -->
-<div class="lookingBox clearfix bg-grey">
+<!--  / registerBox \ -->
+<div class="registerBox clearfix">
     <div class="container">
         <div class="row">
+            <?php $form = ActiveForm::begin(['options' => ['class' => 'register clearfix', 'style' => 'max-width: 700px']]); ?>
+
+            <div class="col-sm-12 clearfix">
+                <span class="text-center"><i class="fa fa-info-circle"></i><?= yii\bootstrap\Html::encode('Post a enquiry if you are unable to find the concerned kazien, video, audio or ebook.') ?></span>
+                <hr>
+            </div>
+
             <div class="col-sm-12 clearfix">
                 <div class="form-group">
                     <?php if (Yii::$app->session->hasFlash('successEnquiry')): ?>
                         <div class="alert alert-success">
                             <?php echo Yii::$app->session->getFlash('successEnquiry'); ?>
                         </div>
-                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
-            </div>   
-            <?php $form = ActiveForm::begin(['options' => ['class' => 'form-horizontal looking clearfix']]); ?>
-            <div class="col-sm-12 clearfix">
-                <span class="text-center">Sorry but for the information you are looking is not available with us at the moment. But if you like we can still help you out. Fill the following form and we will search for you in background.</span>
-                <hr>
-            </div>
-            <div class="col-sm-12 clearfix">
+
                 <div class="form-group">
                     <?=
                     $form->field($model, 'category_id', ['template' => "{label}\n<div class='col-sm-9'>{input}\n{error}</div>"])->label('Select Category', ['class' => 'col-sm-3 control-label'])->dropDownList(
@@ -82,11 +83,13 @@ use yii\helpers\ArrayHelper;
                     </div>
                 </div>
             </div>
+
             <?php ActiveForm::end(); ?>
         </div>
     </div>
 </div>
-<!--  \ lookingBox / -->
+<!--  \ registerBox / -->
+
 
 <footer class="footerBox">
     <div class="ul-center">
