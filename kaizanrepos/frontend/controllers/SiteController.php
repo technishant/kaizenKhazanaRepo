@@ -21,6 +21,7 @@ use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use frontend\models\Kaizen;
 use frontend\models\KaizenSearch;
+use common\models\FairDetails;
 
 /**
  * Site controller
@@ -107,7 +108,8 @@ class SiteController extends Controller {
             }
         }
         $categories = Category::find()->roots()->all();
-        return $this->render('index', ['model' => $model, 'categories' => $categories]);
+        $fairVideos=FairDetails::find()->orderBy('id DESC')->limit('4')->asArray()->all();
+        return $this->render('index', ['model' => $model, 'categories' => $categories,'fairVideos'=>$fairVideos]);
     }
 
     /**

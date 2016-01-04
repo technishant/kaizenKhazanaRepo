@@ -1,4 +1,4 @@
 <?php
 return [
-    'kzAttachmentsUrl' => realpath(Yii::$app->basePath) . '/uploads/kzattachments',
+    'kzAttachmentsUrl' =>Yii::getAlias('@frontend') . '/uploads/kzattachments',
 ];

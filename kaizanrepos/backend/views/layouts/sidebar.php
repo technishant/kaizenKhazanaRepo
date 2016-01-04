@@ -34,13 +34,14 @@ use yii\helpers\Url;
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-            <a href="<?php echo Url::to(['/category/index']); ?>">
+            <a href="<?php echo Url::to(['/category']); ?>">
             <i class="fa fa-dashboard"></i> <span>Category Management</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul>
+        </li>
+        <li class="treeview">
+            <a href="<?php echo Url::to(['/fairdetails']); ?>">
+            <i class="fa fa-dashboard"></i> <span>Fairs Management</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
         </li>
         <li class="treeview">
           <a href="#">

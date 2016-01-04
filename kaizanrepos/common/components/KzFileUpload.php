@@ -26,20 +26,22 @@ class KzFileUpload extends Component {
         if (empty($image)) {
             return false;
         }
- 
+
         // generate random name for the file
         $this->pic = time().uniqid(). '.' . $image->extension;
- 
         // the uploaded image instance
         return $image;
     }
  
-    public function getUploadedFile() {
+    public function getUploadedFile($path='') {
         // return a default image placeholder if your source avatar is not found
         $pic = isset($this->pic) ? $this->pic : 'default.png';
-        if(!file_exists(Yii::$app->params['kzAttachmentsUrl'])){
-            mkdir(Yii::$app->params['kzAttachmentsUrl'], 0777,true);
+        if(empty($path)){
+            $path=Yii::$app->params['kzAttachmentsUrl'];
         }
-        return Yii::$app->params['kzAttachmentsUrl'] .'/'. $pic;
+        if(!file_exists($path)){
+            mkdir($path, 0777,true);
+        }
+        return $path .'/'. $pic;
     }
 }
