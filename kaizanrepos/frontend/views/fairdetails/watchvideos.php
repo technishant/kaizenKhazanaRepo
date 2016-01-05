@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 <?php \yii\widgets\Pjax::begin(['id' => 'watchVideo']); ?> 
                 <div class="store-product"> 
-                    <video width="600px" style="height:100%" controls>
+                    <video style="width: 100%; height: 450px; background: black;" controls>
                         <source src="<?= Yii::$app->request->baseUrl . '/../uploads/fairvideos/' . $currentVideo->attachment; ?>" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
