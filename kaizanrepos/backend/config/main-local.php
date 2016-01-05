@@ -7,6 +7,7 @@ $config = [
             'cookieValidationKey' => 'Lweig8e5Nj6xDEkWR7nkM3CbafZYi411',
         ],
     ],
+    'layout' => 'backend',
 ];
 
 if (!YII_ENV_TEST) {

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
-
+use common\components\MyHelpers;
 $this->title = 'Home :: Kaizen Khazana';
 ?>
 <!--  / searchBox \ -->
