@@ -93,7 +93,7 @@ class FairdetailsController extends Controller
                             $video->save($format, $videoPath);
                             
                             $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(1))->save($thumbname);
-                            Image::thumbnail($thumbname, 570, 330)->save(($thumbname), ['quality' => 80]);
+                            Image::thumbnail($thumbname, 565, 283)->save(($thumbname), ['quality' => 80]);
                             chmod($path1, 0777);
                             unlink($path1);
                         }
@@ -154,7 +154,7 @@ class FairdetailsController extends Controller
 
                             $video->save($format, $videoPath);
                             $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(1))->save($thumbname);
-                            Image::thumbnail($thumbname, 570, 330)->save(($thumbname), ['quality' => 80]);
+                            Image::thumbnail($thumbname, 565, 283)->save(($thumbname), ['quality' => 80]);
                             chmod($path1, 0777);
                             unlink($path1); //removing original video
                             chmod(Yii::getAlias('@frontend') . '/uploads/fairvideos/'.$oldFile, 0777);
