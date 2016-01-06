@@ -27,9 +27,9 @@ AppAsset::register($this);
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?= $this->render('header.php'); ?>
-
-    <div class="content-wrapper">
-        <?= $this->render('sidebar.php'); ?>
+<?= $this->render('sidebar.php'); ?>
+    <div class="content-wrapper" style="min-height: 946px;">
+        
         <?= $content; ?>
     </div>
 </div>
