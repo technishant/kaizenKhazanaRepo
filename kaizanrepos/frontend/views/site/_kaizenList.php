@@ -6,6 +6,8 @@
  */
 
 use yii\helpers\Url;
+use yii\bootstrap\Html;
+use common\components\MyHelpers;
 ?>
 <li>
     <div class = "inner border-none clearfix">
@@ -33,9 +35,9 @@ use yii\helpers\Url;
         ?>
         <div class = "photo"><img src = "<?= $imgpath ?>"></div>
         <div class = "text">
-            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><h4><?= $model->name; ?></h4></a>
-            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><p><?= $model->subject; ?></p></a>
-            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><?= $model->description; ?></a>
+            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><h4><?= Html::encode(ucwords($model->name)); ?></h4></a>
+            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><p><?= Html::encode(ucwords($model->subject)); ?></p></a>
+            <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><?= Html::encode(MyHelpers::trim_by_words($model->description,100)); ?></a>
         </div>
     </div>
 </li>
