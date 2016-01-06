@@ -28,7 +28,7 @@ use yii\helpers\Url;
             }
             $imgpath = $iconPath;
         } else {
-            $imgpath = Yii::$app->request->baseUrl . '/images/photoicon.jpg';
+            $imgpath = Yii::$app->request->baseUrl . '/images/photoicon.png';
         }
         ?>
         <div class = "photo"><img src = "<?= $imgpath ?>"></div>
