@@ -52,14 +52,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 <?php ActiveForm::end(); ?>
                 
-                <?php \yii\widgets\Pjax::begin(['id' => 'watchVideo']); ?> 
                 <div class="store-product"> 
                     <video style="width: 100%; height: 450px; background: black;" controls>
                         <source src="<?= Yii::$app->request->baseUrl . '/../uploads/fairvideos/' . $currentVideo->attachment; ?>" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                </div>
-                <?php \yii\widgets\Pjax::end(); ?>   
+                </div>  
                 <h2><?= Html::encode(ucwords($currentVideo->title)); ?></h2>
                 <p><?= Html::encode($currentVideo->description); ?></p>
 
@@ -97,12 +95,3 @@ $this->params['breadcrumbs'][] = $this->title;
     </article>
 </section>
 <!--  \ product box / -->
-<?php
-$this->registerJs(
-        '$("document").ready(function(){ 
-            $("#list-data").on("pjax:end", function() {
-                $.pjax.reload({container:"#watchVideo"});  //Reload GridView
-            });
-        });'
-);
-?>

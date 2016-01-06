@@ -13,7 +13,7 @@ use yii\helpers\Html;
                     <div class="center-v-text">
                         <p><?= Html::encode(ucwords($model->title)) ?></p>
                         <p><?php echo ucfirst(MyHelpers::trim_by_words($model->description,10)) ?></p>
-                        <a href="<?= \yii\helpers\Url::toRoute('fairdetails/watch?id='.base64_encode($model->id)); ?>" id="playthis" class="btn btn-primary">Read more</a>
+                        <a data-pjax="0" href="<?= \yii\helpers\Url::toRoute('fairdetails/watch?id='.base64_encode($model->id)); ?>" id="playthis" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
             </div>                 
