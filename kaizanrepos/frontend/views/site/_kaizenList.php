@@ -4,38 +4,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 use yii\helpers\Url;
 ?>
 <li>
     <div class = "inner border-none clearfix">
-         <?php 
-         if($model->type=='0' && $model->attachmenttype=='image' && file_exists(Yii::$app->params['kzAttachmentsUrl'].'/thumb__'.$model->attachmentafter)){
-            $iconPath=Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__'.$model->attachmentafter;
-        }elseif($model->type=='0' && !file_exists(Yii::$app->params['kzAttachmentsUrl'].'/thumb__'.$model->attachmentafter)){
-           switch ($model->attachmenttype) {
+        <?php
+        if ($model->type == '0' && $model->attachmenttype == 'image' && file_exists(Yii::$app->params['kzAttachmentsUrl'] . '/thumb__' . $model->attachmentafter)) {
+            $iconPath = Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__' . $model->attachmentafter;
+        } elseif ($model->type == '0' && !file_exists(Yii::$app->params['kzAttachmentsUrl'] . '/thumb__' . $model->attachmentafter)) {
+            switch ($model->attachmenttype) {
                 case 'image':
-                    $iconPath=Yii::$app->request->baseUrl . '/images/photoicon.png';
+                    $iconPath = Yii::$app->request->baseUrl . '/images/photoicon.png';
                     break;
                 case 'pdf':
-                    $iconPath=Yii::$app->request->baseUrl . '/images/pdficon.png';
+                    $iconPath = Yii::$app->request->baseUrl . '/images/pdficon.png';
                     break;
                 case 'video':
-                    $iconPath=Yii::$app->request->baseUrl . '/images/videoicon.png';
+                    $iconPath = Yii::$app->request->baseUrl . '/images/videoicon.png';
                     break;
                 default:
-                    $iconPath=Yii::$app->request->baseUrl . '/images/photoicon.png';
+                    $iconPath = Yii::$app->request->baseUrl . '/images/photoicon.png';
             }
-           $imgpath=$iconPath; 
+            $imgpath = $iconPath;
+        } else {
+            $imgpath = Yii::$app->request->baseUrl . '/images/photoicon.jpg';
         }
-        elseif(file_exists(Yii::$app->params['kzAttachmentsUrl'].'/thumb__'.$model->attachmentafter)){
-            $imgpath=Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__'.$model->attachmentafter;
-        }
-        elseif(file_exists(Yii::$app->params['kzAttachmentsUrl'].'/thumb__'.$model->attachmentafter)){
-            $imgpath=Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__'.$model->attachmentafter;
-        }
-        else{
-           $imgpath=Yii::$app->request->baseUrl . '/images/item-1.jpg'; 
-        } ?>
+        ?>
         <div class = "photo"><img src = "<?= $imgpath ?>"></div>
         <div class = "text">
             <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><h4><?= $model->name; ?></h4></a>
