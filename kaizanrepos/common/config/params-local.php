@@ -1,4 +1,4 @@
 <?php
 return [
-    'kzAttachmentsUrl' =>Yii::getAlias('@frontend') . '/uploads/kzattachments',
+    'kzAttachmentsUrl' =>Yii::getAlias('@frontend') . '/web/uploads/kzattachments',
 ];
