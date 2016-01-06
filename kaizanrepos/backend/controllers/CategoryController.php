@@ -17,7 +17,6 @@ use yii\data\ArrayDataProvider;
  */
 class CategoryController extends Controller {
 
-    public $layout = 'backend';
     public $rootId = '';
 
     public function behaviors() {

@@ -30,7 +30,7 @@ class Category extends \yii\db\ActiveRecord {
     public function rules() {
         return [
             [['tree', 'lft', 'rgt', 'depth'], 'integer'],
-            //[['lft', 'rgt', 'depth', 'name'], 'required'],
+            [['name'], 'required'],
             [['name'], 'string', 'max' => 255]
         ];
     }
