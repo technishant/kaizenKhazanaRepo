@@ -11,7 +11,7 @@ use yii\helpers\Url;
     <div class = "inner border-none clearfix">
         <?php
         if ($model->type == '0' && $model->attachmenttype == 'image' && file_exists(Yii::$app->params['kzAttachmentsUrl'] . '/thumb__' . $model->attachmentafter)) {
-            $iconPath = Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__' . $model->attachmentafter;
+            $imgpath = Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__' . $model->attachmentafter;
         } elseif ($model->type == '0' && !file_exists(Yii::$app->params['kzAttachmentsUrl'] . '/thumb__' . $model->attachmentafter)) {
             switch ($model->attachmenttype) {
                 case 'image':
