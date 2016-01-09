@@ -19,17 +19,17 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/master.css',
-        'css/font-awesome.min.css',
-        'css/fonts.css',
+        //'css/font-awesome.min.css',
+        //'css/fonts.css',
         //'css/global.css',
-        'css/owl.carousel.css',
-        'css/global-flag.css',
+        //'css/owl.carousel.css',
+        //'css/global-flag.css',
         //'css/global-saffron.css'
     ];
     public $js = [
         'js/bootstrap.min.js',
-        'js/custom.js',
         'js/owl.carousel.js',
+        'js/custom.js',        
         'js/respond.min.js',
         'js/html5shiv.min.js',
         'js/bootbox.min.js',
