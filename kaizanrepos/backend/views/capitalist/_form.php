@@ -54,7 +54,14 @@ use yii\widgets\ActiveForm;
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <?= $form->field($model, 'profile_photo')->textInput(['maxlength' => true]) ?>
+                            <?= $form->field($model, 'profile_photo')->fileInput() ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
                         </div>
                     </div>
                 </div>

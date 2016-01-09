@@ -8,6 +8,7 @@ use frontend\models\CapitalistSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CapitalistController implements the CRUD actions for Capitalist model.
@@ -62,8 +63,26 @@ class CapitalistController extends Controller
     {
         $model = new Capitalist();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $transaction = Yii::$app->db->beginTransaction();
+            try{
+                $uploadedFile = UploadedFile::getInstance($model, 'profile_photo');
+                if($uploadedFile) {
+                    $extensionName = $uploadedFile->extension;
+                    $fileName = time().'_'.uniqid().'.'.$extensionName;
+                    $model->profile_photo = $fileName;
+                }
+                if($model->validate() && $model->save()) {
+                    if($uploadedFile) {
+                        $uploadedFile->saveAs(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images/'.$fileName);
+                    }
+                    $transaction->commit();
+                    return $this->redirect(['index']);
+                }
+            } catch (Exception $ex) {
+                $transaction->rollback();
+                @unlink(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images/' . $fileName);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
