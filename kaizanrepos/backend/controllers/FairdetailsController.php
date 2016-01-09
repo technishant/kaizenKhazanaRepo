@@ -75,7 +75,7 @@ class FairdetailsController extends Controller
                     $thumbname = Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($path1, PATHINFO_FILENAME).'.jpg';
                    
                 }
-            if ($model->validate() && $model->save()) {
+            if ($model->validate()) {
                     if ($model->attachmentfile !== FALSE) {
                             $tmpname=$model->attachmentfile->tempName;                                                     	
                             $size="565*283";
@@ -92,12 +92,19 @@ class FairdetailsController extends Controller
                                 
                                 $cmd = shell_exec("ffmpeg -i $tmpname -c:v libx264 $videoPath 2>&1");
                             }
+                            if($model->save()){
+                                Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
+                                return $this->render('create', [
+                                            'model' => $model,
+                                    ]);
+                            }
                             
                         }
-                        Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
+                Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving fair details.Please try again.');
                         return $this->render('create', [
                                     'model' => $model,
-                            ]);
+                        ]);
+                        
                 }else{
                         Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving fair details.Please try again.');
                         return $this->render('create', [
@@ -134,7 +141,7 @@ class FairdetailsController extends Controller
                 $thumbname = Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($path1, PATHINFO_FILENAME).'.jpg';
 
             }
-            if ($model->validate() && $model->save()) {
+            if ($model->validate()) {
                     if ($model->attachmentfile !== FALSE) {
                             $tmpname=$model->attachmentfile->tempName; 
                             $size="565*283";
@@ -159,9 +166,16 @@ class FairdetailsController extends Controller
                             chmod(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($oldFile,PATHINFO_FILENAME).'.jpg', 0777);
                             unlink(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($oldFile,PATHINFO_FILENAME).'.jpg'); //removing old thumb
                             }
+                            if($model->save()){
+                                Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
+                                return $this->redirect(['view', 'id' => $model->id]);
+                            }
                         }
-                        Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
-                        return $this->redirect(['view', 'id' => $model->id]);
+                        Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving fair details.Please try again.');
+                        return $this->render('update', [
+                            'model' => $model,
+                        ]);
+                        
                 }else{
                         Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving fair details.Please try again.');
                         return $this->render('update', [
