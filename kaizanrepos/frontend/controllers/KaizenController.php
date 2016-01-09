@@ -100,25 +100,74 @@ class KaizenController extends Controller {
                 if ($model->kzfileafter !== false) {
                     $path2 = Yii::$app->fileupload->getUploadedFile();
                 }
-                if ($model->validate()) {
+                if ($model->validate()) { 
+                    switch ($model->attachmenttype){
+                        case 'video':
+                            $path1 = pathinfo($path1, PATHINFO_DIRNAME).'/'.pathinfo($path1, PATHINFO_FILENAME).'.mp4'; 
+                            $thumb1path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path1, PATHINFO_FILENAME).'.jpg';
+                            $tmpname=$model->kzfilebefore->tempName;                                                     	
+                            $size="80*80";
+                            $getFromSecond=2;
+                            $thumbcmd="ffmpeg -i $tmpname -an -ss $getFromSecond -s $size $thumb1path 2>&1";
+                            shell_exec($thumbcmd);
+                            $videoInfo = shell_exec("ffprobe -v quiet -print_format json -show_format -show_streams $tmpname 2>&1");
+                            $videoInfoArray = json_decode($videoInfo);
+                            $videoHeight = $videoInfoArray->streams[0]->height; //480
+                            $videoWidth = $videoInfoArray->streams[0]->width; //720    
+                            if ($videoWidth > 720 || $videoHeight > 720) { //if video resolution is high then convert video
+                                $cmd = shell_exec("ffmpeg -i  $tmpname -c:v libx264 -s 720*480  $path1 2>&1");
+                            } else {
+
+                                $cmd = shell_exec("ffmpeg -i $tmpname -c:v libx264 $path1 2>&1");
+                            }
+                            $path2 = pathinfo($path2, PATHINFO_DIRNAME).'/'.pathinfo($path2, PATHINFO_FILENAME).'.mp4'; 
+                            $thumb2path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path2, PATHINFO_FILENAME).'.jpg';
+                            $tmpname=$model->kzfileafter->tempName;                                                     	
+                            $size="80*80";
+                            $getFromSecond=2;
+                            $thumbcmd="ffmpeg -i $tmpname -an -ss $getFromSecond -s $size $thumb2path 2>&1";
+                            shell_exec($thumbcmd);
+                            $videoInfo = shell_exec("ffprobe -v quiet -print_format json -show_format -show_streams $tmpname 2>&1");
+                            $videoInfoArray = json_decode($videoInfo);
+                            $videoHeight = $videoInfoArray->streams[0]->height; //480
+                            $videoWidth = $videoInfoArray->streams[0]->width; //720    
+                            if ($videoWidth > 720 || $videoHeight > 720) { //if video resolution is high then convert video
+                                $cmd = shell_exec("ffmpeg -i  $tmpname -c:v libx264 -s 720*480  $path2 2>&1");
+                            } else {
+
+                                $cmd = shell_exec("ffmpeg -i $tmpname -c:v libx264 $path2 2>&1");
+                            }
+                            break;
+                        case 'image':
+                            $thumb1path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path1, PATHINFO_BASENAME);
+                            $thumb2path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path2, PATHINFO_BASENAME);                        
+                            if ($model->kzfilebefore !== FALSE) {
+                                $model->kzfilebefore->saveAs($path1);
+                                if($model->attachmenttype=='image'){
+                                Image::thumbnail($path1, 80, 80)->save(($thumb1path), ['quality' => 80]);
+                                }
+                            }
+                            if ($model->kzfileafter !== FALSE) {
+                                $model->kzfileafter->saveAs($path2);
+                                if($model->attachmenttype=='image'){
+                                Image::thumbnail($path1, 80, 80)->save(($thumb2path), ['quality' => 80]);
+                                }
+                            }
+                            break;
+                        case 'pdf':
+                            if ($model->kzfilebefore !== FALSE) {
+                                $model->kzfilebefore->saveAs($path1);
+                            }
+                            if ($model->kzfileafter !== FALSE) {
+                                $model->kzfileafter->saveAs($path2);
+                            }
+                            break;
+                        default :
+                            break;
+                    }
                     $model->attachmentbefore = pathinfo($path1, PATHINFO_BASENAME);
                     $model->attachmentafter = pathinfo($path2, PATHINFO_BASENAME);
-                    //thumbpath
-                    $thumb1path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path1, PATHINFO_BASENAME);
-                    $thumb2path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path2, PATHINFO_BASENAME);
-                    if ($model->save()) {
-                        if ($model->kzfilebefore !== FALSE) {
-                            $model->kzfilebefore->saveAs($path1);
-                            if($model->attachmenttype=='image'){
-                            Image::thumbnail($path1, 80, 80)->save(($thumb1path), ['quality' => 80]);
-                            }
-                        }
-                        if ($model->kzfileafter !== FALSE) {
-                            $model->kzfileafter->saveAs($path2);
-                            if($model->attachmenttype=='image'){
-                            Image::thumbnail($path1, 80, 80)->save(($thumb2path), ['quality' => 80]);
-                            }
-                        }
+                    if ($model->save()) {                        
                         Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
                         return $this->refresh();
                     } else {
@@ -129,16 +178,51 @@ class KaizenController extends Controller {
                     }
                 }
             } else {
+                $otherAttachmentType=Yii::$app->request->post('otherAttachmentType');
                 $model->otherAttachmentFile = Yii::$app->fileupload->uploadFile($model, 'otherAttachmentFile');
                 if ($model->otherAttachmentFile !== FALSE) {
                     $otherAttachementPath = Yii::$app->fileupload->getUploadedFile();
                 }
                 if ($model->validate()) {
-                    $model->attachmentother = pathinfo($otherAttachementPath, PATHINFO_BASENAME);
-                    if ($model->save()) {
-                        if ($model->otherAttachmentFile !== FALSE) {
-                            $model->otherAttachmentFile->saveAs($otherAttachementPath);
-                        }
+                    if ($model->otherAttachmentFile !== FALSE) {
+                            switch ($model->type){
+                                case '1':                                    
+                                    $model->attachmentother = pathinfo($otherAttachementPath, PATHINFO_BASENAME);
+                                    $model->otherAttachmentFile->saveAs($otherAttachementPath);
+                                    $model->attachmenttype='image';
+                                    $thumb1path = pathinfo($otherAttachementPath, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($otherAttachementPath, PATHINFO_BASENAME);   
+                                    Image::thumbnail($otherAttachementPath, 80, 80)->save(($thumb1path), ['quality' => 80]); 
+                                    break;
+                                case '2':
+                                    $model->attachmenttype='video';
+                                    $path1 = pathinfo($otherAttachementPath, PATHINFO_DIRNAME).'/'.pathinfo($otherAttachementPath, PATHINFO_FILENAME).'.mp4'; 
+                                    $thumb1path = pathinfo($path1, PATHINFO_DIRNAME) . '/thumb__' . pathinfo($path1, PATHINFO_FILENAME).'.jpg';
+                                    $tmpname=$model->otherAttachmentFile->tempName;                                                     	
+                                    $size="80*80";
+                                    $getFromSecond=2;
+                                    $thumbcmd="ffmpeg -i $tmpname -an -ss $getFromSecond -s $size $thumb1path 2>&1";
+                                    shell_exec($thumbcmd);
+                                    $videoInfo = shell_exec("ffprobe -v quiet -print_format json -show_format -show_streams $tmpname 2>&1");
+                                    $videoInfoArray = json_decode($videoInfo);
+                                    $videoHeight = $videoInfoArray->streams[0]->height; //480
+                                    $videoWidth = $videoInfoArray->streams[0]->width; //720    
+                                    if ($videoWidth > 720 || $videoHeight > 720) { //if video resolution is high then convert video
+                                        $cmd = shell_exec("ffmpeg -i  $tmpname -c:v libx264 -s 720*480  $path1 2>&1");
+                                    } else {
+
+                                        $cmd = shell_exec("ffmpeg -i $tmpname -c:v libx264 $path1 2>&1");
+                                    }                                    
+                                    $model->attachmentother = pathinfo($path1, PATHINFO_BASENAME);
+                                    break;
+                                case '3':
+                                    $model->attachmenttype='pdf';
+                                    $model->otherAttachmentFile->saveAs($otherAttachementPath);
+                                    $model->attachmentother = pathinfo($otherAttachementPath, PATHINFO_BASENAME);
+                                default:
+                                    break;
+                            }
+                    }
+                    if ($model->save()) {                        
                         Yii::$app->session->setFlash('successKz', 'Kaizen is saved successfully for reviewing.');
                         return $this->refresh();
                     } else {
