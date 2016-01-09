@@ -188,7 +188,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                 </div>
                             </div>
                             <?php
-                            if(file_exists(Yii::getAlias('@frontend').'/web/uploads/fairvideos/'.$fair['attachment'])){
+                            if(file_exists(Yii::getAlias('@frontend').'/web/uploads/fairvideos/'.pathinfo($fair['attachment'],PATHINFO_FILENAME).'.jpg')){
                                 $imgpath=  Yii::$app->request->baseUrl.'/uploads/fairvideos/'.pathinfo($fair['attachment'],PATHINFO_FILENAME).'.jpg';
                             }else{
                                 $imgpath=Yii::$app->request->baseUrl . '/images/item-1.jpg'; 
