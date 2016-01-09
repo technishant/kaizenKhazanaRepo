@@ -77,17 +77,22 @@ class FairdetailsController extends Controller
                 }
             if ($model->validate() && $model->save()) {
                     if ($model->attachmentfile !== FALSE) {
-                            $model->attachmentfile->saveAs($path1);  
-                            $videoconvert="ffmpeg -i $path1 -c:v libx264 $videoPath 2>&1";
-                            shell_exec($videoconvert);
+                            $tmpname=$model->attachmentfile->tempName;                                                     	
                             $size="565*283";
                             $getFromSecond=2;
-                            $thumbcmd="ffmpeg -i $path1 -an -ss 2 -s $size $thumbname 2>&1";
+                            $thumbcmd="ffmpeg -i $tmpname -an -ss $getFromSecond -s $size $thumbname 2>&1";
                             shell_exec($thumbcmd);
-                            if(file_exists($path1)){
-                            chmod($path1, 0777);
-                            unlink($path1);
+                            $videoInfo = shell_exec("ffprobe -v quiet -print_format json -show_format -show_streams $tmpname 2>&1");
+                            $videoInfoArray = json_decode($videoInfo);
+                            $videoHeight = $videoInfoArray->streams[0]->height; //480
+                            $videoWidth = $videoInfoArray->streams[0]->width; //720    
+                            if ($videoWidth > 720 || $videoHeight > 720) { //if video resolution is high then convert video
+                                $cmd = shell_exec("ffmpeg -i  $tmpname -c:v libx264 -s 720*480  $videoPath 2>&1");
+                            } else {
+                                
+                                $cmd = shell_exec("ffmpeg -i $tmpname -c:v libx264 $videoPath 2>&1");
                             }
+                            
                         }
                         Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
                         return $this->render('create', [
@@ -131,16 +136,20 @@ class FairdetailsController extends Controller
             }
             if ($model->validate() && $model->save()) {
                     if ($model->attachmentfile !== FALSE) {
-                            $model->attachmentfile->saveAs($path1);
-                            $videoconvert="ffmpeg -i $path1 -c:v libx264 $videoPath 2>&1";
-                            shell_exec($videoconvert);
+                            $tmpname=$model->attachmentfile->tempName; 
                             $size="565*283";
                             $getFromSecond=2;
-                            $thumbcmd="ffmpeg -i $path1 -an -ss 2 -s $size $thumbname 2>&1";
-                            shell_exec($thumbcmd);                            
-                            if(file_exists($path1)){
-                            chmod($path1, 0777);
-                            unlink($path1); //removing original video
+                            $thumbcmd="ffmpeg -i $tmpname -an -ss $getFromSecond -s $size $thumbname 2>&1";
+                            shell_exec($thumbcmd);
+                            $videoInfo = shell_exec("ffprobe -v quiet -print_format json -show_format -show_streams $tmpname 2>&1");
+                            $videoInfoArray = json_decode($videoInfo);
+                            $videoHeight = $videoInfoArray->streams[0]->height; //480
+                            $videoWidth = $videoInfoArray->streams[0]->width; //720    
+                            if ($videoWidth > 720 || $videoHeight > 720) { //if video resolution is high then convert video
+                                $cmd = shell_exec("ffmpeg -i  $tmpname -c:v libx264 -s 720*480  $videoPath 2>&1");
+                            } else {
+                                
+                                $cmd = shell_exec("ffmpeg -i $tmpname -c:v libx264 $videoPath 2>&1");
                             }
                             if(file_exists(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$oldFile)){
                             chmod(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$oldFile, 0777);
