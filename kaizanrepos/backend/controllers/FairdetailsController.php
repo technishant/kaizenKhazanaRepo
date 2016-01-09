@@ -69,33 +69,25 @@ class FairdetailsController extends Controller
            
             $model->attachmentfile = Yii::$app->fileupload->uploadFile($model, 'attachmentfile');
                 if ($model->attachmentfile !== false) {
-                    $path1 = Yii::$app->fileupload->getUploadedFile(Yii::getAlias('@frontend') . '/uploads/fairvideos');
+                    $path1 = Yii::$app->fileupload->getUploadedFile(Yii::getAlias('@frontend') . '/web/uploads/fairvideos');
                     $model->attachment = pathinfo($path1, PATHINFO_FILENAME).'.mp4';
-                    $videoPath = Yii::getAlias('@frontend') . '/uploads/fairvideos/'.$model->attachment;
-                    $thumbname = Yii::getAlias('@frontend') . '/uploads/fairvideos/'.pathinfo($path1, PATHINFO_FILENAME).'.jpg';
+                    $videoPath = Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$model->attachment;
+                    $thumbname = Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($path1, PATHINFO_FILENAME).'.jpg';
                    
                 }
             if ($model->validate() && $model->save()) {
                     if ($model->attachmentfile !== FALSE) {
-                            $model->attachmentfile->saveAs($path1);
-                            $ffmpeg = FFMpeg::create();
-                            $video = $ffmpeg->open($path1);
-                            $format = new \FFMpeg\Format\Video\X264('libmp3lame', 'libx264');
-                            $format->on('progress', function ($video, $format, $percentage) {
-                                echo "$percentage % transcoded";
-                            });
-
-                            $format
-                                -> setKiloBitrate(800)
-                                -> setAudioChannels(2)
-                                -> setAudioKiloBitrate(256);
-
-                            $video->save($format, $videoPath);
-                            
-                            $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(1))->save($thumbname);
-                            Image::thumbnail($thumbname, 565, 283)->save(($thumbname), ['quality' => 80]);
+                            $model->attachmentfile->saveAs($path1);  
+                            $videoconvert="ffmpeg -i $path1 -c:v libx264 $videoPath 2>&1";
+                            shell_exec($videoconvert);
+                            $size="565*283";
+                            $getFromSecond=2;
+                            $thumbcmd="ffmpeg -i $path1 -an -ss 2 -s $size $thumbname 2>&1";
+                            shell_exec($thumbcmd);
+                            if(file_exists($path1)){
                             chmod($path1, 0777);
                             unlink($path1);
+                            }
                         }
                         Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
                         return $this->render('create', [
@@ -131,36 +123,33 @@ class FairdetailsController extends Controller
             $model->attachmentfile = Yii::$app->fileupload->uploadFile($model, 'attachmentfile');            
             if ($model->attachmentfile !== false) {
                 $oldFile=$model->attachment; //get old filename
-                $path1 = Yii::$app->fileupload->getUploadedFile(Yii::getAlias('@frontend') . '/uploads/fairvideos');
+                $path1 = Yii::$app->fileupload->getUploadedFile(Yii::getAlias('@frontend') . '/web/uploads/fairvideos');
                 $model->attachment = pathinfo($path1, PATHINFO_FILENAME).'.mp4';
-                $videoPath = Yii::getAlias('@frontend') . '/uploads/fairvideos/'.$model->attachment;
-                $thumbname = Yii::getAlias('@frontend') . '/uploads/fairvideos/'.pathinfo($path1, PATHINFO_FILENAME).'.jpg';
+                $videoPath = Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$model->attachment;
+                $thumbname = Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($path1, PATHINFO_FILENAME).'.jpg';
 
             }
             if ($model->validate() && $model->save()) {
                     if ($model->attachmentfile !== FALSE) {
                             $model->attachmentfile->saveAs($path1);
-                            $ffmpeg = FFMpeg::create();
-                            $video = $ffmpeg->open($path1);
-                            $format = new \FFMpeg\Format\Video\X264('libmp3lame', 'libx264');
-                            $format->on('progress', function ($video, $format, $percentage) {
-                                echo "$percentage % transcoded";
-                            });
-
-                            $format
-                                -> setKiloBitrate(800)
-                                -> setAudioChannels(2)
-                                -> setAudioKiloBitrate(256);
-
-                            $video->save($format, $videoPath);
-                            $video->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(1))->save($thumbname);
-                            Image::thumbnail($thumbname, 565, 283)->save(($thumbname), ['quality' => 80]);
+                            $videoconvert="ffmpeg -i $path1 -c:v libx264 $videoPath 2>&1";
+                            shell_exec($videoconvert);
+                            $size="565*283";
+                            $getFromSecond=2;
+                            $thumbcmd="ffmpeg -i $path1 -an -ss 2 -s $size $thumbname 2>&1";
+                            shell_exec($thumbcmd);                            
+                            if(file_exists($path1)){
                             chmod($path1, 0777);
                             unlink($path1); //removing original video
-                            chmod(Yii::getAlias('@frontend') . '/uploads/fairvideos/'.$oldFile, 0777);
-                            unlink(Yii::getAlias('@frontend') . '/uploads/fairvideos/'.$oldFile); //removing old video
-                            chmod(Yii::getAlias('@frontend') . '/uploads/fairvideos/'.pathinfo($oldFile,PATHINFO_FILENAME).'.jpg', 0777);
-                            unlink(Yii::getAlias('@frontend') . '/uploads/fairvideos/'.pathinfo($oldFile,PATHINFO_FILENAME).'.jpg'); //removing old thumb
+                            }
+                            if(file_exists(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$oldFile)){
+                            chmod(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$oldFile, 0777);
+                            unlink(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$oldFile); //removing old video
+                            }
+                            if(file_exists(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($oldFile,PATHINFO_FILENAME).'.jpg')){
+                            chmod(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($oldFile,PATHINFO_FILENAME).'.jpg', 0777);
+                            unlink(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($oldFile,PATHINFO_FILENAME).'.jpg'); //removing old thumb
+                            }
                         }
                         Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
                         return $this->redirect(['view', 'id' => $model->id]);
@@ -188,11 +177,15 @@ class FairdetailsController extends Controller
     public function actionDelete($id)
     {
         $model=$this->findModel($id);        
-        $videoPath = Yii::getAlias('@frontend') . '/uploads/fairvideos/'.$model->attachment;
+        $videoPath = Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.$model->attachment;
+        if(file_exists($videoPath)){
         chmod($videoPath, 0777);
         unlink($videoPath);
-        chmod(Yii::getAlias('@frontend') . '/uploads/fairvideos/'.pathinfo($videoPath,PATHINFO_FILENAME).'.jpg', 0777);
-        unlink(Yii::getAlias('@frontend') . '/uploads/fairvideos/'.pathinfo($videoPath,PATHINFO_FILENAME).'.jpg'); //removing old thumb
+        }
+        if(file_exists(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($videoPath,PATHINFO_FILENAME).'.jpg')){
+        chmod(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($videoPath,PATHINFO_FILENAME).'.jpg', 0777);
+        unlink(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/'.pathinfo($videoPath,PATHINFO_FILENAME).'.jpg'); //removing old thumb
+        }
         $model->delete();
         return $this->redirect(['index']);
     }

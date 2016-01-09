@@ -19,8 +19,8 @@ use yii\helpers\Html;
                 </div>
             </div>                 
             <?php
-            if(file_exists(Yii::getAlias('@frontend').'/uploads/fairvideos/'.$model->attachment)){
-                $imgpath=  Yii::$app->request->baseUrl.'/../uploads/fairvideos/'.pathinfo($model->attachment,PATHINFO_FILENAME).'.jpg';
+            if(file_exists(Yii::getAlias('@frontend').'/web/uploads/fairvideos/'.$model->attachment)){
+                $imgpath=  Yii::$app->request->baseUrl.'/uploads/fairvideos/'.pathinfo($model->attachment,PATHINFO_FILENAME).'.jpg';
             }else{
                 $imgpath=Yii::$app->request->baseUrl . '/images/item-1.jpg'; 
             } ?>
