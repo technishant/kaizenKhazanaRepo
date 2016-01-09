@@ -10,30 +10,42 @@ use yii\grid\GridView;
 $this->title = 'Capitalists';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="capitalist-index">
+<section class="content-header">
+    <h1>
+        <?= Html::encode($this->title) ?>
+        <span  class="pull-right">
+            <?= Html::a(Yii::t('app', 'Add Capitalist'), ['create'], ['class' => 'btn btn-success']) ?>
+        </span>
+    </h1>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Capitalist', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-            'short_description',
-            'long_description:ntext',
-            'profile_photo',
-            // 'last_updated',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
-</div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <?=
+                                GridView::widget([
+                                    'dataProvider' => $dataProvider,
+                                    'filterModel' => $searchModel,
+                                    'columns' => [
+                                        ['class' => 'yii\grid\SerialColumn'],
+                                        'id',
+                                        'name',
+                                        'short_description',
+                                        'long_description:ntext',
+                                        'profile_photo',
+                                        ['class' => 'yii\grid\ActionColumn'],
+                                    ],
+                                ]);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

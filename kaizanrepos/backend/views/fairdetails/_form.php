@@ -3,12 +3,13 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use FFMpeg\FFProbe\DataMapping\Format;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\FairDetails */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
         <div class="box box-primary">
             <!-- /.box-header -->
             <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
@@ -49,11 +50,13 @@ use FFMpeg\FFProbe\DataMapping\Format;
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <?php if(!$model->isNewRecord){                                
-                                echo '<label class="control-label">Current Video:</label>'.'frontend/uploads/fairvideos/'.$model->attachment;
-                            } ?>
+                            <?php
+                            if (!$model->isNewRecord) {
+                                echo '<label class="control-label">Current Video:</label>' . 'frontend/uploads/fairvideos/' . $model->attachment;
+                            }
+                            ?>
                             <?= $form->field($model, 'attachmentfile')->fileInput(); ?>
-                            
+
                         </div>
                     </div>
                 </div>
