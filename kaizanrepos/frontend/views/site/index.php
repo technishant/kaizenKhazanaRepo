@@ -101,7 +101,7 @@ $this->title = 'Home :: Kaizen Khazana';
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <a href = "#" class = "btn btn-success btn-lg text-uppercase mar-top-30">Explore more features</a>
+            <a href = "#" class = "btn btn-success btn-lg text-uppercase mar-top-30" id="loadMore">Explore more features</a>
         </div>
     </div>
 </div>
