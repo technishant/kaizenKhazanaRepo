@@ -59,7 +59,7 @@ video.player { width: 100%; height: auto; }
 .icon-section span:first-child { margin-bottom: 10px; }
 .icon-section span i { font-size: 40px; }
 
-.searchBox, .registerBox, .loginBox, .formViewBox, .formBox { background: url("../images/banners/banner-1.jpg") no-repeat center center; -webkit-background-size: cover; background-size: cover; background-attachment: fixed; }
+.searchBox, .registerBox, .loginBox, .formViewBox, .formBox, .lookingBox { background: url("../images/login-bg2.jpg") no-repeat center center; -webkit-background-size: cover; background-size: cover; background-attachment: fixed; }
 .registerBox .register, .loginBox .login { padding: 30px; margin: 60px auto; background-color: rgba(0,0,0,0.3); }
 
 .bg-grey { background-color: #666; color: #fff; }
@@ -168,6 +168,8 @@ video.player { width: 100%; height: auto; }
 .left-side .panel-default > .panel-heading, .left-side .nav-tabs > li.active > a, .left-side  .nav-tabs > li.active > a:hover, .left-side .nav-tabs > li.active > a:focus { background: #ff9955; border-color: #ff9955; color: #fff; }
 
 .list-section li .inner { padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #ccc; }
+.list-section li .inner:hover {  background: #f9f9f9; }
+
 .list-section li .inner.border-none { border-top: 0px; }
 .list-section .photo { float: left; width: 80px; height: 80px; line-height: 80px; text-align: center; }
 .list-section .photo img { width: 100%; height: 100%; display: inline-block; vertical-align: middle; }
@@ -185,7 +187,7 @@ video.player { width: 100%; height: auto; }
 /* ### lookingBox ### */
 .lookingBox { padding-top: 50px; padding-bottom: 40px; }
 .lookingBox .looking { max-width: 700px; margin: auto; }
-.lookingBox .radio label { color: #333; }
+.lookingBox .radio label { color: #fff; }
 .form-horizontal .control-label { font-weight: 400; }
 .form-horizontal span.text-center { display: block; font-size: 16px; }
 .form-horizontal hr { border-top-color: #777; margin-bottom: 40px; }

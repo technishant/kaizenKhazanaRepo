@@ -6,12 +6,12 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
-
+use common\components\MyHelpers;
 $this->title = 'Login';
 ?>
 
 <!--  / loginBox \ -->
-<div class="loginBox clearfix">
+<div class="loginBox clearfix" style='background-image: url("../../web/images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'login-form', 'method' => 'POST', 'options' => ['class' => 'login clearfix']]); ?>
