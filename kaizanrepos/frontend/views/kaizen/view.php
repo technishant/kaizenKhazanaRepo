@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\components\MyHelpers;
 ?>
 <!--  / content container \ -->
 <section id="contentCntr" class="clearfix">
