@@ -8,7 +8,7 @@ use common\components\MyHelpers;
 $this->title = 'Home :: Kaizen Khazana';
 ?>
 <!--  / searchBox \ -->
-<div class="searchBox clearfix" style='background-image: url("../../web/images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
+<div class="searchBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
     <div class="container height-100 pos-rel">
         <div class="row height-100">
 
@@ -373,7 +373,7 @@ $this->title = 'Home :: Kaizen Khazana';
 <!--  \ siderBox / -->
 <?php if (Yii::$app->user->isGuest): ?>
     <!--  / registerBox \ -->
-    <div class="registerBox clearfix" style='background-image: url("../../web/images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
+    <div class="registerBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
         <div class="container">
             <div class="row">
                 <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix']]); ?>
