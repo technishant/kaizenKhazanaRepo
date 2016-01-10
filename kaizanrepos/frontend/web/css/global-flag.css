@@ -59,7 +59,7 @@ video.player { width: 100%; height: auto; }
 .icon-section span:first-child { margin-bottom: 10px; }
 .icon-section span i { font-size: 40px; }
 
-.searchBox, .registerBox, .loginBox, .formViewBox, .formBox { background: url("../images/login-bg2.jpg") no-repeat center center; -webkit-background-size: cover; background-size: cover; background-attachment: fixed; }
+.searchBox, .registerBox, .loginBox, .formViewBox, .formBox { background: url("../images/banners/banner-1.jpg") no-repeat center center; -webkit-background-size: cover; background-size: cover; background-attachment: fixed; }
 .registerBox .register, .loginBox .login { padding: 30px; margin: 60px auto; background-color: rgba(0,0,0,0.3); }
 
 .bg-grey { background-color: #666; color: #fff; }
