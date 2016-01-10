@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use frontend\models\Category;
 use yii\helpers\ArrayHelper;
+use common\components\MyHelpers;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Enquiry */
@@ -11,7 +12,7 @@ use yii\helpers\ArrayHelper;
 ?>
 
 <!--  / registerBox \ -->
-<div class="registerBox clearfix">
+<div class="registerBox clearfix" style='background-image: url("../../web/images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['options' => ['class' => 'register clearfix', 'style' => 'max-width: 700px']]); ?>
