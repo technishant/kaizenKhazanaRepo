@@ -6,12 +6,13 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use common\models\Country;
+use common\components\MyHelpers;
 
 $this->title = 'Signup :: Kaizen Kahazana';
 ?>
 
 <!--  / registerBox \ -->
-<div class="registerBox clearfix">
+<div class="registerBox clearfix" style='background-image: url("../../web/images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix']]); ?>
