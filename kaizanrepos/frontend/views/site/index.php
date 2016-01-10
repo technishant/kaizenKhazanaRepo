@@ -188,11 +188,12 @@ $this->title = 'Home :: Kaizen Khazana';
                                 </div>
                             </div>
                             <?php
-                            if(file_exists(Yii::getAlias('@frontend').'/web/uploads/fairvideos/'.pathinfo($fair['attachment'],PATHINFO_FILENAME).'.jpg')){
-                                $imgpath=  Yii::$app->request->baseUrl.'/uploads/fairvideos/'.pathinfo($fair['attachment'],PATHINFO_FILENAME).'.jpg';
-                            }else{
-                                $imgpath=Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg'; 
-                            } ?>
+                            if (file_exists(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/' . pathinfo($fair['attachment'], PATHINFO_FILENAME) . '.jpg')) {
+                                $imgpath = Yii::$app->request->baseUrl . '/uploads/fairvideos/' . pathinfo($fair['attachment'], PATHINFO_FILENAME) . '.jpg';
+                            } else {
+                                $imgpath = Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg';
+                            }
+                            ?>
                             <img src="<?= $imgpath ?>">
                         </div>
                         <?php
@@ -206,72 +207,35 @@ $this->title = 'Home :: Kaizen Khazana';
                 </div>
             </div>
         </div>
-        <div class="item">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3>Capitslist</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
-                        <div class="frames">
-                            <div class="overlay">
-                                <div class="display-table">
-                                    <div class="display-table-cell">
-                                        <h3>Sunil Bharti Mittal</h3>
-                                        <hr>
-                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <?php if (!empty($capitalistModel)): ?>
+            <div class="item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3><?= Html::encode('Capitalist'); ?></h3>
+                            <p><?= Html::encode('Check out our latest Capitalist'); ?></p>
+                        </div>
+                        <?php foreach ($capitalistModel as $capitalist): ?>
+                            <div class="width-full-480 col-xs-6 col-md-6">
+                                <div class="frames">
+                                    <div class="overlay">
+                                        <div class="display-table">
+                                            <div class="display-table-cell">
+                                                <h3><?= Html::encode($capitalist->name); ?></h3>
+                                                <hr>
+                                                <p><?= Html::encode($capitalist->short_description); ?></p>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <img src="<?= Yii::$app->request->baseUrl . '/uploads/capitalist_images/' . $capitalist->profile_photo ?>" height="250px" width="500px">
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap1.jpg' ?>">
-                        </div>
-                    </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
-                        <div class="frames">
-                            <div class="overlay">
-                                <div class="display-table">
-                                    <div class="display-table-cell">
-                                        <h3>Mukesh Ambani</h3>
-                                        <hr>
-                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap2.jpg' ?>">
-                        </div>
-                    </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
-                        <div class="frames">
-                            <div class="overlay">
-                                <div class="display-table">
-                                    <div class="display-table-cell">
-                                        <h3>Lakshmi Mittal</h3>
-                                        <hr>
-                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap3.jpg' ?>">
-                        </div>
-                    </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
-                        <div class="frames">
-                            <div class="overlay">
-                                <div class="display-table">
-                                    <div class="display-table-cell">
-                                        <h3>Indra Nooyi</h3>
-                                        <hr>
-                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/cap4.jpg' ?>">
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
+
         <div class="item">
             <div class="container">
                 <div class="row">
