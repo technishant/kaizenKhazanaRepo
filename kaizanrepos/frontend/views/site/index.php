@@ -89,18 +89,18 @@ $this->title = 'Home :: Kaizen Khazana';
                 <small class = "font-regular">A single place where you can find new innovations, tools & information to grow your business</small>
             </h3>
 
-            <div class = "icon-section clearfix">
+            <ul class="icon-section clearfix moreList" id="myList">
                 <?php foreach ($categories as $category): ?>
-                    <div class = "col-sm-3 col-5">
+                    <li class="col-sm-3 col-5">
                         <a href="<?= Url::to(['category-click', 'id' => $category->id]); ?>">
                             <div class = "item-border">
-                                <span><i class = "fa fa-apple"></i></span>
-                                <span class = "text-overflow"><?php echo $category->name; ?></span>
+                                <span><i class="fa fa-apple"></i></span>
+                                <span class="text-overflow"><?= Html::encode($category->name); ?></span>
                             </div>
                         </a>
-                    </div>
+                    </li>
                 <?php endforeach; ?>
-            </div>
+            </ul>
             <a href = "#" class = "btn btn-success btn-lg text-uppercase mar-top-30">Explore more features</a>
         </div>
     </div>
