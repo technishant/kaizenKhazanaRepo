@@ -78,7 +78,7 @@ class FairdetailsController extends Controller
             if ($model->validate()) {
                     if ($model->attachmentfile !== FALSE) {
                             $tmpname=$model->attachmentfile->tempName;                                                     	
-                            $size="565*283";
+                            $size="300*200";
                             $getFromSecond=2;
                             $thumbcmd="ffmpeg -i $tmpname -an -ss $getFromSecond -s $size $thumbname 2>&1";
                             shell_exec($thumbcmd);
@@ -144,7 +144,7 @@ class FairdetailsController extends Controller
             if ($model->validate()) {
                     if ($model->attachmentfile !== FALSE) {
                             $tmpname=$model->attachmentfile->tempName; 
-                            $size="565*283";
+                            $size="300*200";
                             $getFromSecond=2;
                             $thumbcmd="ffmpeg -i $tmpname -an -ss $getFromSecond -s $size $thumbname 2>&1";
                             shell_exec($thumbcmd);
