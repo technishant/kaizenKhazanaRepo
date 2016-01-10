@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 <section id="contentCntr" class="clearfix">
 
     <!--  / formViewBox \ -->
-    <div class="formViewBox clearfix">
+    <div class="formViewBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
         <div class="container">
 
             <h3><?= Html::encode($model->name); ?></h3>
