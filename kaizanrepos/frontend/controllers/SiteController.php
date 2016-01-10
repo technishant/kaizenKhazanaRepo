@@ -109,7 +109,7 @@ class SiteController extends Controller {
             }
         }
         $categories = Category::find()->roots()->all();
-        $fairVideos = FairDetails::find()->orderBy('id DESC')->limit('4')->asArray()->all();
+        $fairVideos = FairDetails::find()->orderBy('id DESC')->limit('4')->all();
         $capitalistModel = Capitalist::find()->orderBy('id DESC')->limit('4')->all();
         return $this->render('index', ['model' => $model, 'categories' => $categories, 'fairVideos' => $fairVideos, 'capitalistModel' => $capitalistModel]);
     }

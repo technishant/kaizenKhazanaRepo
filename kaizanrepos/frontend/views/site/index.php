@@ -165,48 +165,44 @@ $this->title = 'Home :: Kaizen Khazana';
 <div class="siderBox clearfix">
     <div class="overlay"></div>
     <div class="owl-carousel slider-product">
-        <div class="item">
-            <div class="">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3>Fair</h3>
-                        <p>Check our latest fair collection</p>
-                    </div>
-                    <?php foreach ($fairVideos as $key => $fair) {
-                        ?>                           
-                        <div class="width-full-480 col-xs-6 col-md-6">
-                            <div class="frames">
-                                <div class="overlay">
-                                    <div class="display-table">
-                                        <div class="display-table-cell">
-                                            <h3><?= Html::encode(ucwords($fair['title'])); ?> </h3>
-                                            <hr>
-                                            <p><?= MyHelpers::trim_by_words($fair['description'], 100); ?></p>
-                                            <a href="<?= Url::toRoute('/fairdetails/watch?id=' . base64_encode($fair['id'])); ?>" class="btn btn-primary">Read more</a>
+        <?php if (!empty($fairVideos)): ?>
+            <div class="item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3><?= Html::encode('Fair'); ?></h3>
+                            <p><?= Html::encode('Check our latest fair collection'); ?></p>
+                        </div>
+                        <?php foreach ($fairVideos as $fair): ?>
+                            <div class="width-full-480 col-xs-6 col-md-6">
+                                <div class="frames">
+                                    <div class="overlay">
+                                        <div class="display-table">
+                                            <div class="display-table-cell">
+                                                <h3><?= Html::encode(ucwords($fair->title)); ?></h3>
+                                                <hr>
+                                                <p><?= MyHelpers::trim_by_words($fair->description, 100); ?></p>
+                                                <a href="<?= Url::toRoute('/fairdetails/watch?id=' . base64_encode($fair->id)); ?>" class="btn btn-primary">Read more</a>
+                                            </div>
                                         </div>
                                     </div>
+                                    <?php
+                                    if (file_exists(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/' . pathinfo($fair->attachment, PATHINFO_FILENAME) . '.jpg')) {
+                                        $imgpath = Yii::$app->request->baseUrl . '/uploads/fairvideos/' . pathinfo($fair->attachment, PATHINFO_FILENAME) . '.jpg';
+                                    } else {
+                                        $imgpath = Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg';
+                                    }
+                                    ?>
+                                    <img src="<?= $imgpath ?>" height="250px" width="500px">
                                 </div>
                             </div>
-                            <?php
-                            if (file_exists(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/' . pathinfo($fair['attachment'], PATHINFO_FILENAME) . '.jpg')) {
-                                $imgpath = Yii::$app->request->baseUrl . '/uploads/fairvideos/' . pathinfo($fair['attachment'], PATHINFO_FILENAME) . '.jpg';
-                            } else {
-                                $imgpath = Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg';
-                            }
-                            ?>
-                            <img src="<?= $imgpath ?>">
-                        </div>
-                        <?php
-                    }
-                    if (!empty($fairVideos)) {
-                        ?>
+                        <?php endforeach; ?>
                         <a href="<?php echo Url::toRoute('/fairdetails'); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Fairs</a>
-                        <?php
-                    }
-                    ?>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
+
         <?php if (!empty($capitalistModel)): ?>
             <div class="item">
                 <div class="container">
@@ -221,7 +217,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     <div class="overlay">
                                         <div class="display-table">
                                             <div class="display-table-cell">
-                                                <h3><?= Html::encode($capitalist->name); ?></h3>
+                                                <h3><?= Html::encode(ucwords($capitalist->name)); ?></h3>
                                                 <hr>
                                                 <p><?= Html::encode($capitalist->short_description); ?></p>
                                             </div>
