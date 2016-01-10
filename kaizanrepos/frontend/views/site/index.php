@@ -182,6 +182,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                                 <h3><?= Html::encode(ucwords($fair->title)); ?></h3>
                                                 <hr>
                                                 <p><?= MyHelpers::trim_by_words($fair->description, 100); ?></p>
+                                                <hr>
                                                 <a href="<?= Url::toRoute('/fairdetails/watch?id=' . base64_encode($fair->id)); ?>" class="btn btn-primary">Read more</a>
                                             </div>
                                         </div>
@@ -197,7 +198,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                        <a href="<?php echo Url::toRoute('/fairdetails'); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Fairs</a>
+                        <div align="center"><a href="<?php echo Url::toRoute('/fairdetails'); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Fairs</a></div>
                     </div>
                 </div>
             </div>
@@ -220,6 +221,8 @@ $this->title = 'Home :: Kaizen Khazana';
                                                 <h3><?= Html::encode(ucwords($capitalist->name)); ?></h3>
                                                 <hr>
                                                 <p><?= Html::encode($capitalist->short_description); ?></p>
+                                                <hr>
+                                                <a href="<?= Url::toRoute(['/site/capitalistDetails', 'id' => $capitalist->id]); ?>" class="btn btn-primary">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -227,6 +230,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                 </div>
                             </div>
                         <?php endforeach; ?>
+                        <div align="center"><a href="<?php echo Url::toRoute('/fairdetails'); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Capitalist</a></div>
                     </div>
                 </div>
             </div>
@@ -250,7 +254,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -264,7 +268,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -278,7 +282,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -292,7 +296,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                 </div>
@@ -316,7 +320,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -330,7 +334,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -344,7 +348,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                     <div class="width-full-480 col-xs-6 col-md-6">
@@ -358,7 +362,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>">
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
                 </div>
