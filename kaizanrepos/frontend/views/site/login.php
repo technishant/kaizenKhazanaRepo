@@ -11,7 +11,7 @@ $this->title = 'Login';
 ?>
 
 <!--  / loginBox \ -->
-<div class="loginBox clearfix" style='background-image: url("../../web/images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
+<div class="loginBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'login-form', 'method' => 'POST', 'options' => ['class' => 'login clearfix']]); ?>

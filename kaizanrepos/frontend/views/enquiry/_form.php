@@ -12,7 +12,7 @@ use common\components\MyHelpers;
 ?>
 
 <!--  / registerBox \ -->
-<div class="registerBox clearfix" style='background-image: url("../../web/images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
+<div class="registerBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['options' => ['class' => 'register clearfix', 'style' => 'max-width: 700px']]); ?>
