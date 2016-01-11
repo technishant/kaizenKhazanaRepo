@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use FFMpeg\FFProbe\DataMapping\Format;
-
+use yii\web\View;
 /* @var $this yii\web\View */
 /* @var $model common\models\FairDetails */
 /* @var $form yii\widgets\ActiveForm */
@@ -41,7 +41,7 @@ use FFMpeg\FFProbe\DataMapping\Format;
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
                         </div>
@@ -72,3 +72,11 @@ use FFMpeg\FFProbe\DataMapping\Format;
         </div>
     </div>
 </div>
+<?php 
+$this->registerJs("
+    jQuery(function () {
+    CKEDITOR.replace('fairdetails-description');
+    });
+    ", 
+    VIEW::POS_END);
+?>

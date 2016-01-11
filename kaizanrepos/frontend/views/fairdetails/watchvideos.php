@@ -59,8 +59,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     </video>
                 </div>  
                 <p><div class="fb-like" data-href="<?= Yii::$app->request->url; ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div></p>
-                <h2><?= Html::encode(ucwords($currentVideo->title)); ?></h2>                
-                <p><?= Html::encode($currentVideo->description); ?></p>
+                <h2><?= MyHelpers::WebTextCaps($currentVideo->title); ?></h2>                
+                <p><?= MyHelpers::WebTextFirstCap($currentVideo->description); ?></p>
 
             </div>
             <div class="col-lg-3 col-md-4 col-sm-4 width-full-480">

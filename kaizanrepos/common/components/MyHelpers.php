@@ -36,14 +36,14 @@ class MyHelpers {
     }
     
     public function WebText($content) {        
-        return nl2br(Html::encode($content));
+        return nl2br(Html::decode($content));
     }
     
     public function WebTextCaps($content) {        
-        return nl2br(Html::encode(ucwords($content)));
+        return nl2br(Html::decode(ucwords($content)));
     }
     
     public function WebTextFirstCap($content) {        
-        return nl2br(Html::encode(ucfirst($content)));
+        return nl2br(Html::decode(ucfirst($content)));
     }
 }

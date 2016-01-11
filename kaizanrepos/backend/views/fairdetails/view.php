@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'attributes' => [
                                         'id',
                                         'title',
-                                        'description:ntext',
+                                        'description:html',
                                         [
                                             'attribute' => 'attachment',
                                             'format' => 'raw',
