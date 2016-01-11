@@ -6,9 +6,10 @@ use kartik\widgets\DepDrop;
 use common\components\MyHelpers;
 use yii\helpers\ArrayHelper;
 use yii\web\View;
+use common\components\MyHelpers;
 ?>
 
-<div class="registerBox clearfix">
+<div class="registerBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
     <div class="container">
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'register clearfix', 'enctype' => 'multipart/form-data']]); ?>
