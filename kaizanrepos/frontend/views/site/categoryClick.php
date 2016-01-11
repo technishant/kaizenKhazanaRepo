@@ -34,7 +34,7 @@ use yii\helpers\Html;
                     $form = ActiveForm::begin([
                                 'action' => ['category-click'],
                                 'method' => 'get',
-                                'options' => ['data-pjax' => true ]
+                                'options' => ['data-pjax' => true]
                     ]);
                     ?>
                     <div class = "search clearfix row mar-btm-20">
@@ -64,7 +64,6 @@ use yii\helpers\Html;
                             </label>
                         </div>
                         <div class = "col-sm-10">
-                            <?php // echo $form->field($searchmodel, 'searchstring')->textInput(['class' => 'form-control input-lg', 'placeholder' => 'Search Kaizen'])->label(false); ?>
                             <?=
                             $form->field($searchmodel, 'searchstring')->widget(\yii\jui\AutoComplete::classname(), [
                                 'clientOptions' => [
@@ -77,19 +76,18 @@ use yii\helpers\Html;
                             ])->label(false);
                             ?>
                         </div>                        
-                            <?= Html::hiddenInput('pg', 'kzsearch'); ?>
-                            <?= Html::hiddenInput('id', $id); ?>
+                        <?= Html::hiddenInput('pg', 'kzsearch'); ?>
+                        <?= Html::hiddenInput('id', $id); ?>
                         <div class = "col-sm-2">
-                        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
-                        <?php // echo Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'width-full btn btn-primary btn-lg'])  ?>
-
+                            <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
                         </div>
-                        <?php ActiveForm::end(); 
+                        <?php
+                        ActiveForm::end();
                         yii\widgets\Pjax::end();
                         ?>
                     </div>
                     <div class = "list-section clearfix" id="pp">
-                        <?php Pjax::begin(['enablePushState' => true,'id'=>'gridData']); ?> 
+                        <?php Pjax::begin(['enablePushState' => true, 'id' => 'gridData']); ?> 
                         <?=
                         ListView::widget([
                             'dataProvider' => $dataProvider,
@@ -138,15 +136,16 @@ use yii\helpers\Html;
 </footer>
 <!--\ footerBox / -->
 <!--  activate the anchor link on parent category -->
+
 <?php $this->registerJS("jQuery(function($) {
         $('.kv-toggle').click(function(){
             location.href = this.href;
         });
 });", $this::POS_END); ?>
+
 <?php
- 
 $this->registerJs(
-   '$("document").ready(function(){ 
+        '$("document").ready(function(){ 
         $("#search-form").on("pjax:end", function() {
             $.pjax.reload({container:"#gridData"});  //Reload GridView
         });

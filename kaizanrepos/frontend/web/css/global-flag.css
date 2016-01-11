@@ -177,7 +177,7 @@ video.player { width: 100%; height: auto; }
 .list-section .text h4 { margin: 0 0 5px; }
 .list-section .text p { margin-bottom: 5px; }
 .list-section .text p a { font-style: normal; }
-.list-section .text a { color: #FF9966; font-style: italic; }
+.list-section .text a { color: #00000; font-style: normal; }
 
 
 
