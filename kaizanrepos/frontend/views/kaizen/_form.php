@@ -31,10 +31,11 @@ use yii\web\View;
                         </div>
                     <?php } ?>
                 </div>
-            </div>        
+            </div>
+
             <div class="col-sm-12 clearfix">
                 <div class="form-group">
-                    <?= $form->field($model, 'type')->dropDownList([0 => 'Kaizen', 1 => 'Image', 2 => 'Video', 3 => 'E-Book'], ['id' => 'kaizen-type-dropdown']); ?>
+                    <?= $form->field($model, 'type')->dropDownList([0 => 'Kaizen'], ['id' => 'kaizen-type-dropdown']); ?>
                 </div>
                 <div class="form-group">
                     <?php
@@ -56,54 +57,63 @@ use yii\web\View;
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'attachmenttype')->radioList(array('video' => 'Video', 'image' => 'Image', 'pdf' => 'Pdf')); ?>
                 </div>
-                <div class="form-group hideFields">    
-                    <?= $form->field($model, 'kzfilebefore')->fileInput() ?>
-                </div>
-                <div class="form-group hideFields">        
-                    <?= $form->field($model, 'kzfileafter')->fileInput() ?>
-                </div>
+            </div>
+
+            <div class="col-sm-6 clearfix">
                 <div class="form-group">
                     <?= $form->field($model, 'name')->textInput(); ?>
-                </div>    
-                <div class="form-group">
-                    <?= $form->field($model, 'subject')->textInput() ?>
                 </div>
-                <div class="form-group">
-                    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-                </div>
-                <div class="form-group hideFields">
 
-                    <?= $form->field($model, 'processarea')->textInput(['rows' => 6]) ?>
-                </div>
                 <div class="form-group hideFields">
-                    <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'implemented_by')->textInput() ?>
                 </div>
+
                 <div class="form-group hideFields">
-                    <?= $form->field($model, 'currrentstage')->textInput(['maxlength' => true]) ?>
+                    <?= $form->field($model, 'problem_observed')->textarea(['rows' => 6]) ?>
+                </div>
+
+                <div class="form-group hideFields">    
+                    <?= $form->field($model, 'kzfilebefore')->fileInput() ?>
                 </div>
 
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'tangiblebenifits')->textarea(['rows' => 6]) ?>
                 </div>
+
+            </div>
+
+            <div class="col-sm-6 clearfix">
+                <div class="form-group hideFields">
+                    <?= $form->field($model, 'processarea')->textInput(['rows' => 6]) ?>
+                </div>
+
+                <div class="form-group hideFields">
+                    <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
+                </div>
+
+                <div class="form-group hideFields">
+                    <?= $form->field($model, 'action_taken')->textarea(['rows' => 6]) ?>
+                </div>
+
+                <div class="form-group hideFields">        
+                    <?= $form->field($model, 'kzfileafter')->fileInput() ?>
+                </div>
+
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'intengiblebenifits')->textarea(['rows' => 6]) ?>
                 </div>
-                <div class="form-group hideFields">
-                    <?= $form->field($model, 'costsaving')->textInput() ?>
-                </div>
-                <div class="form-group hideFields">
-                    <?= $form->field($model, 'implementationdate')->widget(\yii\jui\DatePicker::classname(), ['dateFormat' => 'yyyy-MM-dd', 'options' => [ 'class' => 'form-control']]); ?>
-                </div>
-                <div class="form-group hideFields">
-                    <?= $form->field($model, 'suggestedby')->textInput(['maxlength' => true]) ?>
-                </div>
-                <div class="form-group">
+            </div>
+            <div class="col-sm-12 clearfix">
+                <div class="form-group" align="center">
                     <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-primary btn-lg submitBtn' : 'btn btn-primary btn-lg submitBtn']) ?>
+                    <a style="margin-left: 20px;" href="<?= Yii::$app->homeUrl; ?>"><?= Html::button(Yii::t('app', 'Cancel'), ['class' => 'btn btn-default btn-lg submitBtn']) ?></a>
                 </div>
             </div>
+
         </div>
     </div>
-    <?php ActiveForm::end(); ?>
+</div>
+<?php ActiveForm::end(); ?>
 
 </div>
 <?php
@@ -203,7 +213,7 @@ $this->registerJs("
         var attachmenttype=jQuery('#kaizen-attachmenttype input[type=radio]:checked').val();
         var avatar0 = jQuery('#kaizen-kzfilebefore').val();  
         var avatar1 = jQuery('#kaizen-kzfileafter').val();
-        var type = jQuery('input:radio[name="+'Kaizen[type]'+"]:checked').val();
+        var type = jQuery('input:radio[name=" + 'Kaizen[type]' + "]:checked').val();
         console.log(type);
         var imageextension = new Array('jpg','jpeg','png');
         var videoextension = ['mp4','3gp','mov','m4v'];

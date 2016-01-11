@@ -130,7 +130,7 @@ video.player { width: 100%; height: auto; }
 
 
 /* ### registerBox ### */
-.registerBox .register { max-width: 550px; }
+.registerBox .register { max-width: 700px; }
 .registerBox span { padding: 0 30px; display: block; text-align: center; font-size: 18px; color: #fff; }
 .registerBox span .fa { font-size: 35px; display: block; }
 

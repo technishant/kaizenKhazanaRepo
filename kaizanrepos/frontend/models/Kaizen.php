@@ -28,6 +28,9 @@ use Yii;
  * @property string $approvedby
  * @property integer $recordstatus
  * @property string $attachmentother
+ * @property string $implemented_by
+ * @property string $problem_observed
+ * @property string $action_taken
  *
  * @property User $postedby0
  * @property Category $category0
@@ -40,6 +43,7 @@ class Kaizen extends \yii\db\ActiveRecord {
     public $kzfilebefore;
     public $kzfileafter;
     public $otherAttachmentFile;
+
     const TYPE_VIDEO = 2;
     const TYPE_PHOTO = 1;
     const TYPE_KAIZEN = 0;
@@ -57,15 +61,21 @@ class Kaizen extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['name', 'type', 'subject', 'description', 'processarea', 'attachmenttype', 'category', 'company', 'currrentstage', 'tangiblebenifits', 'intengiblebenifits', 'costsaving', 'implementationdate', 'suggestedby'], 'required', 'when' => function ($model, $attribute) {$model->type == 0;}, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() == 0; }"],
-            [['name', 'type', 'subject', 'category'], 'required', 'when' => function ($model) { return $model->type > 0; }, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() != 0; }"],
-            [['name', 'subject', 'description', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype', 'attachmentbefore', 'attachmentafter'], 'string'],
+            [['name', 'type', 'problem_observed','action_taken', 'processarea', 'attachmenttype', 'category', 'tangiblebenifits', 'intengiblebenifits'], 'required', 'when' => function ($model, $attribute) {
+            $model->type == 0;
+        }, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() == 0; }"],
+            [['name', 'type', 'subject', 'category'], 'required', 'when' => function ($model) {
+            return $model->type > 0;
+        }, 'whenClient' => "function(attribute, value) {return $('#kaizen-type-dropdown').val() != 0; }"],
+            [['name', 'subject', 'description', 'processarea', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'attachmenttype', 'attachmentbefore', 'attachmentafter', 'problem_observed', 'action_taken'], 'string'],
             [['category', 'type', 'postedby', 'recordstatus'], 'integer'],
             [['costsaving', 'attachmentprocessed'], 'number'],
-            [['kzfilebefore', 'kzfileafter'], 'file', 'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf', 'when' => function($model, $attribute) {$model->type == 0;}],      
+            [['kzfilebefore', 'kzfileafter'], 'file', 'extensions' => 'jpg,jpeg,png,mp4,3gp,mov,m4v,pdf', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png,video/mpeg,video/mp4,video/quicktime,video/x-quicktime,video/x-m4v,video/mov,video/3gpp,application/pdf', 'when' => function($model, $attribute) {
+            $model->type == 0;
+        }],
             //[['otherAttachmentFile'], 'file', 'extensions' => 'jpg,jpeg,png', 'mimeTypes' => 'image/jpeg,image/jpg,image/x-png,image/pjpeg, image/png', 'when' => function($model, $attribute) {$model->type == 1;}],
             [['implementationdate', 'mode', 'approvedby', 'attachmentprocessed', 'attachmentbefore', 'attachmentafter'], 'safe'],
-            [['company', 'currrentstage', 'suggestedby', 'approvedby', 'attachmentother'], 'string', 'max' => 255]
+            [['company', 'currrentstage', 'suggestedby', 'approvedby', 'attachmentother', 'implemented_by'], 'string', 'max' => 255]
         ];
     }
 
@@ -77,7 +87,7 @@ class Kaizen extends \yii\db\ActiveRecord {
             'id' => Yii::t('app', 'ID'),
             'type' => 'Type',
             'subject' => Yii::t('app', 'Subject'),
-            'processarea' => Yii::t('app', 'Process Area'),
+            'processarea' => Yii::t('app', 'Area'),
             'category' => Yii::t('app', 'Category'),
             'company' => Yii::t('app', 'Company'),
             'currrentstage' => Yii::t('app', 'Currrent Stage'),
@@ -95,6 +105,9 @@ class Kaizen extends \yii\db\ActiveRecord {
             'kzfilebefore' => Yii::t('app', 'Kaizen Before Attachment'),
             'kzfileafter' => Yii::t('app', 'Kaizen After Attachment'),
             'attachmentother' => Yii::t('app', 'Attachment'),
+            'implemented_by' => Yii::t('app', 'Implemented By'),
+            'problem_observed' => Yii::t('app', 'Problem Observed'),
+            'action_taken' => Yii::t('app', 'Action Taken')
         ];
     }
 
