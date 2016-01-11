@@ -6,7 +6,6 @@ use kartik\widgets\DepDrop;
 use common\components\MyHelpers;
 use yii\helpers\ArrayHelper;
 use yii\web\View;
-use common\components\MyHelpers;
 ?>
 
 <div class="registerBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
