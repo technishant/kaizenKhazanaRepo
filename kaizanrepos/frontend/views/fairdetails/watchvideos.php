@@ -58,7 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         Your browser does not support the video tag.
                     </video>
                 </div>  
-                <h2><?= Html::encode(ucwords($currentVideo->title)); ?></h2>
+                <p><div class="fb-like" data-href="<?= Yii::$app->request->url; ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div></p>
+                <h2><?= Html::encode(ucwords($currentVideo->title)); ?></h2>                
                 <p><?= Html::encode($currentVideo->description); ?></p>
 
             </div>
