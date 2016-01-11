@@ -9,7 +9,7 @@
 namespace common\components;
 
 use yii\helpers\StringHelper;
-
+use yii\helpers\Html;
 class MyHelpers {
 
     function trim_by_words($text, $length = 10) {
@@ -34,5 +34,16 @@ class MyHelpers {
         );
         return $banners[rand(0, 6)];
     }
-
+    
+    public function WebText($content) {        
+        return nl2br(Html::encode($content));
+    }
+    
+    public function WebTextCaps($content) {        
+        return nl2br(Html::encode(ucwords($content)));
+    }
+    
+    public function WebTextFirstCap($content) {        
+        return nl2br(Html::encode(ucfirst($content)));
+    }
 }
