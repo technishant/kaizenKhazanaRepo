@@ -254,7 +254,7 @@ video.player { width: 100%; height: auto; }
 .formBox { }
 
 
-.formViewBox { padding: 30px 0 40px; color: #fff; }
+.formViewBox { padding: 30px 0 40px; color: #fff; min-height: 550px}
 .formViewBox .first { padding: 10px 0; border-top: 1px solid #fff; }
 .formViewBox .second { padding-bottom: 10px; }
 .formViewBox .second + .second { padding-top: 10px; border-top: 1px solid #fff; }
