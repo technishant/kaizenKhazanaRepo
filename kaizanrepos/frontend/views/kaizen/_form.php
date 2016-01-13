@@ -73,7 +73,7 @@ use yii\web\View;
                 </div>
                 
                 <div class="form-group hideFields">
-                    <img src="../../web/images/thumbnail.jpg" width="300px" height="184px" id="beforeImageThumb">
+                    <img src="<?php echo Yii::$app->request->baseUrl.'/images/thumbnail.jpg'?>" width="300px" height="184px" id="beforeImageThumb">
                 </div>
                 
                 <div class="form-group hideFields">    
@@ -100,7 +100,7 @@ use yii\web\View;
                 </div>
                 
                 <div class="form-group hideFields">
-                    <img src="../../web/images/thumbnail.jpg" width="300px" height="184px" id="afterImageThumb">
+                    <img src="<?php echo Yii::$app->request->baseUrl.'/images/thumbnail.jpg'?>" width="300px" height="184px" id="afterImageThumb">
                 </div>
                 
                 <div class="form-group hideFields">        
