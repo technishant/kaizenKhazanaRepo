@@ -127,8 +127,7 @@ use common\components\MyHelpers;
                             <?php if (!empty($model->implemented_by)) { ?>
                                 <div class="col-sm-2"><?= $model->getAttributeLabel('implemented_by'); ?></div>
                                 <div class="col-sm-2"><?= MyHelpers::WebTextCaps($model->implemented_by); ?></div>
-                                <?php
-                            }
+            <?php }
                             if (!empty($model->company)) {
                                 ?>                
                                 <div class="col-sm-2"><?= $model->getAttributeLabel('company'); ?></div>
@@ -143,23 +142,57 @@ use common\components\MyHelpers;
                         <div class="col-sm-4"><?= MyHelpers::WebTextFirstCap($model->action_taken); ?></div>
                     </div>
                     <div class="row first">
-                        <?php if (!empty($vidpath1)) { ?>
-                            <div class="col-sm-6">
+                    <?php if (!empty($vidpath1)) { ?> 
+                                <?php if($model->attachmenttype=='image'){ ?>
+                                <div class="col-sm-6">
                                 <h4>Before Kaizen</h4>
-                                <video class="player" style="width: 100%; height: 350px; background: black;" controls>
+                                <img class="kzattachbeforeMedia"  src=src="<?= $vidpath1 ?>">
+                                </div>
+                                <?php
+                                }
+                                elseif($model->attachmenttype='pdf'){ ?>
+                                <div class="col-sm-2">
+                                  <h4>Before Kaizen</h4>
+                                  <a class="kzattachbeforeMedia"  href="<?= $vidpath1; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/pdficon.png'; ?>"></a>  
+                                </div>
+                                  <?php 
+                                }
+                                else{
+                                ?>
+                                <div class="col-sm-6">
+                                <h4>Before Kaizen</h4>
+                                <video class="player kzattachbeforeMedia" style="width: 100%; height: 350px; background: black;" controls>
                                     <source src="<?= $vidpath1 ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            </div>
+                                </div>
+                                <?php } ?>
                         <?php } ?>
-                        <?php if (!empty($vidpath2)) { ?>
-                            <div class="col-sm-6">
+                    <?php if (!empty($vidpath2)) { ?>
+                                <?php if($model->attachmenttype=='image'){ ?>
+                                <div class="col-sm-6">                                    
+                                <h4>After Kaizen</h4>
+                                <img src=src="<?= $vidpath2 ?>">
+                                </div>
+                                <?php
+                                }
+                                elseif($model->attachmenttype='pdf'){ ?>
+                                <div class="col-sm-2">                                  
+                                  <h4>After Kaizen</h4>
+                                  <a href="<?= $vidpath2; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/pdficon.png'; ?>"></a>  
+                                </div>
+                                <?php 
+                                }
+                                else{
+                                ?>
+                                <div class="col-sm-6">                                    
                                 <h4>After Kaizen</h4>
                                 <video class="player" style="width: 100%; height: 350px; background: black;" controls>
                                     <source src="<?= $vidpath2 ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            </div>
+                                </div>
+                                <?php } ?>
                         <?php } ?>
 
 
