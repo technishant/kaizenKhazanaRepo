@@ -230,7 +230,7 @@ $this->title = 'Home :: Kaizen Khazana';
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                        <div align="center"><a href="<?php echo Url::toRoute('/fairdetails'); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Capitalist</a></div>
+                        <div align="center"><a href="<?php echo Url::toRoute(''); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Capitalist</a></div>
                     </div>
                 </div>
             </div>

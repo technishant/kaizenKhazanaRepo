@@ -46,4 +46,15 @@ class MyHelpers {
     public function WebTextFirstCap($content) {        
         return nl2br(Html::decode(ucfirst($content)));
     }
+    
+    public function getParentTree($childId) {
+        $catObj = \frontend\models\Category::findOne(['id' =>$childId]);        
+        $parents = $catObj->parents()->all();        
+        $parentCatArray=array();
+        foreach ($parents as $key => $parent) {
+            array_push($parentCatArray,$parent->name);
+        }
+        array_push($parentCatArray,$catObj->name);          
+        return $parentCatArray;
+    }
 }

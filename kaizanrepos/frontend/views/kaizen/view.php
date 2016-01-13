@@ -9,9 +9,7 @@ use common\components\MyHelpers;
 
     <!--  / formViewBox \ -->
     <div class="formViewBox clearfix" style='background: #B3B3B3;'>
-        <div class="container">
-
-            <h3><?= Html::encode(ucwords($model->name)); ?></h3>
+        <div class="container">            
             <?php
             switch ($model->type) {
                 case '1':
@@ -118,6 +116,13 @@ use common\components\MyHelpers;
                         $vidpath2 = '';
                     }
                     ?>
+                    <h3><?php echo implode("->",MyHelpers::getParentTree($model->category)); ?></h3>
+                    <div class="row">
+                        <div class="col-sm-2"><?= $model->getAttributeLabel('name'); ?></div>
+                        <div class="col-sm-4"><?= Html::encode(ucwords($model->name)); ?></div>
+                        <div class="col-sm-2">Posted on</div>
+                        <div class="col-sm-4"><?php echo date('d-m-Y',  strtotime($model->posteddate)); ?></div>
+                    </div>
                     <div class="row first">                
                         <div class="col-sm-2"><?= $model->getAttributeLabel('processarea'); ?></div>
                         <div class="col-sm-2"><?= MyHelpers::WebTextCaps($model->processarea); ?></div>
@@ -126,12 +131,12 @@ use common\components\MyHelpers;
                         <div class="row first">
                             <?php if (!empty($model->implemented_by)) { ?>
                                 <div class="col-sm-2"><?= $model->getAttributeLabel('implemented_by'); ?></div>
-                                <div class="col-sm-2"><?= MyHelpers::WebTextCaps($model->implemented_by); ?></div>
+                                <div class="col-sm-4"><?= MyHelpers::WebTextCaps($model->implemented_by); ?></div>
             <?php }
                             if (!empty($model->company)) {
                                 ?>                
                                 <div class="col-sm-2"><?= $model->getAttributeLabel('company'); ?></div>
-                                <div class="col-sm-2"><?= MyHelpers::WebTextCaps($model->company); ?></div>
+                                <div class="col-sm-4"><?= MyHelpers::WebTextCaps($model->company); ?></div>
                             <?php } ?>
                         </div>
                     <?php } ?>     
@@ -146,14 +151,14 @@ use common\components\MyHelpers;
                                 <?php if($model->attachmenttype=='image'){ ?>
                                 <div class="col-sm-6">
                                 <h4>Before Kaizen</h4>
-                                <img class="kzattachbeforeMedia"  src=src="<?= $vidpath1 ?>">
+                                <img class="kzattachbeforeMedia"  src="<?= $vidpath1 ?>">
                                 </div>
                                 <?php
                                 }
-                                elseif($model->attachmenttype='pdf'){ ?>
+                                elseif($model->attachmenttype=='pdf'){ ?>
                                 <div class="col-sm-2">
                                   <h4>Before Kaizen</h4>
-                                  <a class="kzattachbeforeMedia"  href="<?= $vidpath1; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/pdficon.png'; ?>"></a>  
+                                  <a class="kzattachbeforeMedia" target="_blank"  href="<?= $vidpath1; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/pdficon.png'; ?>"></a>  
                                 </div>
                                   <?php 
                                 }
@@ -172,14 +177,14 @@ use common\components\MyHelpers;
                                 <?php if($model->attachmenttype=='image'){ ?>
                                 <div class="col-sm-6">                                    
                                 <h4>After Kaizen</h4>
-                                <img src=src="<?= $vidpath2 ?>">
+                                <img class="kzattachafterMedia" src="<?= $vidpath2 ?>">
                                 </div>
                                 <?php
                                 }
-                                elseif($model->attachmenttype='pdf'){ ?>
+                                elseif($model->attachmenttype=='pdf'){ ?>
                                 <div class="col-sm-2">                                  
                                   <h4>After Kaizen</h4>
-                                  <a href="<?= $vidpath2; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/pdficon.png'; ?>"></a>  
+                                  <a class="kzattachafterMedia" target="_blank" href="<?= $vidpath2; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/pdficon.png'; ?>"></a>  
                                 </div>
                                 <?php 
                                 }
@@ -187,7 +192,7 @@ use common\components\MyHelpers;
                                 ?>
                                 <div class="col-sm-6">                                    
                                 <h4>After Kaizen</h4>
-                                <video class="player" style="width: 100%; height: 350px; background: black;" controls>
+                                <video class="player kzattachafterMedia" style="width: 100%; height: 350px; background: black;" controls>
                                     <source src="<?= $vidpath2 ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>

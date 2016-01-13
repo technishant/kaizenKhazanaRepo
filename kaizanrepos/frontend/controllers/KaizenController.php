@@ -34,7 +34,7 @@ class KaizenController extends Controller {
      * Lists all Kaizen models.
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndexa() {
         $searchModel = new KaizenSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
