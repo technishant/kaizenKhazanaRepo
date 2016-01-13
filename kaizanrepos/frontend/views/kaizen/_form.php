@@ -71,7 +71,11 @@ use yii\web\View;
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'problem_observed')->textarea(['rows' => 6]) ?>
                 </div>
-
+                
+                <div class="form-group hideFields">
+                    <img src="../../web/images/thumbnail.jpg" width="300px" height="184px" id="beforeImageThumb">
+                </div>
+                
                 <div class="form-group hideFields">    
                     <?= $form->field($model, 'kzfilebefore')->fileInput() ?>
                 </div>
@@ -94,7 +98,11 @@ use yii\web\View;
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'action_taken')->textarea(['rows' => 6]) ?>
                 </div>
-
+                
+                <div class="form-group hideFields">
+                    <img src="../../web/images/thumbnail.jpg" width="300px" height="184px" id="afterImageThumb">
+                </div>
+                
                 <div class="form-group hideFields">        
                     <?= $form->field($model, 'kzfileafter')->fileInput() ?>
                 </div>
@@ -179,7 +187,7 @@ $this->registerJs("
         var attachmenttype=jQuery('#kaizen-attachmenttype input[type=radio]:checked').val();
         if(!attachmenttype || attachmenttype=='')
         {
-            bootbox.alert('Please select attachment type first.');    
+            bootbox.alert('Please select attachment type first.');
             jQuery('#kaizen-kzfileafter').parent('div').removeClass('has-kzsuccess');
             jQuery('#kaizen-kzfileafter').parent('div').addClass('has-kzerror');
             jQuery('#kaizen-kzfileafter').replaceWith(jQuery('#kaizen-kzfileafter').clone());

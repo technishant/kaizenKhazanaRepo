@@ -38,18 +38,54 @@ $('#modal-show').modal('show');
 $(".slider-product").owlCarousel({
     navigation: true,
     pagination: false,
-    slideSpeed : 300,
-    paginationSpeed : 400,
+    slideSpeed: 300,
+    paginationSpeed: 400,
     singleItem: true,
-    items : 1,
-    itemsDesktop : false,
-    itemsDesktopSmall : false,
+    items: 1,
+    itemsDesktop: false,
+    itemsDesktopSmall: false,
     itemsTablet: false,
-    itemsMobile : false
+    itemsMobile: false
 });
 
 
 $(window).bind("load resize", function () {
     var lessheight = $('#headerCntr').height() + 40;
     $('.loginBox').css('min-height', $(window).height() - lessheight);
+});
+
+function showBeforeImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#beforeImageThumb').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function showAfterImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#afterImageThumb').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#kaizen-kzfilebefore").change(function () {
+    if ($('#kaizen-attachmenttype input[type=radio]:checked').val() == "image") {
+        showBeforeImage(this);
+    }
+});
+
+$("#kaizen-kzfileafter").change(function () {
+    if ($('#kaizen-attachmenttype input[type=radio]:checked').val() == "image") {
+        showAfterImage(this);
+    }
 });
