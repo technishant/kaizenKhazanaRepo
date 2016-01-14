@@ -168,7 +168,7 @@ video.player { width: 100%; height: auto; }
 .left-side .panel-default > .panel-heading, .left-side .nav-tabs > li.active > a, .left-side  .nav-tabs > li.active > a:hover, .left-side .nav-tabs > li.active > a:focus { background: #ff9955; border-color: #ff9955; color: #fff; }
 
 .list-section li .inner { padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #ccc; }
-.list-section li .inner:hover {  background: #f9f9f9; }
+.list-section li .inner:hover {  background: #99CC33; }
 
 .list-section li .inner.border-none { border-top: 0px; }
 .list-section .photo { float: left; width: 80px; height: 80px; line-height: 80px; text-align: center; }
