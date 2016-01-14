@@ -324,7 +324,7 @@ class SiteController extends Controller {
                 $dataProvider = new ActiveDataProvider([
                     'query' => Kaizen::find()->where("category IN ($childrenId)")->orderBy('id DESC'),
                     'pagination' => [
-                        'pageSize' => 5
+                        'pageSize' => 15
                     ]
                 ]);
             }
