@@ -299,7 +299,7 @@ class SiteController extends Controller {
             }
             /** get active menu list from searched data ends here * */
             $dataProvider = $searchModel->search($paramsArray); //reset data provider
-            $dataProvider->pagination->pageSize = 5;
+            $dataProvider->pagination->pageSize = 15;
         }
         /*         * * when form submitted from search box ends here ** */
         /*         * * select parent categories in navigation based on ids ** */

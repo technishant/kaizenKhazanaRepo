@@ -35,7 +35,7 @@ use yii\web\View;
 
             <div class="col-sm-12 clearfix">
                 <div class="form-group">
-                    <?= $form->field($model, 'type')->dropDownList([0 => 'Kaizen'], ['id' => 'kaizen-type-dropdown']); ?>
+                    <?= $form->field($model, 'type')->dropDownList([0 => 'Kaizen',  1 => 'Image', 2 => 'Video', 3 => 'E-Book'], ['id' => 'kaizen-type-dropdown']); ?>
                 </div>
                 <div class="form-group">
                     <?php
@@ -87,6 +87,10 @@ use yii\web\View;
             </div>
 
             <div class="col-sm-6 clearfix">
+                <div class="form-group showFields hidden">
+                    <?= $form->field($model, 'subject')->textInput(['rows' => 6]) ?>
+                </div>
+
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'processarea')->textInput(['rows' => 6]) ?>
                 </div>
@@ -109,6 +113,12 @@ use yii\web\View;
 
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'intengiblebenifits')->textarea(['rows' => 6]) ?>
+                </div>
+            </div>
+            
+            <div class="col-sm-12 clearfix">
+                <div class="form-group showFields hidden">
+                    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
                 </div>
             </div>
             <div class="col-sm-12 clearfix">
