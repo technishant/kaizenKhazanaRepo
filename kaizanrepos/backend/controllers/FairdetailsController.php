@@ -154,15 +154,17 @@ class FairdetailsController extends Controller {
                         chmod(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/' . pathinfo($oldFile, PATHINFO_FILENAME) . '.jpg', 0777);
                         unlink(Yii::getAlias('@frontend') . '/web/uploads/fairvideos/' . pathinfo($oldFile, PATHINFO_FILENAME) . '.jpg'); //removing old thumb
                     }
-                    if ($model->save()) {
+                    
+                }
+                if ($model->save()) {
                         Yii::$app->session->setFlash('successKz', 'Fair details saved successfully.');
                         return $this->redirect(['view', 'id' => $model->id]);
-                    }
+                }else{
+                    Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving fair details.Please try again.');
+                    return $this->render('update', [
+                                'model' => $model,
+                    ]);
                 }
-                Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving fair details.Please try again.');
-                return $this->render('update', [
-                            'model' => $model,
-                ]);
             } else {
                 Yii::$app->session->setFlash('errorKz', 'Something went wrong while saving fair details.Please try again.');
                 return $this->render('update', [
