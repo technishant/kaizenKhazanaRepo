@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         
         <div class="row">
             <div class="col-lg-9 col-md-8 col-sm-8 width-full-480">
-            
+<!--            
                 <?php
                     $form = ActiveForm::begin([
                                 'action' => ['/site/category-click'],
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <input type="hidden" name="pgvideos" value="<?= $currentVideo->id; ?>">
                         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
                         </div>                        
-                    </div>
+                    </div>-->
                 <?php ActiveForm::end(); ?>
                 
                 <div class="store-product"> 

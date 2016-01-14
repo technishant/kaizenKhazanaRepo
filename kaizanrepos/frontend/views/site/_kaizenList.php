@@ -39,7 +39,7 @@ use common\components\MyHelpers;
             ?>
             <div class = "photo"><img src = "<?= $imgpath ?>"></div>
             <div class = "text">
-                <?php if($model->type == '2'){ ?>
+                <?php /*if($model->type == '2')*/if(false){ ?>
                 <a href="<?php echo Url::toRoute('/kaizen/watchprocess?id=' . base64_encode($model->id)); ?>"><h4 class="truncateText"><?= Html::encode(ucwords($model->name)); ?></h4></a>
                 <a href="<?php echo Url::toRoute('/kaizen/watchprocess?id=' . base64_encode($model->id)); ?>"><p class="truncateText"><?= Html::encode(ucwords($model->processarea)); ?></p></a>
                 <a href="<?php echo Url::toRoute('/kaizen/watchprocess?id=' . base64_encode($model->id)); ?>"><span class="truncateText"><?= Html::encode(ucwords($model->implemented_by)) . " at " . Html::encode(ucwords($model->company)); ?></span></a>
