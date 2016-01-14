@@ -38,29 +38,29 @@ use yii\helpers\Html;
                     ]);
                     ?>
                     <div class = "search clearfix row mar-btm-20">
-                        <div class = "radio col-sm-2">
+                        <div class="radio col-sm-2">
                             <label>
-                                <input type = "radio" name = "optionsRadios" id = "optionsRadios1" value = "option1" checked> ALL
+                                <input type="radio" name = "type" id = "type" value ="all" checked><a onclick="checkCategory('all')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => 'all']); ?>">All</a>
                             </label>
                         </div>
-                        <div class = "radio col-sm-2">
+                        <div class="radio col-sm-2">
                             <label>
-                                <input type = "radio" name = "optionsRadios" id = "optionsRadios2" value = "option2"> Kaizen
+                                <input type="radio" name = "type" id = "type" value = "0"><a onclick="checkCategory('0')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '0']); ?>">Kaizen</a>
                             </label>
                         </div>
-                        <div class = "radio col-sm-2">
+                        <div class="radio col-sm-2">
                             <label>
-                                <input type = "radio" name = "optionsRadios" id = "optionsRadios5" value = "option4"> Photos
+                                <input type="radio" name = "type" id = "type" value = "1"><a onclick="checkCategory('1')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '1']); ?>">Photos</a>
                             </label>
                         </div>
-                        <div class = "radio col-sm-2">
+                        <div class="radio col-sm-2">
                             <label>
-                                <input type = "radio" name = "optionsRadios" id = "optionsRadios3" value = "option3"> Videos
+                                <input type="radio" name = "type" id = "type" value = "2"><a  onclick="checkCategory('2')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '2']); ?>">Videos</a>
                             </label>
                         </div>
-                        <div class = "radio col-sm-2">
+                        <div class="radio col-sm-2">
                             <label>
-                                <input type = "radio" name = "optionsRadios" id = "optionsRadios4" value = "option4"> Books
+                                <input type="radio" name = "type" id = "type" value = "3"><a onclick="checkCategory('3')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '3']); ?>">Books</a>
                             </label>
                         </div>
                         <div class = "col-sm-10">

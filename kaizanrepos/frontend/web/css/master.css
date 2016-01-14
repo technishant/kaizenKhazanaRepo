@@ -3,7 +3,8 @@
 @import "owl.carousel.css";
 
 @import "bootstrap.css";
-@import "global-flag.css";
+@import "global-flag.css?version=12121";
+@import "custom.css?version=12313";
 /*
 @import "global-saffron.css";
 @import "global-green.css";*/

@@ -89,3 +89,7 @@ $("#kaizen-kzfileafter").change(function () {
         showAfterImage(this);
     }
 });
+
+function checkCategory(value) {
+    $("input[name=type][value="+value+"]").attr('checked', 'checked');
+}

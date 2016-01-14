@@ -92,9 +92,9 @@ $this->title = 'Home :: Kaizen Khazana';
             <ul class="icon-section clearfix moreList" id="myList">
                 <?php foreach ($categories as $category): ?>
                     <li class="col-sm-3 col-5">
-                        <a href="<?= Url::to(['category-click', 'id' => $category->id]); ?>">
+                        <a href="<?= Url::to(['category-click', 'id' => $category->id, 'type' => 'all']); ?>">
                             <div class = "item-border">
-                                <span><i class="fa fa-apple"></i></span>
+                                <span><i class="<?= $category->icon ?>"></i></span>
                                 <span class="text-overflow"><?= Html::encode($category->name); ?></span>
                             </div>
                         </a>

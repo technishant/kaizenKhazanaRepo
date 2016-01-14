@@ -260,7 +260,7 @@ class SiteController extends Controller {
         die;
     }
 
-    public function actionCategoryClick($id = '') {
+    public function actionCategoryClick($id='', $type='all') {
         $this->view->title = "Kaizen Khazana | Category";
         $menu = array();
         $rootModal = Category::find()->roots()->all();
@@ -304,6 +304,11 @@ class SiteController extends Controller {
         /*** when form submitted from search box ends here ***/
         /*** select parent categories in navigation based on ids ***/
         if (!empty($id)) {
+            if($type == "all") {
+                $type = "0,1,2,3";
+            } else {
+                $type = "'".$type."'";
+            }
             $parentActiveId = array();
             $menuRootNode = Category::findOne(['id' => $id]);
             $allParents = $menuRootNode->parents()->all();
@@ -322,7 +327,7 @@ class SiteController extends Controller {
                     $childrenId = implode(",", $childrenIdarray);
                 }
                 $dataProvider = new ActiveDataProvider([
-                    'query' => Kaizen::find()->where("category IN ($childrenId)")->orderBy('id DESC'),
+                    'query' => Kaizen::find()->where("category IN ($childrenId) AND type IN ($type)")->orderBy('id DESC'),
                     'pagination' => [
                         'pageSize' => 15
                     ]
@@ -337,7 +342,7 @@ class SiteController extends Controller {
             $tempRoot['id'] = $root->id;
             $tempRoot['icon'] = "home";
             $tempRoot['active'] = ($id == $root->id || in_array($root->id, $parentActiveId));
-            $tempRoot['url'] = Url::to(['site/category-click', 'id' => $root->id]);
+            $tempRoot['url'] = Url::to(['site/category-click', 'id' => $root->id, 'type' => $_GET['type']]);
             $level1Modal = Category::findOne(['id' => $root->id])->children(1)->all();
 
             if (!empty($level1Modal)) {
@@ -348,7 +353,7 @@ class SiteController extends Controller {
                     $tempLevel1['id'] = $level1->id;
                     $tempLevel1['icon'] = "";
                     $tempLevel1['active'] = ($id == $level1->id || in_array($level1->id, $parentActiveId));
-                    $tempLevel1['url'] = Url::to(['site/category-click', 'id' => $level1->id]);
+                    $tempLevel1['url'] = Url::to(['site/category-click', 'id' => $level1->id, 'type' => $_GET['type']]);
                     $level2Modal = Category::findOne(['id' => $level1->id])->children(1)->all();
                     if (!empty($level2Modal)) {
                         $menuLevel2 = array();
@@ -358,7 +363,7 @@ class SiteController extends Controller {
                             $tempLevel2['id'] = $level2->id;
                             $tempLevel2['icon'] = "";
                             $tempLevel2['active'] = ($id == $level2->id || in_array($level2->id, $parentActiveId));
-                            $tempLevel2['url'] = Url::to(['site/category-click', 'id' => $level2->id]);
+                            $tempLevel2['url'] = Url::to(['site/category-click', 'id' => $level2->id, 'type' => $_GET['type']]);
                             array_push($menuLevel2, $tempLevel2);
                         }
                         $tempLevel1['items'] = $menuLevel2;

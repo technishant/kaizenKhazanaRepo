@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 14, 2016, 8:57:49 PM
+    Author     : Nishant Goel
+*/
+
+.nav-pills > li.active > a {
+    color: #FFF;
+    background-color: #99CC33;
+};
+
+.nav-pills > li.active > a:hover{
+    color: #FFF;
+    background-color: #99CC33;
+};
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #FFF;
+    background-color: #99CC33;
+}
+
+.panel-primary {
+    border-color: #99CC33;
+}
+
+.panel-primary > .panel-heading {
+    color: #fff;
+    background-color:  #99CC33;
+    border-color: #99CC33;
+    margin-bottom: 5px;
+}
+
+.nav-pills > li > a {
+    border-radius: 30px;
+}
+.nav-pills > .active > a:hover {
+    background-color:  #99CC33;
+    color: #000;
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 7px 12px;
+}
+
+.kv-sidenav .active > ul {
+    background-color: #fff;
+}
+
+.kv-toggle :hover {
+    background-color:  #99CC33;
+}
