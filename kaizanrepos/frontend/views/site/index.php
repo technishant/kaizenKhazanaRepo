@@ -237,52 +237,72 @@ $this->title = 'Home :: Kaizen Khazana';
             </div>
         <?php endif; ?>
 
-        <?php if (!empty($processVideos)): ?>
-            <div class="item">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3><?= Html::encode('Process Videos'); ?></h3>
-                            <p><?= Html::encode('Check our process our process videos'); ?></p>
-                        </div>
-                        <?php
-                            $latestVidId='';
-                            foreach ($processVideos as $pVideo): 
-                            if(empty($latestVidId)){
-                                $latestVid=$pVideo->id;
-                            }
-                            ?>                            
-                            <div class="width-full-480 col-xs-3 col-md-3">
-                                <div class="frames">
-                                    <div class="overlay">
-                                        <div class="display-table">
-                                            <div class="display-table-cell">
-                                                <h3><?= Html::encode(ucwords($pVideo->name)); ?></h3>
-                                                <hr>
-                                                <p><?= MyHelpers::trim_by_words($pVideo->subject, 100); ?></p>
-                                                <hr>
-                                                <a href="<?php echo Url::toRoute('/kaizen/watchprocess?id=' . base64_encode($pVideo->id)); ?>" class="btn btn-primary">Read more</a>
-                                            </div>
-                                        </div>
+        <div class="item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Process videos</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="width-full-480 col-xs-3 col-md-3">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                                     </div>
-                                    <?php
-                                    if (file_exists(Yii::$app->params['kzAttachmentsUrl'] . '/thumb__' . pathinfo($pVideo->attachmentother, PATHINFO_FILENAME) . '.jpg')) {
-                                        $imgpath = Yii::$app->request->baseUrl . '/uploads/kzattachments/thumb__' . pathinfo($pVideo->attachmentother, PATHINFO_FILENAME) . '.jpg';
-                                    } else {
-                                        $imgpath = Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg';
-                                    }
-                                    ?>
-                                    <img src="<?= $imgpath ?>" height="250px" width="500px">
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                        <?php if(!empty($latestVidId)){ ?>
-                        <div align="center"><a href="<?php echo Url::toRoute('/kaizen/watchprocess?id=' . base64_encode($latestVidId)); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Videos</a></div>
-                        <?php } ?>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>" height="250px" width="500px">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-3 col-md-3">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>" height="250px" width="500px">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-3 col-md-3">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>" height="250px" width="500px">
+                        </div>
+                    </div>
+                    <div class="width-full-480 col-xs-3 col-md-3">
+                        <div class="frames">
+                            <div class="overlay">
+                                <div class="display-table">
+                                    <div class="display-table-cell">
+                                        <h3>Sed ut perspiciatis unde </h3>
+                                        <hr>
+                                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-4.jpg' ?>" height="250px" width="500px">
+                        </div>
                     </div>
                 </div>
             </div>
-        <?php endif; ?>
+        </div>
         <div class="item">
             <div class="container">
                 <div class="row">
