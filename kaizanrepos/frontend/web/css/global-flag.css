@@ -262,10 +262,16 @@ video.player { width: 100%; height: auto; }
 .formViewBox img { width: 100%; display: block; }
 .formViewBox h3 { margin: 15px 0; }
 
+.truncateText {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 @media only screen and (max-width: 1199px) {
-	
-	.menuBox li a { padding: 12px 10px; }
-	
+
+    .menuBox li a { padding: 12px 10px; }
+
 }
 
 @media only screen and (max-width: 1024px) {
@@ -277,36 +283,36 @@ video.player { width: 100%; height: auto; }
 }
 
 @media only screen and (max-width: 991px) {
-	
-	.logo { margin-top: 3px; width: 170px; }
-	.admin-panel li a { padding: 3px 10px; }
-	.menuBox li a { font-size: 12px; font-family: 'robotoregular'; padding: 10px 8px; }
-	
+
+    .logo { margin-top: 3px; width: 170px; }
+    .admin-panel li a { padding: 3px 10px; }
+    .menuBox li a { font-size: 12px; font-family: 'robotoregular'; padding: 10px 8px; }
+
 }
 
 @media only screen and (max-width: 767px) {
 
-	.headerBox, .headerBox .container { padding: 0; }
-	.headerBox .logo { margin-left: 10px;}
-	.admin-panel { background: #ff9955; width: 100%; margin: 0 !important; }
-	.menuBox { background: rgba(0,0,0,0.5); }
-	.menuBox  .navbar-nav { margin: 0; }
-	.admin-panel li, .menuBox li { float: left; width: 100%; }
-	.admin-panel li a, .menuBox li a { padding: 8px 15px; font-size: 13px; color: #fff; display: block; text-align: right; }
-	.menuBox li a:hover, .menuBox li a:active, .menuBox li a:focus, .menuBox li.active a, .admin-panel li a:hover { text-decoration: none; background: #fff; }
-	.logo { margin-top: 8px; }
-	.navbar-toggle { margin: 0 10px; color: #fff; }
-	.navbar-toggle.menubtn-top { margin: 0 10px 0 0; color: #ff9955; }
-	.searchBox { height: auto; }
-	.searchBox .btn-primary { margin-top: 10px; }
-	.footer-list h4 { padding-top: 10px; }
-	.bottom-footer { margin-top: 15px; }
-	.bottom-footer .logo-footer, .bottom-footer ul { float: none; width: auto; }
-	.bottom-footer .logo-footer { width: 150px; display: block; margin-bottom: 10px; }
-	.bottom-footer li { padding: 0; }
-	.col-5, .featureBox .icon-section > li { width: 50%; float: left; }
-	.searchBox .icon-section { position: static; }
-	.mar-btm-100 { margin-bottom: 0 !important; }
+    .headerBox, .headerBox .container { padding: 0; }
+    .headerBox .logo { margin-left: 10px;}
+    .admin-panel { background: #ff9955; width: 100%; margin: 0 !important; }
+    .menuBox { background: rgba(0,0,0,0.5); }
+    .menuBox  .navbar-nav { margin: 0; }
+    .admin-panel li, .menuBox li { float: left; width: 100%; }
+    .admin-panel li a, .menuBox li a { padding: 8px 15px; font-size: 13px; color: #fff; display: block; text-align: right; }
+    .menuBox li a:hover, .menuBox li a:active, .menuBox li a:focus, .menuBox li.active a, .admin-panel li a:hover { text-decoration: none; background: #fff; }
+    .logo { margin-top: 8px; }
+    .navbar-toggle { margin: 0 10px; color: #fff; }
+    .navbar-toggle.menubtn-top { margin: 0 10px 0 0; color: #ff9955; }
+    .searchBox { height: auto; }
+    .searchBox .btn-primary { margin-top: 10px; }
+    .footer-list h4 { padding-top: 10px; }
+    .bottom-footer { margin-top: 15px; }
+    .bottom-footer .logo-footer, .bottom-footer ul { float: none; width: auto; }
+    .bottom-footer .logo-footer { width: 150px; display: block; margin-bottom: 10px; }
+    .bottom-footer li { padding: 0; }
+    .col-5, .featureBox .icon-section > li { width: 50%; float: left; }
+    .searchBox .icon-section { position: static; }
+    .mar-btm-100 { margin-bottom: 0 !important; }
 }
 
 @media only screen and (max-width: 700px) {

@@ -39,9 +39,9 @@ use common\components\MyHelpers;
             ?>
             <div class = "photo"><img src = "<?= $imgpath ?>"></div>
             <div class = "text">
-                <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><h4><?= Html::encode(ucwords($model->name)); ?></h4></a>
-                <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><p><?= Html::encode(ucwords($model->processarea)); ?></p></a>
-                <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><?= Html::encode(ucwords($model->implemented_by)) . " at " . Html::encode(ucwords($model->company)); ?></a>
+                <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><h4 class="truncateText"><?= Html::encode(ucwords($model->name)); ?></h4></a>
+                <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><p class="truncateText"><?= Html::encode(ucwords($model->processarea)); ?></p></a>
+                <a href="<?= Url::toRoute(['kaizen/view', 'id' => $model->id]); ?>"><span class="truncateText"><?= Html::encode(ucwords($model->implemented_by)) . " at " . Html::encode(ucwords($model->company)); ?></span></a>
             </div>
         </div>
     </li>
