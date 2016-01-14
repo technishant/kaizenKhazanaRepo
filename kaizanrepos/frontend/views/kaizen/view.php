@@ -20,7 +20,7 @@ use common\components\MyHelpers;
                     }
                     ?>
                     <div class="row">
-                        <div class="col-sm-6"><img src="<?= $imgpath; ?>"></div>
+                        <div class="col-sm-6"><img style="width: 100%; height: 350px;" src="<?= $imgpath; ?>"></div>
                         <div class="col-sm-6">
                             <div class="row second">
                                 <div class="col-sm-6"><?= $model->getAttributeLabel('name') ?></div>
@@ -151,7 +151,7 @@ use common\components\MyHelpers;
                                 <?php if($model->attachmenttype=='image'){ ?>
                                 <div class="col-sm-6">
                                 <h4>Before Kaizen</h4>
-                                <img class="kzattachbeforeMedia"  src="<?= $vidpath1 ?>">
+                                <img  style="width: 100%; height: 350px;"  class="kzattachbeforeMedia"  src="<?= $vidpath1 ?>">
                                 </div>
                                 <?php
                                 }
@@ -177,7 +177,7 @@ use common\components\MyHelpers;
                                 <?php if($model->attachmenttype=='image'){ ?>
                                 <div class="col-sm-6">                                    
                                 <h4>After Kaizen</h4>
-                                <img class="kzattachafterMedia" src="<?= $vidpath2 ?>">
+                                <img style="width: 100%; height: 350px;"  class="kzattachafterMedia" src="<?= $vidpath2 ?>">
                                 </div>
                                 <?php
                                 }
