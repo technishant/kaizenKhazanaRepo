@@ -27,7 +27,8 @@ $this->title = 'Home :: Kaizen Khazana';
                             echo Html::textInput('KaizenSearch[searchstring]', '', ['class' => 'form-control input-lg',
                                 'placeholder' => 'Search Kaizen']);
                             ?>
-                            <?= Html::hiddenInput('pg', 'kzsearch'); ?>   
+                            <?= Html::hiddenInput('pg', 'kzsearch'); ?>
+                            <?= Html::hiddenInput('type', 'all'); ?>
                         </div>
                         <div class="col-sm-2">                                
                             <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>

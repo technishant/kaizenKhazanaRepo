@@ -8,6 +8,7 @@ use yii\widgets\ListView;
 use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
 ?>
 <!--  / filterBox \ -->
 <div class="filterBox clearfix">
@@ -27,42 +28,26 @@ use yii\helpers\Html;
         <?php Pjax::end(); ?>
         <div class = "right-side">
             <div class = "tab-content">
-
                 <div role = "tabpanel" class = "tab-pane active" id = "cars-vehecle">
                     <?php
-                    Pjax::begin(['id' => 'search-form']);
+                    //Pjax::begin(['id' => 'search-form']);
                     $form = ActiveForm::begin([
                                 'action' => ['category-click'],
                                 'method' => 'get',
                                 'options' => ['data-pjax' => true]
                     ]);
                     ?>
-                    <div class = "search clearfix row mar-btm-20">
-                        <div class="radio col-sm-2">
-                            <label>
-                                <input type="radio" name = "type" id = "type" value ="all" checked><a onclick="checkCategory('all')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => 'all']); ?>">All</a>
-                            </label>
+                    <div class="search clearfix row mar-btm-20">
+                        <div style="margin-bottom: 10px;">
+                            <ul class="nav nav-pills nav-justified">
+                                <li class=<?= ($_GET['type'] == "all") ? 'active' : ''?>><a href="<?= (isset($_GET['id'])) ? Url::to(['site/category-click', 'id' => $_GET['id'], 'type' => 'all']) : Url::to(['site/category-click', 'pg' => 'kzsearch', 'type' => 'all', 'KaizenSearch[searchstring]' => $_GET['KaizenSearch']['searchstring']]) ?>">All</a></li>
+                                <li class=<?= ($_GET['type'] == "0") ? 'active' : ''?>><a href="<?= (isset($_GET['id'])) ? Url::to(['site/category-click', 'id' => $_GET['id'], 'type' => '0']) : Url::to(['site/category-click', 'pg' => 'kzsearch', 'type' => '0', 'KaizenSearch[searchstring]' => $_GET['KaizenSearch']['searchstring']]); ?>">Kaizen</a></li>
+                                <li class=<?= ($_GET['type'] == "1") ? 'active' : ''?>><a href="<?= (isset($_GET['id'])) ? Url::to(['site/category-click', 'id' => $_GET['id'], 'type' => '1']) : Url::to(['site/category-click', 'pg' => 'kzsearch', 'type' => '1', 'KaizenSearch[searchstring]' => $_GET['KaizenSearch']['searchstring']]); ?>">Photos</a></li>
+                                <li class=<?= ($_GET['type'] == "2") ? 'active' : ''?>><a href="<?= (isset($_GET['id'])) ? Url::to(['site/category-click', 'id' => $_GET['id'], 'type' => '2']) : Url::to(['site/category-click', 'pg' => 'kzsearch', 'type' => '2', 'KaizenSearch[searchstring]' => $_GET['KaizenSearch']['searchstring']]);?>">Videos</a></li>
+                                <li class=<?= ($_GET['type'] == "3") ? 'active' : ''?>><a href="<?= (isset($_GET['id'])) ? Url::to(['site/category-click', 'id' => $_GET['id'], 'type' => '3']) : Url::to(['site/category-click', 'pg' => 'kzsearch', 'type' => '3', 'KaizenSearch[searchstring]' => $_GET['KaizenSearch']['searchstring']]); ?>">Books</a></li>
+                            </ul>
                         </div>
-                        <div class="radio col-sm-2">
-                            <label>
-                                <input type="radio" name = "type" id = "type" value = "0"><a onclick="checkCategory('0')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '0']); ?>">Kaizen</a>
-                            </label>
-                        </div>
-                        <div class="radio col-sm-2">
-                            <label>
-                                <input type="radio" name = "type" id = "type" value = "1"><a onclick="checkCategory('1')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '1']); ?>">Photos</a>
-                            </label>
-                        </div>
-                        <div class="radio col-sm-2">
-                            <label>
-                                <input type="radio" name = "type" id = "type" value = "2"><a  onclick="checkCategory('2')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '2']); ?>">Videos</a>
-                            </label>
-                        </div>
-                        <div class="radio col-sm-2">
-                            <label>
-                                <input type="radio" name = "type" id = "type" value = "3"><a onclick="checkCategory('3')" href="<?= yii\helpers\Url::toRoute(['site/category-click', 'id' => $_GET['id'], 'type' => '3']); ?>">Books</a>
-                            </label>
-                        </div>
+
                         <div class = "col-sm-10">
                             <?=
                             $form->field($searchmodel, 'searchstring')->widget(\yii\jui\AutoComplete::classname(), [
@@ -83,7 +68,7 @@ use yii\helpers\Html;
                         </div>
                         <?php
                         ActiveForm::end();
-                        yii\widgets\Pjax::end();
+                        //yii\widgets\Pjax::end();
                         ?>
                     </div>
                     <div class = "list-section clearfix" id="pp">
