@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
 use \yii\helpers\Html;
 use yii\web\UploadedFile;
 use yii\imagine\Image;
+use yii\data\ActiveDataProvider;
 /**
  * KaizenController implements the CRUD actions for Kaizen model.
  */
@@ -271,7 +272,24 @@ class KaizenController extends Controller {
             ]);
         }
     }
-
+    
+    public function actionWatchprocess($id) {
+        $searchModel = new KaizenSearch();
+        $dataProvider = new ActiveDataProvider([
+                'query' => Kaizen::find()->where('type=2')->orderBy('posteddate DESC'),
+                'pagination' => [
+                    'pageSize' => 5
+                ]
+            ]);
+        
+        $id= base64_decode(Yii::$app->request->queryParams['id']);
+        $currentVideo=  $this->findModel($id);
+        return $this->render('watchvideos', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'currentVideo' => $currentVideo,
+        ]);
+    }
     /**
      * Deletes an existing Kaizen model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

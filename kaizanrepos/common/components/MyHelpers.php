@@ -12,8 +12,13 @@ use yii\helpers\StringHelper;
 use yii\helpers\Html;
 class MyHelpers {
 
-    function trim_by_words($text, $length = 10) {
-        return StringHelper::truncate($text, $length);
+    function trim_by_words($text, $length = 10,$appendDot=false) {
+        if($appendDot){
+            return StringHelper::truncate($text, $length, $appendDot);
+        }
+        else{
+            return StringHelper::truncate($text, $length);
+        }
     }
 
     public function getUrl($includeLanguage = true) {
