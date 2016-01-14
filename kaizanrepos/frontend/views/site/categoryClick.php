@@ -95,7 +95,7 @@ use yii\helpers\Html;
                                 'tag' => 'ul',
                                 'class' => '',
                             ],
-                            'layout' => '{items}{pager}',
+                            'layout' => '<div class="row">{items}</div>{pager}',
                             'itemOptions' => [
                                 'tag' => false,
                             ],

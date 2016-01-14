@@ -10,7 +10,7 @@ use yii\bootstrap\Html;
 use common\components\MyHelpers;
 ?>
 <div class="col-sm-6">
-    <li class="row">
+    <li>
         <div class="inner border-none clearfix">
             <?php
             if ($model->type == '1' && file_exists(Yii::$app->params['kzAttachmentsUrl'] . '/thumb__' . $model->attachmentother)) {
