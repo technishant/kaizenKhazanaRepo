@@ -174,7 +174,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <p><?= Html::encode('Check our latest fair collection'); ?></p>
                         </div>
                         <?php foreach ($fairVideos as $fair): ?>
-                            <div class="width-full-480 col-xs-6 col-md-6">
+                            <div class="width-full-480 col-xs-3 col-md-3">
                                 <div class="frames">
                                     <div class="overlay">
                                         <div class="display-table">
@@ -213,7 +213,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <p><?= Html::encode('Check out our latest Capitalist'); ?></p>
                         </div>
                         <?php foreach ($capitalistModel as $capitalist): ?>
-                            <div class="width-full-480 col-xs-6 col-md-6">
+                            <div class="width-full-480 col-xs-3 col-md-3">
                                 <div class="frames">
                                     <div class="overlay">
                                         <div class="display-table">
@@ -243,7 +243,7 @@ $this->title = 'Home :: Kaizen Khazana';
                         <h3>Process videos</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">
@@ -257,7 +257,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">
@@ -271,7 +271,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">
@@ -285,7 +285,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">
@@ -309,7 +309,7 @@ $this->title = 'Home :: Kaizen Khazana';
                         <h3>Whats new in market</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">
@@ -323,7 +323,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-1.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">
@@ -337,7 +337,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-2.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">
@@ -351,7 +351,7 @@ $this->title = 'Home :: Kaizen Khazana';
                             <img src="<?= Yii::$app->request->baseUrl . '/images/video-thumb-3.jpg' ?>" height="250px" width="500px">
                         </div>
                     </div>
-                    <div class="width-full-480 col-xs-6 col-md-6">
+                    <div class="width-full-480 col-xs-3 col-md-3">
                         <div class="frames">
                             <div class="overlay">
                                 <div class="display-table">

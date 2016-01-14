@@ -265,11 +265,11 @@ class SiteController extends Controller {
         $menu = array();
         $rootModal = Category::find()->roots()->all();
         $parentActiveId = array();
-        /*         * * when form submitted from search box ** */
+        /*** when form submitted from search box ***/
         $searchModel = new KaizenSearch();
         if ((\Yii::$app->request->get('pg') == 'kzsearch')) {
             $paramsArray = Yii::$app->request->queryParams;
-            /*             * * check if searched catgory id has children then search text in children as well ** */
+            /*** check if searched catgory id has children then search text in children as well ***/
             if (!empty($paramsArray['id'])) {
                 $categoryIdSearched = '';
                 $categoryIdSearched = $paramsArray['id'];
@@ -284,7 +284,7 @@ class SiteController extends Controller {
                     $paramsArray['id'] = $searchedCategoryChildrenArray;
                 }
             }
-            /*             * * check if searched catgory id has children then search text in children as well ends here ** */
+            /*** check if searched catgory id has children then search text in children as well ends here ***/
             $dataProvider = $searchModel->search($paramsArray);
             /** get active menu list from searched data * */
             $allSearchedData = $dataProvider->getModels();
@@ -297,12 +297,12 @@ class SiteController extends Controller {
                     $parentActiveId[] = $parentArray->id;
                 }
             }
-            /** get active menu list from searched data ends here * */
+            /** get active menu list from searched data ends here **/
             $dataProvider = $searchModel->search($paramsArray); //reset data provider
             $dataProvider->pagination->pageSize = 15;
         }
-        /*         * * when form submitted from search box ends here ** */
-        /*         * * select parent categories in navigation based on ids ** */
+        /*** when form submitted from search box ends here ***/
+        /*** select parent categories in navigation based on ids ***/
         if (!empty($id)) {
             $parentActiveId = array();
             $menuRootNode = Category::findOne(['id' => $id]);

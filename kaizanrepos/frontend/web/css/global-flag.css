@@ -66,7 +66,7 @@ video.player { width: 100%; height: auto; }
 .blue-bg { background-color: #f2f2f2; color: #333; }
 .color-white { color: #fff !important; }
 
-.item-border { background-color: #fff; color: #ff9955; padding: 35px 15px; cursor: pointer; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -ms-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all; }
+.item-border { color: #ff9955; padding: 35px 15px; cursor: pointer; -webkit-transition: 0.3s all; -moz-transition: 0.3s all; -ms-transition: 0.3s all; -o-transition: 0.3s all; transition: 0.3s all; }
 .item-border:hover { background-color: #9C3; color: #fff; }
 
 .modal .photo { margin: 15px auto 30px; width: 250px; height: 150px; line-height: 150px; text-align: center; }
