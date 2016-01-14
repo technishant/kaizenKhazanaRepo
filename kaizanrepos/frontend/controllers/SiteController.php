@@ -111,8 +111,7 @@ class SiteController extends Controller {
         $categories = Category::find()->roots()->all();
         $fairVideos = FairDetails::find()->orderBy('id DESC')->limit('8')->all();
         $capitalistModel = Capitalist::find()->orderBy('id DESC')->limit('8')->all();
-        $processVideos = Kaizen::find()->where('type=2')->orderBy('posteddate DESC')->limit('8')->all();
-        return $this->render('index', ['model' => $model, 'categories' => $categories, 'fairVideos' => $fairVideos, 'capitalistModel' => $capitalistModel,'processVideos'=>$processVideos]);
+        return $this->render('index', ['model' => $model, 'categories' => $categories, 'fairVideos' => $fairVideos, 'capitalistModel' => $capitalistModel]);
     }
 
     /**

@@ -19,7 +19,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/master.css?version=12121',
-        'css/custom-css.css',
+        //'css/font-awesome.min.css',
         //'css/fonts.css',
         //'css/global.css',
         //'css/owl.carousel.css',
