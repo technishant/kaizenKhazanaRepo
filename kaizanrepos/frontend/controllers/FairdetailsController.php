@@ -37,12 +37,12 @@ class FairdetailsController extends Controller
         $dataProvider = new ActiveDataProvider([
                 'query' => FairDetails::find()->orderBy('id DESC'),
                 'pagination' => [
-                    'pageSize' => 5
+                    'pageSize' => 50
                 ]
             ]);
         $paramsArray=Yii::$app->request->queryParams;
         $dataProvider = $searchModel->search($paramsArray); 
-        $dataProvider->pagination->pageSize=5;
+        $dataProvider->pagination->pageSize=50;
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
