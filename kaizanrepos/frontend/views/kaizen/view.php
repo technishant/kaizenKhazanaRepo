@@ -19,8 +19,9 @@ use common\components\MyHelpers;
                         $imgpath = Yii::$app->request->baseUrl . '/images/photoicon.png';
                     }
                     ?>
+                    <h3><?php echo implode("->",MyHelpers::getParentTree($model->category)); ?></h3>                    
                     <div class="row">
-                        <div class="col-sm-6"><img style="width: 100%; height: 350px;" src="<?= $imgpath; ?>"></div>
+                        <div class="col-sm-6"><img style="width: 100%; height: 300px;" src="<?= $imgpath; ?>"></div>
                         <div class="col-sm-6">
                             <div class="row second">
                                 <div class="col-sm-6"><?= $model->getAttributeLabel('name') ?></div>
@@ -36,6 +37,10 @@ use common\components\MyHelpers;
                                     <div class="col-sm-6"><?= MyHelpers::WebText($model->description); ?></div>
                                 </div>
                             <?php } ?>
+                            <div class="row second">
+                             <div class="col-sm-6">Posted on</div>
+                             <div class="col-sm-6"><?php echo date('d-m-Y',  strtotime($model->posteddate)); ?></div>                    
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -47,10 +52,11 @@ use common\components\MyHelpers;
                         $vidpath1 = '';
                     }
                     ?>
+                    <h3><?php echo implode("->",MyHelpers::getParentTree($model->category)); ?></h3>                    
                     <div class="row">
                         <?php if (!empty($vidpath1)) { ?>
                             <div class="col-sm-6">
-                                <video class="player" style="width: 100%; height: 350px; background: black;" controls>
+                                <video class="player" style="width: 100%; height: 300px; background: black;" controls>
                                     <source src="<?= $vidpath1 ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -71,6 +77,10 @@ use common\components\MyHelpers;
                                     <div class="col-sm-6"><?= MyHelpers::WebText($model->description); ?></div>
                                 </div>
                             <?php } ?>
+                            <div class="row second">
+                             <div class="col-sm-6">Posted on</div>
+                             <div class="col-sm-6"><?php echo date('d-m-Y',  strtotime($model->posteddate)); ?></div>                    
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -82,6 +92,7 @@ use common\components\MyHelpers;
                         $imgpath = '';
                     }
                     ?>
+                    <h3><?php echo implode("->",MyHelpers::getParentTree($model->category)); ?></h3>                    
                     <div class="row">
                         <?php if (!empty($imgpath)) { ?>
                             <div class="col-sm-1"><a href="<?= $imgpath; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/pdficon.png'; ?>"></a></div>
@@ -100,6 +111,10 @@ use common\components\MyHelpers;
                                     <div class="col-sm-10"><?= MyHelpers::WebText($model->description); ?></div>
                                 </div>
                             <?php } ?>
+                            <div class="row second">
+                             <div class="col-sm-6">Posted on</div>
+                             <div class="col-sm-6"><?php echo date('d-m-Y',  strtotime($model->posteddate)); ?></div>                    
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -151,7 +166,7 @@ use common\components\MyHelpers;
                                 <?php if($model->attachmenttype=='image'){ ?>
                                 <div class="col-sm-6">
                                 <h4>Before Kaizen</h4>
-                                <img  style="width: 100%; height: 350px;"  class="kzattachbeforeMedia"  src="<?= $vidpath1 ?>">
+                                <img  style="width: 100%; height: 300px;"  class="kzattachbeforeMedia"  src="<?= $vidpath1 ?>">
                                 </div>
                                 <?php
                                 }
@@ -166,7 +181,7 @@ use common\components\MyHelpers;
                                 ?>
                                 <div class="col-sm-6">
                                 <h4>Before Kaizen</h4>
-                                <video class="player kzattachbeforeMedia" style="width: 100%; height: 350px; background: black;" controls>
+                                <video class="player kzattachbeforeMedia" style="width: 100%; height: 300px; background: black;" controls>
                                     <source src="<?= $vidpath1 ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -177,7 +192,7 @@ use common\components\MyHelpers;
                                 <?php if($model->attachmenttype=='image'){ ?>
                                 <div class="col-sm-6">                                    
                                 <h4>After Kaizen</h4>
-                                <img style="width: 100%; height: 350px;"  class="kzattachafterMedia" src="<?= $vidpath2 ?>">
+                                <img style="width: 100%; height: 300px;"  class="kzattachafterMedia" src="<?= $vidpath2 ?>">
                                 </div>
                                 <?php
                                 }
@@ -192,7 +207,7 @@ use common\components\MyHelpers;
                                 ?>
                                 <div class="col-sm-6">                                    
                                 <h4>After Kaizen</h4>
-                                <video class="player kzattachafterMedia" style="width: 100%; height: 350px; background: black;" controls>
+                                <video class="player kzattachafterMedia" style="width: 100%; height: 300px; background: black;" controls>
                                     <source src="<?= $vidpath2 ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
