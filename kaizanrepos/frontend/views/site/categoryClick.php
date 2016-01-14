@@ -62,7 +62,12 @@ use yii\helpers\Url;
                             ?>
                         </div>                        
                         <?= Html::hiddenInput('pg', 'kzsearch'); ?>
+                        <?php if(isset($_GET['id'])): ?>
                         <?= Html::hiddenInput('id', $id); ?>
+                        <?php endif; ?>
+                        <?php if(isset($_GET['type'])): ?>
+                        <?= Html::hiddenInput('type', $_GET['type']); ?>
+                        <?php endif; ?>
                         <div class = "col-sm-2">
                             <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'width-full btn btn-primary btn-lg']) ?>
                         </div>

@@ -10,17 +10,17 @@ use frontend\models\Kaizen;
 /**
  * KaizenSearch represents the model behind the search form about `frontend\models\Kaizen`.
  */
-class KaizenSearch extends Kaizen
-{
+class KaizenSearch extends Kaizen {
+
     public $searchstring;
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'category', 'postedby', 'recordstatus'], 'integer'],
-            [['searchstring','name','subject','description', 'processarea', 'company', 'currrentstage', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'implementationdate', 'posteddate', 'suggestedby', 'approvedby'], 'safe'],
+            [['searchstring', 'name', 'subject', 'description', 'processarea', 'company', 'currrentstage', 'mode', 'tangiblebenifits', 'intengiblebenifits', 'implementationdate', 'posteddate', 'suggestedby', 'approvedby'], 'safe'],
             [['costsaving'], 'number'],
         ];
     }
@@ -28,8 +28,7 @@ class KaizenSearch extends Kaizen
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -41,8 +40,7 @@ class KaizenSearch extends Kaizen
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Kaizen::find();
 
         $dataProvider = new ActiveDataProvider([
@@ -56,32 +54,30 @@ class KaizenSearch extends Kaizen
             return $dataProvider;
         }
 
-       // $query->orFilterWhere([
-           // 'id' => $this->id,
-          //  'category' => $this->searchstring,
-          //  'costsaving' => $this->searchstring,
-          //  'implementationdate' => $this->searchstring,
-           // 'postedby' => $this->searchstring,
-            //'posteddate' => $this->searchstring,
-           // 'recordstatus' => $this->searchstring,
-      //  ]);
-        
-        
         $query->orFilterWhere(['like', 'name', $this->searchstring])
-            ->orFilterWhere(['like', 'subject', $this->searchstring])
-            ->orFilterWhere(['like', 'description', $this->searchstring])
-            ->orFilterWhere(['like', 'processarea', $this->searchstring])
-            ->orFilterWhere(['like', 'company', $this->searchstring])           
-            ->orFilterWhere(['like', 'currrentstage', $this->searchstring])
-            ->orFilterWhere(['like', 'mode', $this->searchstring])
-            ->orFilterWhere(['like', 'tangiblebenifits', $this->searchstring])
-            ->orFilterWhere(['like', 'intengiblebenifits', $this->searchstring])
-            ->orFilterWhere(['like', 'suggestedby', $this->searchstring])
-            ->orFilterWhere(['like', 'postedby', $this->postedby])
-            ->orFilterWhere(['like', 'approvedby', $this->searchstring]);
-        if(!empty($params['id'])){
-        $query->andFilterWhere(['in','category', $params['id']]);
-        }              
+                ->orFilterWhere(['like', 'subject', $this->searchstring])
+                ->orFilterWhere(['like', 'description', $this->searchstring])
+                ->orFilterWhere(['like', 'processarea', $this->searchstring])
+                ->orFilterWhere(['like', 'company', $this->searchstring])
+                ->orFilterWhere(['like', 'currrentstage', $this->searchstring])
+                ->orFilterWhere(['like', 'mode', $this->searchstring])
+                ->orFilterWhere(['like', 'tangiblebenifits', $this->searchstring])
+                ->orFilterWhere(['like', 'intengiblebenifits', $this->searchstring])
+                ->orFilterWhere(['like', 'suggestedby', $this->searchstring])
+                ->orFilterWhere(['like', 'postedby', $this->postedby])
+                ->orFilterWhere(['like', 'approvedby', $this->searchstring]);
+        if (!empty($params['id'])) {
+            $query->andFilterWhere(['in', 'category', $params['id']]);
+        }
+        if(!empty($params['type'])) {
+            //print_r($params['type']); die;
+            if($params['type'] == "all") {
+                $query->andFilterWhere(['in', 'type', [1,2,3,0]]);
+            } else {
+                $query->andFilterWhere(['in', 'type', $params['type']]);
+            }
+        }
         return $dataProvider;
     }
+
 }
