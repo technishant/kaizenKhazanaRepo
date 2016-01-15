@@ -27,24 +27,25 @@ AppAsset::register($this);
     <body>
         <?php $this->beginBody() ?>
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=216973445304358";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=216973445304358";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
         <!--  / wrapper \ -->
         <section id="wrapper">
-
             <!--  / header container \ -->
             <header id="headerCntr">
-
                 <!--  / headerBox \ -->
                 <div class="headerBox">
                     <div class="container">
 
                         <a class="logo" href="<?= yii\helpers\Url::toRoute(['site/index']); ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/logo.png' ?>" alt="" /></a>
+                        <a class="logo" href="<?= yii\helpers\Url::toRoute(['site/index']); ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/make_in_india.jpg' ?>" alt="" /></a>
                         <button type="button" class="navbar-toggle menubtn-top collapsed" data-toggle="collapse" data-target="#menubox" aria-expanded="false">
                             <i class="fa fa-reorder"></i>
                         </button>
@@ -74,8 +75,8 @@ AppAsset::register($this);
             <section id="contentCntr" class="clearfix">
                 <?= $content; ?> 
             </section>
-            <?php if(Yii::$app->controller->id == "site" && Yii::$app->controller->action->id == "index"): ?>
-            <?= $this->render('_layout_footer.php'); ?>
+            <?php if (Yii::$app->controller->id == "site" && Yii::$app->controller->action->id == "index"): ?>
+                <?= $this->render('_layout_footer.php'); ?>
             <?php endif; ?>
             <!--  \ content container / -->
         </section>
