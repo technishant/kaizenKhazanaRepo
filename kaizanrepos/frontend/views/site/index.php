@@ -9,6 +9,7 @@ $this->title = 'Home :: Kaizen Khazana';
 ?>
 <!--  / searchBox \ -->
 <div class="searchBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
+    <div class="overlay"></div>
     <div class="container height-100 pos-rel">
         <div class="row height-100">
 
@@ -37,37 +38,37 @@ $this->title = 'Home :: Kaizen Khazana';
                     </div>
 
                     <div class="icon-section">
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
                                 <span><i class="fa fa-apple"></i></span>
                                 <span>Idea Bazaar</span>
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
                                 <span><i class="fa fa-apple"></i></span>
                                 <span>Knowledge Bazaar</span>
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
                                 <span><i class="fa fa-apple"></i></span>
                                 <span>E-Shopping</span>
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
                                 <span><i class="fa fa-apple"></i></span>
                                 <span>Entrepreneur Guide</span>
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
                                 <span><i class="fa fa-apple"></i></span>
                                 <span>Donate us</span>
                             </div>
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
                                 <span><i class="fa fa-apple"></i></span>
                                 <span>Help</span>
@@ -93,11 +94,9 @@ $this->title = 'Home :: Kaizen Khazana';
             <ul class="icon-section clearfix moreList" id="myList">
                 <?php foreach ($categories as $category): ?>
                     <li class="col-sm-3 col-5">
-                        <a href="<?= Url::to(['category-click', 'id' => $category->id, 'type' => 'all']); ?>">
-                            <div class = "item-border">
-                                <span><i class="<?= $category->icon ?>"></i></span>
-                                <span class="text-overflow"><?= Html::encode($category->name); ?></span>
-                            </div>
+                        <a href="<?= Url::to(['category-click', 'id' => $category->id, 'type' => 'all']); ?>" class="item-border">
+                            <span><i class="<?= $category->icon ?>"></i></span>
+                            <span class="text-overflow"><?= Html::encode($category->name); ?></span>
                         </a>
                     </li>
                 <?php endforeach; ?>
@@ -108,7 +107,8 @@ $this->title = 'Home :: Kaizen Khazana';
 </div>
 
 <!--  / featureBox \ -->
-<div class="featureBox text-center clearfix">
+<div class="featureBox text-center clearfix" style='background-image: url("../../images/make-in-india-hd.png")'>
+    <div class="overlay white"></div>
     <div class="container">
         <div class="row">
 
@@ -246,10 +246,10 @@ $this->title = 'Home :: Kaizen Khazana';
                             <p><?= Html::encode('Check our process our process videos'); ?></p>
                         </div>
                         <?php
-                            $latestVidId='';
-                            foreach ($processVideos as $pVideo): 
-                            if(empty($latestVidId)){
-                                $latestVid=$pVideo->id;
+                        $latestVidId = '';
+                        foreach ($processVideos as $pVideo):
+                            if (empty($latestVidId)) {
+                                $latestVid = $pVideo->id;
                             }
                             ?>                            
                             <div class="width-full-480 col-xs-3 col-md-3">
@@ -276,8 +276,8 @@ $this->title = 'Home :: Kaizen Khazana';
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                        <?php if(!empty($latestVidId)){ ?>
-                        <div align="center"><a href="<?php echo Url::toRoute('/kaizen/watchprocess?id=' . base64_encode($latestVidId)); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Videos</a></div>
+                        <?php if (!empty($latestVidId)) { ?>
+                            <div align="center"><a href="<?php echo Url::toRoute('/kaizen/watchprocess?id=' . base64_encode($latestVidId)); ?>" class="btn btn-success btn-lg text-uppercase mar-top-30">Explore more Videos</a></div>
                         <?php } ?>
                     </div>
                 </div>
