@@ -83,7 +83,8 @@ $this->title = 'Home :: Kaizen Khazana';
 <!--  \ searchBox / -->
 
 <!--/ featureBox \ -->
-<div class = "featureBox text-center blue-bg clearfix">
+<div class = "featureBox text-center blue-bg clearfix" style='background-image: url("../../images/make-in-india-hd.png")'>
+    <div class="overlay white"></div>
     <div class = "container">
         <div class = "row">
             <h3 class = "font-strong">
@@ -163,13 +164,13 @@ $this->title = 'Home :: Kaizen Khazana';
 <!--  \ featureBox / -->
 
 <!--  / siderBox \ -->
-<div class="siderBox clearfix">
-    <div class="overlay"></div>
+<div class="siderBox clearfix" style='background-image: url("../../images/makeinindia-stage1.jpg")'>
+    <div class="overlay white"></div>
     <div class="owl-carousel slider-product">
         <?php if (!empty($fairVideos)): ?>
             <div class="item">
                 <div class="container">
-                    <div class="row">
+                    <div class="row">   
                         <div class="col-sm-12">
                             <h3><?= Html::encode('Fair'); ?></h3>
                             <p><?= Html::encode('Check our latest fair collection'); ?></p>
