@@ -21,6 +21,9 @@ Thumbs.db
 # composer itself is not needed
 composer.phar
 
+# uploads
+/frontend/web/uploads
+
 # Mac DS_Store Files
 .DS_Store
 
