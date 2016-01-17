@@ -40,37 +40,37 @@ $this->title = 'Home :: Kaizen Khazana';
                     <div class="icon-section">
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-apple"></i></span>
+                                <span><i class="fa fa-home"></i></span>
                                 <span>Idea Bazaar</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-apple"></i></span>
+                                <span><i class="fa fa-home"></i></span>
                                 <span>Knowledge Bazaar</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-apple"></i></span>
+                                <span><i class="fa fa-home"></i></span>
                                 <span>E-Shopping</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-apple"></i></span>
+                                <span><i class="fa fa-home"></i></span>
                                 <span>Entrepreneur Guide</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-apple"></i></span>
+                                <span><i class="fa fa-home"></i></span>
                                 <span>Donate us</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-apple"></i></span>
+                                <span><i class="fa fa-home"></i></span>
                                 <span>Help</span>
                             </div>
                         </div>
@@ -120,37 +120,37 @@ $this->title = 'Home :: Kaizen Khazana';
             <div class="icon-section clearfix">
                 <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
-                        <span><i class="fa fa-apple"></i></span>
+                        <span><i class="fa fa-home"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
-                        <span><i class="fa fa-apple"></i></span>
+                        <span><i class="fa fa-home"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
-                        <span><i class="fa fa-apple"></i></span>
+                        <span><i class="fa fa-home"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
-                        <span><i class="fa fa-apple"></i></span>
+                        <span><i class="fa fa-home"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
-                        <span><i class="fa fa-apple"></i></span>
+                        <span><i class="fa fa-home"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
                 <div class="col-sm-4 col-xs-6">
                     <div class="item-border">
-                        <span><i class="fa fa-apple"></i></span>
+                        <span><i class="fa fa-home"></i></span>
                         <span class="text-overflow">Idea Bazaar</span>
                     </div>
                 </div>
