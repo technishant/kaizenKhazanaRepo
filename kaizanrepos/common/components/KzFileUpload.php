@@ -40,8 +40,8 @@ class KzFileUpload extends Component {
             $path=Yii::$app->params['kzAttachmentsUrl'];
         }
         if(!file_exists($path)){
+            mkdir($path, 0777,true);            
             chmod($path, 0777);
-            mkdir($path, 0777,true);
         }
         return $path .'/'. $pic;
     }

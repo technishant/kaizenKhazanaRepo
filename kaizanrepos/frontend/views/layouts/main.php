@@ -54,11 +54,12 @@ AppAsset::register($this);
                             'items' => [
                                 ['label' => 'Enquiry', 'url' => ['enquiry/create'], 'visible' => 'true'],
                                 ['label' => 'Post a Kaizen', 'url' => ['kaizen/create'], 'visible' => 'true'],
+                                ['label' => 'Entrepreneur Guide', 'url' => ['/entrepreneur'], 'visible' => 'true'],
                                 ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest],
                                 ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                                 ['label' => 'Logout(' . $session->get('name') . ")", 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'template' => '<a href="{url}" data-method="post">{label}</a>',],
                                 ['label' => 'About Us', 'url' => ['#'], 'visible' => 'true'],
-                                ['label' => 'Help', 'url' => ['#'], 'visible' => 'true'],
+                                //['label' => 'Help', 'url' => ['#'], 'visible' => 'true'],
                             ],
                             'options' => [
                                 'class' => 'admin-panel collapse navbar-collapse',

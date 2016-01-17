@@ -18,7 +18,7 @@ class AppAsset extends AssetBundle
         'plugins/iCheck/square/blue.css',
     ];
     public $js = [
-            'plugins/jQuery/jQuery-2.1.4.min.js',
+           // 'plugins/jQuery/jQuery-2.1.4.min.js',
             'bootstrap/js/bootstrap.min.js',
             'plugins/iCheck/icheck.min.js',
             'plugins/ckeditor/ckeditor.js',

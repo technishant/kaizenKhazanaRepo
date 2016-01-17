@@ -44,6 +44,11 @@ use yii\helpers\Url;
           </a>
         </li>
         <li class="treeview">
+            <a href="<?php echo Url::to(['/entrepreneur']); ?>">
+            <i class="fa fa-dashboard"></i> <span>Entrepreneur Management</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+        </li>
+        <li class="treeview">
             <a href="<?php echo Url::to(['/capitalist']); ?>">
             <i class="fa fa-dashboard"></i> <span>Capitalist Management</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
