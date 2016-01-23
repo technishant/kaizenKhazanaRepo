@@ -10,13 +10,13 @@ use frontend\models\Capitalist;
 /**
  * CapitalistSearch represents the model behind the search form about `frontend\models\Capitalist`.
  */
-class CapitalistSearch extends Capitalist
-{
+class CapitalistSearch extends Capitalist {
+    
+    public $searchstring;
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id'], 'integer'],
             [['name', 'short_description', 'long_description', 'profile_photo', 'last_updated'], 'safe'],
@@ -26,8 +26,7 @@ class CapitalistSearch extends Capitalist
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +38,7 @@ class CapitalistSearch extends Capitalist
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Capitalist::find();
 
         $dataProvider = new ActiveDataProvider([
@@ -55,16 +53,11 @@ class CapitalistSearch extends Capitalist
             return $dataProvider;
         }
 
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'last_updated' => $this->last_updated,
-        ]);
-
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'short_description', $this->short_description])
-            ->andFilterWhere(['like', 'long_description', $this->long_description])
-            ->andFilterWhere(['like', 'profile_photo', $this->profile_photo]);
+                ->andFilterWhere(['like', 'short_description', $this->short_description])
+                ->andFilterWhere(['like', 'long_description', $this->long_description]);
 
         return $dataProvider;
     }
+
 }
