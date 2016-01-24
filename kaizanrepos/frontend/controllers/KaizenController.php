@@ -90,6 +90,7 @@ class KaizenController extends Controller {
             $model->posteddate = date('Y-m-d');
             $model->mode = 'draft';
             $model->approvedby = '0';
+            $model->tags = \yii\helpers\Json::encode($_POST['Kaizen']['tags']);
         }
         if ($model->load(Yii::$app->request->post())) {
             if ($model->type == 0) {

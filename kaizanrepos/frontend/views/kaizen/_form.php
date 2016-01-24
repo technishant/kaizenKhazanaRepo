@@ -6,6 +6,7 @@ use kartik\widgets\DepDrop;
 use common\components\MyHelpers;
 use yii\helpers\ArrayHelper;
 use yii\web\View;
+use common\models\Tags;
 ?>
 
 <div class="registerBox clearfix" style='background-image: url("../../images/banners/<?= MyHelpers::randomizeBackgroundImage(); ?>")'>
@@ -35,7 +36,7 @@ use yii\web\View;
 
             <div class="col-sm-12 clearfix">
                 <div class="form-group">
-                    <?= $form->field($model, 'type')->dropDownList([0 => 'Kaizen',  1 => 'Image', 2 => 'Video', 3 => 'E-Book'], ['id' => 'kaizen-type-dropdown']); ?>
+                    <?= $form->field($model, 'type')->dropDownList([0 => 'Kaizen', 1 => 'Image', 2 => 'Video', 3 => 'E-Book'], ['id' => 'kaizen-type-dropdown']); ?>
                 </div>
                 <div class="form-group">
                     <?php
@@ -58,7 +59,13 @@ use yii\web\View;
                     <?= $form->field($model, 'attachmenttype')->radioList(array('video' => 'Video', 'image' => 'Image', 'pdf' => 'Pdf')); ?>
                 </div>
             </div>
-
+            
+            <div class="col-sm-12 clearfix">
+                <div class="form-group">
+                    <?= $form->field($model, 'tags')->checkboxList(ArrayHelper::map(Tags::find()->all(), 'id', 'tag_name')); ?> 
+                </div>
+            </div>
+            
             <div class="col-sm-6 clearfix">
                 <div class="form-group">
                     <?= $form->field($model, 'name')->textInput(); ?>
@@ -71,11 +78,11 @@ use yii\web\View;
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'problem_observed')->textarea(['rows' => 6]) ?>
                 </div>
-                
+
                 <div class="form-group hideFields">
-                    <img src="<?php echo Yii::$app->request->baseUrl.'/images/thumbnail.jpg'?>" width="300px" height="184px" id="beforeImageThumb">
+                    <img src="<?php echo Yii::$app->request->baseUrl . '/images/thumbnail.jpg' ?>" width="300px" height="184px" id="beforeImageThumb">
                 </div>
-                
+
                 <div class="form-group hideFields">    
                     <?= $form->field($model, 'kzfilebefore')->fileInput() ?>
                 </div>
@@ -102,11 +109,11 @@ use yii\web\View;
                 <div class="form-group hideFields">
                     <?= $form->field($model, 'action_taken')->textarea(['rows' => 6]) ?>
                 </div>
-                
+
                 <div class="form-group hideFields">
-                    <img src="<?php echo Yii::$app->request->baseUrl.'/images/thumbnail.jpg'?>" width="300px" height="184px" id="afterImageThumb">
+                    <img src="<?php echo Yii::$app->request->baseUrl . '/images/thumbnail.jpg' ?>" width="300px" height="184px" id="afterImageThumb">
                 </div>
-                
+
                 <div class="form-group hideFields">        
                     <?= $form->field($model, 'kzfileafter')->fileInput() ?>
                 </div>
@@ -115,7 +122,7 @@ use yii\web\View;
                     <?= $form->field($model, 'intengiblebenifits')->textarea(['rows' => 6]) ?>
                 </div>
             </div>
-            
+
             <div class="col-sm-12 clearfix">
                 <div class="form-group showFields hidden">
                     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>

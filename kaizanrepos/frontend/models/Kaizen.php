@@ -31,7 +31,7 @@ use Yii;
  * @property string $implemented_by
  * @property string $problem_observed
  * @property string $action_taken
- *
+ * @property string $tags
  * @property User $postedby0
  * @property Category $category0
  * @property Kzattachments[] $kzattachments
@@ -107,7 +107,8 @@ class Kaizen extends \yii\db\ActiveRecord {
             'attachmentother' => Yii::t('app', 'Attachment'),
             'implemented_by' => Yii::t('app', 'Implemented By'),
             'problem_observed' => Yii::t('app', 'Problem Observed'),
-            'action_taken' => Yii::t('app', 'Action Taken')
+            'action_taken' => Yii::t('app', 'Action Taken'),
+            'tags' => Yii::t('app', 'Tags'),
         ];
     }
 

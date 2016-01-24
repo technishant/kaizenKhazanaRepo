@@ -40,31 +40,31 @@ $this->title = 'Home :: Kaizen Khazana';
                     <div class="icon-section">
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-home"></i></span>
+                                <span><i class="fa fa-comments"></i></span>
                                 <span>Idea Bazaar</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-home"></i></span>
+                                <span><i class="fa fa-university"></i></span>
                                 <span>Knowledge Bazaar</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-home"></i></span>
+                                <span><i class="fa fa-shopping-cart"></i></span>
                                 <span>E-Shopping</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-home"></i></span>
+                                <span><i class="fa fa-folder"></i></span>
                                 <span>Entrepreneur Guide</span>
                             </div>
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <div class="circle-box">
-                                <span><i class="fa fa-home"></i></span>
+                                <span><i class="fa fa-cc-visa"></i></span>
                                 <span>Donate us</span>
                             </div>
                         </div>
