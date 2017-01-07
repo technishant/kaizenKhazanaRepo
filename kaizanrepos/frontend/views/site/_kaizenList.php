@@ -32,6 +32,9 @@ use common\components\MyHelpers;
                     case 'video':
                         $imgpath = Yii::$app->request->baseUrl . '/images/videoicon.png';
                         break;
+										case "ppt":
+												$imgpath = Yii::$app->request->baseUrl . '/images/ppticon.png';
+												break;
                     default:
                         $imgpath = Yii::$app->request->baseUrl . '/images/photoicon.png';
                 }
