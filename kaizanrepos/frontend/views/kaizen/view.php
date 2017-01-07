@@ -182,7 +182,7 @@ use common\components\MyHelpers;
 														<h4>Before Kaizen</h4>
 														<a class="kzattachbeforeMedia" target="_blank"  href="<?= $vidpath1; ?>"><img src="<?= Yii::$app->request->baseUrl . '/images/ppticon.png'; ?>"></a>  
 												</div>
-												<? } else {
+												<?php } else {
 												?>
 												<div class="col-sm-6">
 														<h4>Before Kaizen</h4>
