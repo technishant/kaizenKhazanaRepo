@@ -19,10 +19,7 @@ class CapitalistController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
+                'class' => VerbFilter::className()
             ],
         ];
     }
