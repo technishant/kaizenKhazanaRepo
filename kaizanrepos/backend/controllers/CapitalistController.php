@@ -67,6 +67,9 @@ class CapitalistController extends Controller {
 				}
 				if ($model->validate() && $model->save()) {
 					if ($uploadedFile) {
+						if (!file_exists(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images')) {
+							@mkdir(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images', 0777, true);
+						}
 						$uploadedFile->saveAs(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images/' . $fileName);
 					}
 					$transaction->commit();
@@ -105,6 +108,9 @@ class CapitalistController extends Controller {
 				}
 				if ($model->validate() && $model->save()) {
 					if ($uploadedFile) {
+						if (!file_exists(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images')) {
+							@mkdir(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images', 0777, true);
+						}
 						$uploadedFile->saveAs(Yii::getAlias('@frontend') . '/web/uploads/capitalist_images/' . $fileName);
 					}
 					$transaction->commit();
